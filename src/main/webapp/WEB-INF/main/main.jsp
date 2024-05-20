@@ -69,7 +69,7 @@
 				<div class="text-center">
         	<div class="fs-4 mb-4 fst-italic">"새로운 언어를 배우는 것은 새로운 삶을 얻는 것이다. 두 개의 언어를 알고 있으면 두 개의 삶을 산다."</div>
           <div class="d-flex align-items-center justify-content-center">
-          	<img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+          	<img class="rounded-circle me-3" src="../../images/Wittgenstein.jpeg" />
            	<div class="fw-bold">
             	Ludwig Wittgenstein
              	<span class="fw-bold text-primary mx-1">/</span>
