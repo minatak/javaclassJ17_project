@@ -5,95 +5,32 @@
   int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
   pageContext.setAttribute("level", level);
 %>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="http://192.168.50.59:9090/javaclass/Main">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> 
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="${ctp}/GuestList">Guest</a>
-      </li>
-			<c:if test="${level <= 4}">
-	      <li class="nav-item">
-	        <a class="nav-link" href="BoardList.bo">Board</a>
-	      </li>
-	    </c:if>
-      <c:if test="${level <= 4 && (level > 1 || level == 0)}">
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">PDS</a>
-	      </li>    
-	      <li class="nav-item mr-2">
-				  <div class="dropdown">
-				    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Study1</button>
-				    <div class="dropdown-menu">
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0426/t01.jsp">서버환경</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0426/t02.jsp">성적계산</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0427_storage/t1_Cookies.jsp">쿠키연습</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0427_storage/t2_Session.jsp">세션연습</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/homework/선생님/ex2_GuGuDan.jsp">구구단</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0427_storage/t3_Application.jsp">어플리케이션연습</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0427_storage/t4_StorageTest.jsp">Storage연습</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/homework/선생님/ex1_Login.jsp">아이디저장연습(수정필요)</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0429_JSTL/el1.jsp">EL연습</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0429_JSTL/jstl1.jsp?jumsu=85&code=K">JSTL연습</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0430_web_xml/filter/t1_Filter.jsp">Filter 한글연습</a>
-				      <%-- <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0430_web_xml/filter/t2_Certification.jsp"">인증코드 발행(관리자)</a> --%>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0430_web_xml/init/t03_init.jsp">초기값확인</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/0430_web_xml/lifeCycle/lifeCycle2.jsp">서블릿 생명주기 2번째</a>
-				      <a class="dropdown-item" href="<%=request.getContextPath()%>/study/database/LoginList">데이터베이스연습</a>
-				    </div>
-				  </div>
-	       </li>
-	      <li class="nav-item mr-2">
-				  <div class="dropdown">
-				    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Study2</button>
-				    <div class="dropdown-menu">
-				      <a class="dropdown-item" href="${ctp}/study/password/passCheck.jsp">비밀번호암호화</a>
-				      <a class="dropdown-item" href="${ctp}/mapping/test1">디렉토리 매핑연습</a>
-				      <a class="dropdown-item" href="${ctp}/mapping/test2.do">확장자 매핑연습</a>
-				      <a class="dropdown-item" href="${ctp}/mapping/test3.do3">확장자 매핑연습3</a>
-				      <a class="dropdown-item" href="${ctp}/mapping/test4.do4">확장자 매핑연습4</a>
-				      <a class="dropdown-item" href="${ctp}/exam/j0507/test5.do5">확장자 매핑연습5_숙제</a>
-				      <a class="dropdown-item" href="${ctp}/ajaxTest1.st">AJAX연습(일반)</a>
-				      <a class="dropdown-item" href="${ctp}/ajaxTest2.st">AJAX연습(응용)</a>
-				      <a class="dropdown-item" href="${ctp}/ajaxTest3.st">AJAX연습(회원관리)</a>
-				      <a class="dropdown-item" href="${ctp}/passCheck.ex">AJAX연습(비밀번호암호화)</a>
-				      <a class="dropdown-item" href="${ctp}/uuidForm.st">AJAX연습(UUID 연습)</a>
-				      <a class="dropdown-item" href="${ctp}/study/database/login.jsp">로그인 연습</a>
-				      <a class="dropdown-item" href="${ctp}/Modal1.st">모달 연습 1</a>
-				      <a class="dropdown-item" href="${ctp}/Modal2.st">모달 연습 2</a>
-				    </div>
-				  </div>
-		    </li>
-      </c:if>
-      <c:if test="${level <= 4}">
-	      <li class="nav-item mr-2">
-				  <div class="dropdown">
-				    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">MyPage</button>
-				    <div class="dropdown-menu">
-				    	<a class="dropdown-item" href="${ctp}/colorSave.jsp">색상확인</a>
-				      <a class="dropdown-item" href="MemberMain.mem">회원메인방</a>
-				      <c:if test="${level <= 4 && (level > 1 || level == 0)}">
-					      <a class="dropdown-item" href="#">일정관리</a>
-					      <a class="dropdown-item" href="#">메세지관리</a>
-				      	<a class="dropdown-item" href="MemberList.mem">회원리스트</a>
-				      </c:if>
-				      <a class="dropdown-item" href="MemberPwdCheck.mem">회원정보수정</a>
-				      <a class="dropdown-item" href="MemberDelete.mem">회원탈퇴</a>
-				      <c:if test="${sLevel == 0}"><a class="dropdown-item" href="AdminMain.ad">관리자메뉴</a></c:if>
-				    </div>
-				  </div>
-	      </li>
-	    </c:if>
-      <li class="nav-item">
-				<c:if test="${level <= 4}"><a class="nav-link" href="${ctp}/MemberLogout.mem">Logout</a></c:if>
-        <c:if test="${level > 4}"><a class="nav-link" href="${ctp}/MemberLogin.mem">Login</a></c:if>
-      </li>    
-      <li class="nav-item">
-        <c:if test="${level > 4}"><a class="nav-link" href="${ctp}/MemberJoin.mem">Join</a></c:if>
-      </li>
-    </ul>
-  </div>  
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
+                        <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                        <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
