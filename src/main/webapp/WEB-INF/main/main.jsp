@@ -10,11 +10,71 @@
   <%@ include file = "/include/bs4.jsp" %>
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <link href="css/styles.css" rel="stylesheet" />
+  <style>
+  	.phrase {
+		  font-family: "Grandiflora One", cursive;
+		  font-weight: 400;
+		  font-style: normal;
+		  color: black;
+		}
+  </style>
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
 <jsp:include page="/include/nav.jsp" />
 <jsp:include page="/include/header.jsp" />
+
+<!-- Features section-->
+<section class="py-5" id="features">
+  <div class="container px-5 my-5">
+    <div class="row gx-5">
+      <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">A better way to start building.</h2></div>
+      <div class="col-lg-8">
+        <div class="row gx-5 row-cols-1 row-cols-md-2">
+          <div class="col mb-5 h-100">
+            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+            <h2 class="h5">언어교환</h2>
+            <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+          </div>
+          <div class="col mb-5 h-100">
+            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+            <h2 class="h5">영어공부</h2>
+            <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+          </div>
+          <div class="col mb-5 mb-md-0 h-100">
+            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+            <h2 class="h5">재밋음!</h2>
+            <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+          </div>
+          <div class="col h-100">
+            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+            <h2 class="h5">실용적인 학습</h2>
+            <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+	<!-- Testimonial section-->
+	<div class="container px-5 my-5 phrase">
+		<div class="row gx-5 justify-content-center">
+			<div class="col-lg-10 col-xl-7">
+				<div class="text-center">
+        	<div class="mb-4">"새로운 언어를 배우는 것은 새로운 삶을 얻는 것이다. 두 개의 언어를 알고 있으면 두 개의 삶을 산다."</div>
+          <div class="d-flex align-items-center justify-content-center">
+          	<img class="rounded-circle me-3" src="${ctp}/images/Wittgenstein.jpeg" />
+           	<div class="fw-bold">
+            	Ludwig Wittgenstein
+             	<span class="fw-bold text-primary mx-1">/</span>
+              영국 철학자, 케임브리지 대학교 철학 전공 
+        		</div>
+        	</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <!-- Blog preview section-->
 <section class="py-5">
@@ -61,26 +121,7 @@
 	</div>
 </div>
 </section>
-<!-- Testimonial section-->
-<div class="py-5 bg-light">
-	<div class="container px-5 my-5">
-		<div class="row gx-5 justify-content-center">
-			<div class="col-lg-10 col-xl-7">
-				<div class="text-center">
-        	<div class="fs-4 mb-4 fst-italic">"새로운 언어를 배우는 것은 새로운 삶을 얻는 것이다. 두 개의 언어를 알고 있으면 두 개의 삶을 산다."</div>
-          <div class="d-flex align-items-center justify-content-center">
-          	<img class="rounded-circle me-3" src="../../images/Wittgenstein.jpeg" />
-           	<div class="fw-bold">
-            	Ludwig Wittgenstein
-             	<span class="fw-bold text-primary mx-1">/</span>
-              영국 철학자, 케임브리지 대학교 철학 전공 
-        		</div>
-        	</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
 </main>
 <jsp:include page="/include/footer.jsp" />
 </body>
