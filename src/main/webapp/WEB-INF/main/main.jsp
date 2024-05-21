@@ -77,7 +77,7 @@
                                 <p class="lead fw-normal text-white-50 mb-4">'Lingua'는 라틴어로 ‘언어’를 의미하며, 'Link'는 '연결'을 의미합니다. 이 공간은 단순한 언어 교환을 넘어, 전 세계의 사람들을 서로 연결하는 다리 역할을 합니다.</p>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                     <a class="btn btn-primary btn-lg px-4 me-sm-3 mr-3" href="Register.mem">지금 가입하기</a>
-                                    <a class="btn btn-outline-light btn-lg px-4" href="#!">로그인하기</a>
+                                    <a class="btn btn-outline-light btn-lg px-4" href="Login.mem">로그인하기</a>
                                 </div>
                             </div>
                         </div>
@@ -117,6 +117,37 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- Features section-->
+                <div class="container px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="mb-5"><h5>어떤 언어를 공부하고 있나요?</h5></div>
+                        <div class="col-lg-8">
+                            <div class="row gx-5 row-cols-1 row-cols-md-2">
+                                <div class="col mb-5 h-100">
+                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                                    <h2 class="h5">원어민과 연결</h2>
+                                    <p class="mb-0">전 세계 원어민과 함께 연습할 수 있는 기회를 제공합니다. 실제 대화에 참여함으로써 교과서에서 얻을 수 없는 진정한 언어 능력과 문화적 통찰력을 얻을 수 있습니다. </p>
+                                </div>
+                                <div class="col mb-5 h-100">
+                                    <div class="feature"><img src="https://i.namu.wiki/i/iomsCB4f3Vbrgrd5YxQ03Q9jq1ofFrtmLtqaot91nyII5LpGbtYgUCQyZ8VFGuKivrYi0NU2A2Z6qouVP0dlgQ.svg"width="100"></div>
+                                    <h2 class="h5">한국어</h2>
+                                </div>
+                                <div class="col mb-5 mb-md-0 h-100">
+                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                                    <h2 class="h5">문화 교류</h2>
+                                    <p class="mb-0">언어는 단순한 단어가 아니라 서로 다른 문화를 이해하는 관문입니다. LinguaLink를 통해 문화 교류를 통해 다양한 관점과 전통을 탐구할 수 있습니다.</p>
+                                </div>
+                                <div class="col h-100">
+                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                                    <h2 class="h5">인터렉티브 학습 환경</h2>
+                                    <p class="mb-0">언어 학습 경험을 향상시킬 수 있는 다양한 대화형 도구를 제공합니다. 라이브 채팅부터 어휘 게임과 단어 퀴즈까지, 학습을 재미있고 효과적으로 만들어줍니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             <!-- Testimonial section-->
             <div class="py-5 bg-light">
                 <div class="container px-5 my-5">
@@ -143,8 +174,8 @@
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-8 col-xl-6">
                             <div class="text-center">
-                                <h2 class="fw-bolder">From our blog</h2>
-                                <p class="lead fw-normal text-muted mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
+                                <h2 class="fw-bolder">바로가기 </h2>
+                                <p class="lead fw-normal text-muted mb-5">아래 소개를 클릭 시 주요 기능 페이지로 바로 이동할 수 있습니다.</p>
                             </div>
                         </div>
                     </div>

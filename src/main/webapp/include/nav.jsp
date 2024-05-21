@@ -36,7 +36,7 @@
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="Main.com">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="About.com">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="Login.mem">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="Register.mem">Join</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Language</a>
