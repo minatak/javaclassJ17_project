@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <script>
-	location.href = "${ctp}/Main";
+	location.href = "${ctp}/Main.com";
 </script> 
 
 <%-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>

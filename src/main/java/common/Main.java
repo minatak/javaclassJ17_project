@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet("/Main")
+@WebServlet("*.com")
 public class Main extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,8 +29,18 @@ public class Main extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);;
 		*/
-		String viewPage = "/WEB-INF/main/main2.jsp";
+		String viewPage = "/WEB-INF/main";
+		String com = request.getRequestURI();
+		com = com.substring(com.lastIndexOf("/"), com.lastIndexOf("."));
+		
+		if(com.equals("/Main")) {
+			viewPage += "/main.jsp";
+		}
+		else if(com.equals("/About")) {
+			viewPage += "/about.jsp";
+		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		dispatcher.forward(request, response);;
+		dispatcher.forward(request, response);
 	}
 }
