@@ -242,6 +242,15 @@
 	   		font-size: 24px; /* 아이콘 크기 */
 			}
 			
+			.padded-img {
+    padding: 15px; /* Adjust padding as needed */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+			
+			
 				
 	  </style>
 	</head>
@@ -380,8 +389,8 @@
 						      </div>
 						      <div class="col-lg-4 mb-5">
 						        <div class="serviceCard">
-						          <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
-						          <div class="card-body p-4 text-center">
+						          <img class="card-img-top padded-img" src="${ctp}/images/logo/chat.png" alt="Chat Logo" />
+        							<div class="card-body p-4 text-center">
 						            <!-- <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">채팅하기</h5></a> -->
 						            <h4><a class="card-title mb-3" href="#!">채팅하기</a></h4>
 						            <p class="card-text mb-0">원어민과 실시간으로 채팅하며 자연스러운 대화 연습을 해보세요. 텍스트, 음성, 영상 채팅을 통해 다양한 언어 스킬을 향상시킬 수 있습니다!</p>

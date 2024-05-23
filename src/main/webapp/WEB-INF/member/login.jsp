@@ -26,7 +26,7 @@
   <style>
 		body {
 		  font-family: 'NEXON Lv1 Gothic OTF';
-		  background-color: #f3f4f6;
+		  background-color: #fefefe;
 		  /* justify-content: center !important; */
 		  /* align-items: center; */
 		}
@@ -36,7 +36,7 @@
 		} */
 		
 		.login-container {
-		  background-color: #ffffff;
+		  /* background-color: #ffffff; */
 		  padding: 30px;
 		  /* width: 800px; */
 		  max-width: 400px;
@@ -155,7 +155,7 @@
 		      </div>
 		      <div class="form-group otherLink">
 		        <input type="checkbox" name="idSave" checked />아이디 저장 |
-		        <a class="custom-btn" href="${ctp}/MemberJoin.mem">회원가입</a> |
+		        <a class="custom-btn" href="${ctp}/Register.mem">회원가입</a> |
 		        <a class="custom-btn" href="${ctp}/MemberJoin.mem'">아이디/비밀번호 찾기</a>
 		      </div>
 		    </form>

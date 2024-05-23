@@ -65,14 +65,15 @@
       background: #fff;
     }
 
-    .myBtn {
+     .myBtn {
       border: 1.2px solid #39b766;
       color: #fefefe;
       background-color: #35ae5f;
       padding: 10px 20px;
-      width: 100%;
       font-size: 14px;
-      margin-bottom: 10px;
+      margin: 10px;
+      display: inline-block;
+      text-decoration: none;
     }
 
     .myBtn:hover,
@@ -87,6 +88,7 @@
       padding: 10px;
       font-family: 'Cafe24SsurroundAir';
     }
+    
     .proceedingStep {
       background-color: #90bc8e;
       color: #ffffff;

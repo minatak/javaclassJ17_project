@@ -207,9 +207,8 @@
           
           <div class="form-group text-center ">
             <input type="submit" value="다음" class="myBtn mr-2">
-            <input type="button" value="이전으로" class="myBtn back">
+            <input type="button" onclick="location.href='${ctp}/Main.com';" value="이전으로" class="myBtn back">
           </div>
-          
           
         </form>
       </div>
