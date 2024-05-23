@@ -112,9 +112,6 @@
 				
 			}
 			
-			.header_des {
-				position: relative; /* 부모 요소에 position: relative; 설정 */
-			}
 			
 			.lead {font-family: "NEXON Lv1 Gothic OTF";} 
 			
@@ -257,9 +254,9 @@
                     <div class="row gx-5 ">
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 ">
-                                <h4 class="header_sub" style="font-family: 'Pretendard-Regular'; color:#39b766"> Language Exchange</h4>
-                                <h1 class=" mb-3" style="font-family: 'CWDangamAsac-Bold'; font-size: 3.5em; color:#35ae5f;">LinguaLink</h1>
-                                <div class="header_des"><p class="lead fw-normal mb-4"><b>Lingua</b>는 라틴어로 <b>언어</b>를 의미하며, <b>Link</b>는 <b>연결</b>을 의미합니다. 실용적 언어를 배우는 동시에, 다양한 문화적 배경을 가진 친구들을 만나고 소통할 수 있는 공간을 제공합니다.</p></div>
+                                <h4 class="header_sub" style="font-family: 'Pretendard-Regular'; color:#39b766;"> Language Exchange</h4>
+                                <h1 class=" mb-3" style="font-family: 'CWDangamAsac-Bold'; font-size: 3em; color:#35ae5f;">LinguaLink</h1>
+                                <div class="header_des"><p class="lead fw-normal mb-4">Lingua는 라틴어로 <b>언어</b>를 의미하며, Link는 <b>연결</b>을 의미합니다. 실용적 언어를 배우는 동시에, 다양한 문화적 배경을 가진 친구들을 만나고 소통할 수 있는 공간을 제공합니다.</p></div>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start"  >
                                     <a class="btn btn-lg px-4 me-sm-3 mr-4" href="Register.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">지금 가입하기</a>
                                     <a class="btn btn-lg px-4" href="Login.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">로그인하기</a>
@@ -460,8 +457,8 @@
                         </div>	
                     </aside>
                      -->
-                </div>
-            </section>
+               <!--  </div>
+            </section> -->
         </main>
         <!-- Footer-->
         <jsp:include page="/include/footer.jsp" />

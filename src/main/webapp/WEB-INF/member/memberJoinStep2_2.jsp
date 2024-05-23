@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입</title>
+<title>회원가입 (2/2)</title>
 <%@ include file = "/include/bs4.jsp" %>
 <link href="css/styles.css" rel="stylesheet" />
 <style>
@@ -40,10 +40,9 @@
     }
     
     .form-group input[type="text"],
-    .form-group input[type="password"],
-    .form-group input[type="email"],
-    .form-group input[type="date"],
-    .form-group select {
+    .form-group input[type="file"],
+    .form-group select,
+    .form-group textarea {
       width: 100%;
       padding: 10px;
       border: 1px solid #ddd;
@@ -52,12 +51,14 @@
     }
     
     input,
-    select {
+    select,
+    textarea {
         color: #6f5340;
     }
     
     .form-group input:focus,
-    .form-group select:focus {
+    .form-group select:focus,
+    .form-group textarea:focus {
       border-color: #36b574;
       outline: none;
       background: #fff;
@@ -93,37 +94,11 @@
     <jsp:include page="/include/nav.jsp" />
     <div class="container mt-5 mb-5">
       <div class="register-container">
-        <h1>회원가입</h1>
-        <form name="registerForm" method="post" action="${ctp}/MemberJoinOk.mem">
+        <h1>회원가입 (2/2)</h1>
+        <form name="registerForm2" method="post" action="${ctp}/MemberJoinComplete.mem" enctype="multipart/form-data">
           <div class="form-group">
-            <label for="mid">아이디</label>
-            <input type="text" id="mid" name="mid" placeholder="아이디를 입력하세요" required>
-            <button type="button" class="myBtn" onclick="checkDuplicateId()">중복 확인</button>
-          </div>
-          <div class="form-group">
-            <label for="name">이름</label>
-            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
-          </div>
-          <div class="form-group">
-            <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
-          </div>
-          <div class="form-group">
-            <label for="email">이메일</label>
-            <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
-          </div>
-          <div class="form-group">
-            <label for="gender">성별</label>
-            <select id="gender" name="gender" required>
-              <option value="">선택하세요</option>
-              <option value="male">남성</option>
-              <option value="female">여성</option>
-              <option value="other">기타</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="birthday">생일</label>
-            <input type="date" id="birthday" name="birthday" required>
+            <label for="profilePicture">프로필 사진</label>
+            <input type="file" id="profilePicture" name="profilePicture">
           </div>
           <div class="form-group">
             <label for="country">거주하는 나라</label>
@@ -187,15 +162,11 @@
             <input type="text" id="learningGoal" name="learningGoal" placeholder="학습 목표를 입력하세요" required>
           </div>
           <div class="form-group">
-            <label for="profilePicture">프로필 사진</label>
-            <input type="file" id="profilePicture" name="profilePicture">
-          </div>
-          <div class="form-group">
             <label for="bio">설명, 자기소개</label>
             <textarea id="bio" name="bio" rows="4" placeholder="자기소개를 입력하세요"></textarea>
           </div>
           <div class="form-group">
-            <input type="submit" value="회원가입" class="myBtn">
+            <input type="submit" value="가입하기" class="myBtn">
           </div>
         </form>
       </div>
@@ -207,11 +178,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<script>
-    function checkDuplicateId() {
-        // 중복 확인 로직을 여기에 추가하세요
-        alert('아이디 중복 확인');
-    }
-</script>
 </body>
 </html>

@@ -26,8 +26,14 @@ public class MemberController extends HttpServlet {
 		int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
 		
 		
+		/*
+		 * if(com.equals("/Register")) { viewPage += "/register.jsp"; }
+		 */
 		if(com.equals("/Register")) {
-			viewPage += "/register.jsp";
+			viewPage += "/memberJoinStep1.jsp";
+		}
+		else if(com.equals("/MemberJoinStep2")) {
+			viewPage += "/memberJoinStep2.jsp";
 		}
 		else if(com.equals("/Login")) {
 			viewPage += "/login.jsp";

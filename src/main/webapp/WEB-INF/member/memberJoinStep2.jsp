@@ -6,25 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입</title>
-<%@ include file = "/include/bs4.jsp" %>
+<title>회원가입 (2/2)</title>
+<%@ include file="/include/bs4.jsp" %>
 <link href="css/styles.css" rel="stylesheet" />
 <style>
-    body {
+    .join-container {
       font-family: 'NEXON Lv1 Gothic OTF';
-      background-color: #f3f4f6;
+      background-color: #fefefe;
+      font-size: 14px;
     }
     
     .register-container {
-      background-color: #ffffff;
+      background-color: #fefefe;
       padding: 30px;
-      max-width: 400px;
+      max-width: 750px;
       text-align: center;
       margin: 20px auto;
     }
     
     .register-container h1 {
-      margin-bottom: 20px;
       color: #35ae5f;
       font-family: 'CWDangamAsac-Bold';
     }
@@ -36,113 +36,125 @@
     
     .form-group label {
       margin-bottom: 5px;
-      color: #36b574;
+      color: #35ae5f;
+      font-size: 14px;
     }
     
     .form-group input[type="text"],
-    .form-group input[type="password"],
-    .form-group input[type="email"],
-    .form-group input[type="date"],
-    .form-group select {
+    .form-group input[type="file"],
+    .form-group select,
+    .form-group textarea {
       width: 100%;
       padding: 10px;
       border: 1px solid #ddd;
       background: #fefefe;
-      font-size: 16px;
+      font-size: 14px;
     }
     
     input,
-    select {
-        color: #6f5340;
+    select,
+    textarea {
+      color: #6f5340;
     }
     
     .form-group input:focus,
-    .form-group select:focus {
-      border-color: #36b574;
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #35ae5f;
       outline: none;
       background: #fff;
     }
-    
+
     .myBtn {
-      border: 1.2px #39b766;
+      border: 1.2px solid #39b766;
       color: #fefefe;
       background-color: #35ae5f;
       padding: 10px 20px;
       width: 100%;
+      font-size: 14px;
+      margin-bottom: 10px;
     }
-    
-    .myBtn:hover {
+
+    .myBtn:hover,
+    .myBtn:active {
       background-color: #39b766;
     }
-    
-    a {
-        color: #35ae5f;
+
+    .step {
+      background-color: #c7e9c6;
+      border-radius: 50px;
+      color: #35ae5f;
+      padding: 10px;
+      font-family: 'Cafe24SsurroundAir';
+    }
+    .proceedingStep {
+      background-color: #90bc8e;
+      color: #ffffff;
     }
     
-    a:hover,
-    a:focus,
-    a:active,
-    a:visited {
-        color: #379866;
-        text-decoration: none;
+    @font-face {
+      font-family: 'CWDangamAsac-Bold';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    @font-face {
+      font-family: 'Cafe24SsurroundAir';
+      src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
     }
 </style>
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
     <jsp:include page="/include/nav.jsp" />
-    <div class="container mt-5 mb-5">
+    <div class="container join-container mt-5 mb-5">
       <div class="register-container">
         <h1>회원가입</h1>
-        <form name="registerForm" method="post" action="${ctp}/MemberJoinOk.mem">
-          <div class="form-group">
-            <label for="mid">아이디</label>
-            <input type="text" id="mid" name="mid" placeholder="아이디를 입력하세요" required>
-            <button type="button" class="myBtn" onclick="checkDuplicateId()">중복 확인</button>
+        
+        <div class="row gx-5 row-cols-2 row-cols-lg-3 py-5" style="color: #6f5340;">
+          <div class="col">
+            <p class="text-muted mb-0">step 1</p>
+            <div class="step"><i class="fa-solid fa-user"></i></div>
+            <div class="m-2">회원 정보 입력</div>
           </div>
-          <div class="form-group">
-            <label for="name">이름</label>
-            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+          <div class="col">
+            <p class="text-muted mb-0">step 2</p>
+            <div class="proceedingStep step"><i class="fa-solid fa-earth-americas"></i></div>
+            <div class="m-2">언어 / 목표 입력</div>
           </div>
-          <div class="form-group">
-            <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+          <div class="col">
+            <p class="text-muted mb-0">step 3</p>
+            <div class="step"><i class="fa-solid fa-check"></i></div>
+            <div class="m-2">가입완료</div>
           </div>
+        </div>
+        
+        <form name="registerForm2" method="post" action="${ctp}/MemberJoinComplete.mem" enctype="multipart/form-data">
           <div class="form-group">
-            <label for="email">이메일</label>
-            <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
-          </div>
-          <div class="form-group">
-            <label for="gender">성별</label>
-            <select id="gender" name="gender" required>
-              <option value="">선택하세요</option>
-              <option value="male">남성</option>
-              <option value="female">여성</option>
-              <option value="other">기타</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="birthday">생일</label>
-            <input type="date" id="birthday" name="birthday" required>
+            <label for="profilePicture">프로필 사진</label>
+            <input type="file" id="profilePicture" name="profilePicture">
           </div>
           <div class="form-group">
             <label for="country">거주하는 나라</label>
             <select id="country" name="country" required>
               <option value="">선택하세요</option>
-              <!-- 나라 목록은 필요에 따라 추가하세요 -->
               <option value="korea">한국</option>
               <option value="usa">미국</option>
-              <!-- ... -->
+              <option>기타</option>
+              <!-- 추가 나라 옵션 -->
             </select>
           </div>
           <div class="form-group">
             <label for="city">도시</label>
             <select id="city" name="city">
               <option value="">선택하세요</option>
-              <!-- 도시 목록은 필요에 따라 추가하세요 -->
               <option value="seoul">서울</option>
               <option value="busan">부산</option>
-              <!-- ... -->
+              <option>기타</option>
+              <!-- 추가 도시 옵션 -->
             </select>
           </div>
           <div class="form-group">
@@ -157,6 +169,7 @@
               <option value="german">독일어</option>
               <option value="chinese">중국어</option>
               <option value="russian">러시아어</option>
+              <option>기타</option>
             </select>
           </div>
           <div class="form-group">
@@ -187,15 +200,11 @@
             <input type="text" id="learningGoal" name="learningGoal" placeholder="학습 목표를 입력하세요" required>
           </div>
           <div class="form-group">
-            <label for="profilePicture">프로필 사진</label>
-            <input type="file" id="profilePicture" name="profilePicture">
-          </div>
-          <div class="form-group">
-            <label for="bio">설명, 자기소개</label>
+            <label for="bio">자기소개</label>
             <textarea id="bio" name="bio" rows="4" placeholder="자기소개를 입력하세요"></textarea>
           </div>
-          <div class="form-group">
-            <input type="submit" value="회원가입" class="myBtn">
+          <div class="form-group text-center">
+            <input type="submit" value="가입하기" class="myBtn">
           </div>
         </form>
       </div>
@@ -207,11 +216,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<script>
-    function checkDuplicateId() {
-        // 중복 확인 로직을 여기에 추가하세요
-        alert('아이디 중복 확인');
-    }
-</script>
 </body>
 </html>
