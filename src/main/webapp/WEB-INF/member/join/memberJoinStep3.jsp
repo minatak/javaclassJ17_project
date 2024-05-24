@@ -9,7 +9,7 @@
 <title>가입 완료</title>
 <%@ include file="/include/bs4.jsp" %>
 <link href="css/styles.css" rel="stylesheet" />
-<link href="${ctp}/css/join.css" rel="stylesheet" />
+<link href="${ctp}/css/join.css" rel="stylesheet" /> 
 <style>
 
 		a:hover,

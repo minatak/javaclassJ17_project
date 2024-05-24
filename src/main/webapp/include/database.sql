@@ -5,11 +5,11 @@ CREATE TABLE member (
     idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY,  /* 회원 고유번호 */
     mid VARCHAR(30) UNIQUE NOT NULL,             /* 사용자 아이디 (중복 확인 필요) */
     pwd VARCHAR(100) NOT NULL,                   /* 비밀번호 (SHA256 암호화 처리) */
-    nickname VARCHAR(20) NOT NULL,               /* 회원 별명 (중복 불가능/수정 가능) */
+    nickName VARCHAR(20) NOT NULL,               /* 회원 별명 (중복 불가능/수정 가능) */
     name VARCHAR(20) NOT NULL,                   /* 이름 */
     email VARCHAR(60) NOT NULL,                  /* 이메일 */
     gender CHAR(2) NOT NULL DEFAULT '남자',       /* 성별 */
-    birthdate DATETIME DEFAULT NOW(),            /* 생일 */
+    birthday DATETIME DEFAULT NOW(),            /* 생일 */
     photo VARCHAR(100) DEFAULT 'noimage.jpg',    /* 프로필 사진 */
     country VARCHAR(50) NOT NULL,                /* 거주하는 나라 */
     city VARCHAR(50),                            /* 도시 */
