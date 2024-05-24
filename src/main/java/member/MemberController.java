@@ -32,6 +32,11 @@ public class MemberController extends HttpServlet {
 		if(com.equals("/Register")) {
 			viewPage += "/join/memberJoinStep1.jsp";
 		}
+		else if(com.equals("/MemberJoinOk1")) {
+			command = new MemberJoinOk1Command();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
 		else if(com.equals("/MemberJoinStep2")) {
 			viewPage += "/join/memberJoinStep2.jsp";
 		}
