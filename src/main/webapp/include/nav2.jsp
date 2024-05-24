@@ -38,15 +38,7 @@
 	  color: #35ae5f !important;
 	  font-family: 'NEXON Lv1 Gothic OTF' !important;
 	}
-
-	.profile-dropdown img {
-	  border-radius: 50%;
-	  width: 40px;
-	  height: 40px;
-	  object-fit: cover;
-	}
-	
-	
+			
 </style>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg">
@@ -67,26 +59,38 @@
                     </ul>
                 </li>	
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Service</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">service</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                         <li><a class="dropdown-item" href="#">회원 찾기</a></li>
                         <li><a class="dropdown-item" href="#">채팅하기</a></li>
                         <li><a class="dropdown-item" href="#">학습하기</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown profile-dropdown ml-3">
-                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://via.placeholder.com/40" alt="Profile Picture">
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="MemberMain.mem">회원 메인 페이지</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="MemberInfo.mem">회원 정보 확인</a></li>
-                        <li><a class="dropdown-item" href="MemberEdit.mem">회원 정보 수정</a></li>
-                    </ul>
-                </li>
             </ul>
         </div>
     </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

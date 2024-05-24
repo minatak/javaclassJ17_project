@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+.join-container {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  background-color: #fefefe;
+  font-size: 14px;
+}
+
+.complete-container {
+  background-color: #fefefe;
+  padding: 30px;
+  max-width: 750px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.complete-container h1 {
+  color: #35ae5f;
+  font-family: 'CWDangamAsac-Bold';
+  margin-bottom: 20px;
+}
+
+.complete-container p {
+  color: #6f5340;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.register-container {
+  background-color: #fefefe;
+  padding: 30px;
+  max-width: 750px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.register-container h1 {
+  color: #35ae5f;
+  font-family: 'CWDangamAsac-Bold';
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  color: #35ae5f;
+  font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fefefe;
+  font-size: 14px;
+}
+
+input,
+select,
+textarea {
+  color: #6f5340;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #35ae5f;
+  outline: none;
+  background: #fff;
+}
+	
+	.checkBtn {
+  border: 1.2px solid #39b766;
+  color: #fefefe;
+  background-color: #39b766;
+  padding: 8px 15px; /* 작은 크기로 조정 */
+  font-size: 12px; /* 작은 크기로 조정 */
+  border-radius: 3px; /* 버튼을 둥글게 만듭니다. */
+	}
+	
+	/*.checkBtn:hover,
+	.checkBtn:active {
+	  background-color: #39b766;  마우스를 올리거나 클릭할 때 연한 초록색으로 변경 
+	}*/
+		
+.myBtn {
+  border: 1.2px solid #39b766;
+  color: #fefefe;
+  background-color: #35ae5f;
+  padding: 10px 20px;
+  font-size: 14px;
+  margin: 10px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.myBtn:hover,
+.myBtn:active {
+  background-color: #39b766;
+}
+
+.step {
+  background-color: #c7e9c6;
+  border-radius: 50px;
+  color: #35ae5f;
+  padding: 10px;
+  font-family: 'Cafe24SsurroundAir';
+}
+
+.proceedingStep {
+  background-color: #90bc8e;
+  color: #ffffff;
+}
+
+a:hover,
+a:focus,
+a:active,
+a:visited {
+	color: #fefefe; /* 링크의 상태별로 색상 변경 */
+	text-decoration: none;
+}
+
+@font-face {
+  font-family: 'CWDangamAsac-Bold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cafe24SsurroundAir';
+  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

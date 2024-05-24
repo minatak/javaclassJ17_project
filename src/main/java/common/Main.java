@@ -36,6 +36,9 @@ public class Main extends HttpServlet {
 		if(com.equals("/Main")) {
 			viewPage += "/main.jsp";
 		}
+		if(com.equals("/LoggedInMain")) {
+			viewPage += "/loggedInMain.jsp";
+		}
 		else if(com.equals("/About")) {
 			viewPage += "/about.jsp";
 		}
