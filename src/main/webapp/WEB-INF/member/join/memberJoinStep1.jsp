@@ -7,12 +7,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>회원가입</title>
-	<%@ include file = "/include/bs4.jsp" %>
+	<%@ include file="/include/bs4.jsp" %>
+	<link href="css/styles.css" rel="stylesheet" />
+	<link href="${ctp}/css/join.css" rel="stylesheet" /> 
 	<script>
 		'use strict';
 		
 		let idCheckSw = 0;
 		let nickCheckSw = 0;
+		
+		function fCheck() {
 		/* 
 		// 정규식을 이용한 유효성검사처리.....
     let regMid = /^[a-zA-Z0-9_]{4,20}$/;    // 아이디는 4~20의 영문 대/소문자와 숫자와 밑줄 가능
@@ -22,34 +26,34 @@
     let regEmail = /^[a-zA-Z0-9_]{4,20}$/; // 4~20의 영문 대/소문자와 숫자와 밑줄 가능
         
     // 검사를 끝내고 필요한 내역들을 변수에 담아 회원가입처리한다.
-    let mid = myform.mid.value.trim();
-    let pwd = myform.pwd.value.trim();
-    let nickName = myform.nickName.value;
-    let name = myform.name.value;
+    let mid = registerForm1.mid.value.trim();
+    let pwd = registerForm1.pwd.value.trim();
+    let nickName = registerForm1.nickName.value;
+    let name = registerForm1.name.value;
     
     if(!regMid.test(mid)) {
       alert("아이디는 4~20자리의 영문 소/대문자와 숫자, 언더바(_)만 사용가능합니다.");
-      myform.mid.focus();
+      registerForm1.mid.focus();
       return false;
     }
     else if(!regPwd.test(pwd)) {
 	    alert("비밀번호는 8~16자리의 영문/특수문자만 가능합니다.");
-	    myform.pwd.focus();
+	    registerForm1.pwd.focus();
     	return false;
     }
     else if(!regNickName.test(nickName)) {
 	    alert("닉네임은 한글과 숫자만 사용가능합니다.");
-	    myform.nickName.focus();
+	    registerForm1.nickName.focus();
 	    return false;
     }
     else if(!regName.test(name)) {
       alert("성명은 한글과 영문대소문자만 사용가능합니다.");
-      myform.name.focus();
+      registerForm1.name.focus();
       return false;
     }
     else if(!regEmail.test(email1)) {
       alert("4~20의 영문 대/소문자와 숫자와 밑줄 가능");
-      myform.email1.focus();
+      registerForm1.email1.focus();
       return false;
     } */
             
@@ -62,17 +66,17 @@
       document.getElementById("nickNameBtn").focus();
     }
     else {
-        myform.submit();
+        registerForm1.submit();
     	}
 		}	
-    /* 
+    
     // 아이디 중복체크
     function idCheck() {
-	    let mid = myform.mid.value;
+	    let mid = registerForm1.mid.value;
 	    
 	    if(mid.trim() == "") {
 	      alert("아이디를 입력하세요!");
-	      myform.mid.focus();
+	      registerForm1.mid.focus();
 	    }
 	    else {
 	      idCheckSw = 1;
@@ -84,7 +88,7 @@
 	          success:function(res) {
 	            if(res != '0') {
 	              alert("이미 사용중인 아이디 입니다. 다시 입력하세요.");
-	              myform.mid.focus();
+	              registerForm1.mid.focus();
 	            }
 	            else alert("사용 가능한 아이디 입니다.");
 	          },
@@ -93,15 +97,43 @@
 	          }
 	      	});
 	    }
-	  }	
+	  }	 
+	  /* 
+	  function idCheck() {
+		    let mid = registerForm1.mid.value;
+
+		    if(mid.trim() === "") {
+		        alert("아이디를 입력하세요!");
+		        registerForm1.mid.focus();
+		    } else {
+		        $.ajax({
+		            url: `${ctp}/MemberIdCheck.mem`,
+		            type: "get",
+		            data: {mid: mid},
+		            success: function(res) {
+		                if(res !== '0') {
+		                    alert("이미 사용중인 아이디 입니다. 다시 입력하세요.");
+		                    registerForm1.mid.focus();
+		                } else {
+		                    alert("사용 가능한 아이디 입니다.");
+		                }
+		            },
+		            error: function(jqXHR, textStatus, errorThrown) {
+		                console.error("Error: ", textStatus, errorThrown);
+		                alert("전송 오류!");
+		            }
+		        });
+		    }
+		}
+ */
     
     // 닉네임 중복체크
     function nickCheck() {
-      let nickName = myform.nickName.value;
+      let nickName = registerForm1.nickName.value;
       
       if(nickName.trim() == "") {
         alert("닉네임을 입력하세요!");
-        myform.nickName.focus();
+        registerForm1.nickName.focus();
       }
       else {
         nickCheckSw = 1;
@@ -113,7 +145,7 @@
           success:function(res) {
             if(res != '0') {
               alert("이미 사용중인 닉네임 입니다. 다시 입력하세요.");
-              myform.nickName.focus();
+              registerForm1.nickName.focus();
             }
             else alert("사용 가능한 닉네임 입니다.");
           },
@@ -133,10 +165,8 @@
       });
     });
 		
-		 */
+		
 	</script>
-<link href="css/styles.css" rel="stylesheet" />
-<link href="${ctp}/css/join.css" rel="stylesheet" />
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
@@ -173,7 +203,7 @@
             <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
           </div>
           <div class="form-group">
-          	<label for="nickName">Nickname *&nbsp; &nbsp;<input type="button" value="닉네임 중복체크" id="midBtn" class="checkBtn" onclick="idCheck()"/></label>
+          	<label for="nickName">Nickname *&nbsp; &nbsp;<input type="button" value="닉네임 중복체크" id="nickBtn" class="checkBtn" onclick="nickCheck()"/></label>
             <input type="text" id="nickName" name="nickName" placeholder="닉네임을 입력하세요" required>
           </div>
           <div class="form-group">

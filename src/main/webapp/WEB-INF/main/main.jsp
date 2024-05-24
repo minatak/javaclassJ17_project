@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LinguaLink</title>
   <%@ include file="/include/bs4.jsp" %>
+  <%@ include file="/include/bs4.jsp" %>
+	<link href="css/styles.css" rel="stylesheet" />
+	<link href="${ctp}/css/main.css" rel="stylesheet" />
   <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="css/styles.css" rel="stylesheet" />
-  <link href="css/main.css" rel="stylesheet" />
 </head>
 <body class="d-flex flex-column h-100">
   <main class="flex-shrink-0">

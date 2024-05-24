@@ -19,21 +19,21 @@ public class MemberJoinOk1Command implements MemberInterface {
 		String name = request.getParameter("name")==null? "" : request.getParameter("name");
 		String gender = request.getParameter("gender")==null? "" : request.getParameter("gender");
 		String birthday = request.getParameter("birthday")==null? "" : request.getParameter("birthday");
-		String emaiil = request.getParameter("email")==null? "" : request.getParameter("birthday");
+		String email = request.getParameter("email")==null? "" : request.getParameter("email");
 		
 		// 아이디/닉네임 중복체크....
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = dao.getMemberIdCheck(mid);
 		if(vo.getMid() != null) {
-			request.setAttribute("message", "이미 사용중인 아이디 입니다.");
-			request.setAttribute("url", "MemberJoin.mem");
+			request.setAttribute("message", "이미 사용중인 아이디입니다.");
+			request.setAttribute("url", "memberJoinStep1.mem");
 			return;
 		}
 		
 		vo = dao.getMemberNickCheck(nickName);
 		if(vo.getNickName() != null) {
-			request.setAttribute("msg", "이미 사용중인 닉네임 입니다.");
-			request.setAttribute("url", "MemberJoin.mem");
+			request.setAttribute("message", "이미 사용중인 닉네임입니다.");
+			request.setAttribute("url", "memberJoinStep1.mem");
 			return;
 		}
 			
@@ -46,7 +46,7 @@ public class MemberJoinOk1Command implements MemberInterface {
 		
 		pwd = salt + pwd;
 		
-		// 모든 체크가 끝난 자료는 vo에 담아서 DB에 저장처리한다.
+		// 모든 체크가 끝난 자료는 vo에 담아서 step2에 넘겨준다.
 		vo = new MemberVO();
 		vo.setMid(mid);
 		vo.setPwd(pwd);
@@ -54,27 +54,15 @@ public class MemberJoinOk1Command implements MemberInterface {
 		vo.setName(name);
 		vo.setGender(gender);
 		vo.setBirthday(birthday);
-		vo.setTel(tel);
-		vo.setAddress(address);
 		vo.setEmail(email);
-		vo.setHomePage(homePage);
-		vo.setJob(job);
-		vo.setHobby(hobby);
-		vo.setPhoto(photo);
-		vo.setContent(content);
-		vo.setUserInfor(userInfor);
 		
-		int res = dao.setMemberJoinOk(vo);
-		
-		if(res != 0) {
-			request.setAttribute("message", "회원 가입되셨습니다.\\n다시 로그인해 주세요.");
-			request.setAttribute("url", "MemberLogin.mem");
-		}
-		else {
-			request.setAttribute("message", "회원 가입 실패~~");
-			request.setAttribute("url", "MemberJoin.mem");
-		}
-		
+		request.setAttribute("vo", vo);
+		/*
+		 * request.setAttribute("message", "NO"); request.setAttribute("url",
+		 * "MemberJoinStep2.mem");
+		 */
+	  request.getRequestDispatcher("MemberJoinStep2.mem").forward(request, response);
+	  
 		
 	}
 }

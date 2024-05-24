@@ -9,7 +9,7 @@
 <title>회원가입</title>
 <%@ include file="/include/bs4.jsp" %>
 <link href="css/styles.css" rel="stylesheet" />
-<link href="${ctp}/css/join.css" rel="stylesheet" />
+<link href="${ctp}/css/join.css" rel="stylesheet" /> 
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
@@ -35,8 +35,7 @@
             <div class="m-2">가입완료</div>
           </div>
         </div>
-        
-        <form name="registerForm2" method="post" action="${ctp}/MemberJoinComplete.mem" enctype="multipart/form-data">
+        <form name="registerForm2" method="post" action="${ctp}/MemberJoinOk2.mem">
           <div class="form-group">
             <label for="profilePicture">프로필 사진</label>
             <input type="file" id="profilePicture" name="profilePicture">
@@ -96,6 +95,15 @@
           <div class="form-group">
             <label for="bio">자기소개</label>
             <textarea id="bio" name="bio" rows="4" placeholder="자기소개를 입력하세요"></textarea>
+          </div>
+          <div>
+          	<input type="hidden" name="mid" value="${vo.mid}">
+          	<input type="hidden" name="pwd" value="${vo.pwd}">
+          	<input type="hidden" name="nickName" value="${vo.nickName}">
+          	<input type="hidden" name="name" value="${vo.name}">
+          	<input type="hidden" name="gender" value="${vo.gender}">
+          	<input type="hidden" name="birthday" value="${vo.birthday}">
+          	<input type="hidden" name="emaiil" value="${vo.emaiil}">
           </div>
           <div class="form-group text-center">
             <input type="submit" value="가입하기" class="myBtn">
