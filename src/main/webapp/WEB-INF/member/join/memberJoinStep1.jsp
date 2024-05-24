@@ -58,16 +58,16 @@
 	            <input type="text" id="mid" name="mid" placeholder="아이디를 입력하세요" required>
           </div>
           <div class="form-group">
+            <label for="password">Password *</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+          </div>
+          <div class="form-group">
             <label for="name">Name *</label>
             <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
           </div>
           <div class="form-group">
-          	<label for="nickName">Nickname *&nbsp; &nbsp;<input type="button" value="닉네임 중복체크" id="midBtn" class="checkBtn" onclick="idCheck()"/></label>
+          	<label for="nickName">Nickname *&nbsp; &nbsp;<input type="button" value="닉네임 중복체크" id="nickNameBtn" class="checkBtn" onclick="nickCheck()"/></label>
             <input type="text" id="nickName" name="nickName" placeholder="닉네임을 입력하세요" required>
-          </div>
-          <div class="form-group">
-            <label for="password">Password *</label>
-            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
           </div>
           <div class="form-group">
             <label for="email">Email *</label>

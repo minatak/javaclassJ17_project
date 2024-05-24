@@ -39,13 +39,19 @@
         <form name="registerForm2" method="post" action="${ctp}/MemberJoinComplete.mem" enctype="multipart/form-data">
           <div class="form-group">
             <label for="profilePicture">프로필 사진</label>
-            <input type="file" id="profilePicture" name="profilePicture">
+            <input type="file" id="file" name="fName" onchange="imgCheck(this)"> 
           </div>
           <div class="form-group">
             <label for="country">거주하는 나라 *</label>
             <select id="country" name="country" required>
               <option value="">선택하세요</option>
               <option value="korea">한국</option>
+              <option value="usa">미국</option>
+              <option value="usa">미국</option>
+              <option value="usa">미국</option>
+              <option value="usa">미국</option>
+              <option value="usa">미국</option>
+              <option value="usa">미국</option>
               <option value="usa">미국</option>
               <option>기타</option>
               <!-- 추가 나라 옵션 -->
