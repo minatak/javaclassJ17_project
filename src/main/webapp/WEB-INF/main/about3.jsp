@@ -21,11 +21,7 @@
         font-family: 'NEXON Lv1 Gothic OTF';
         background-color: #f3f4f6;
     }
- 		h1 {
-		  margin-bottom: 20px;
-		  color: #35ae5f;
-		  font-family: 'CWDangamAsac-Bold';
-		}
+
     .about-container {
         background-color: #ffffff;
         padding: 30px;
@@ -66,24 +62,17 @@
     .about-container li {
         margin-bottom: 10px;
     }
-    
-    @font-face {
-	    font-family: 'CWDangamAsac-Bold';
-	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
-	    font-weight: normal;
-	    font-style: normal;
-		}
 </style>
     </head>
     <body class="d-flex flex-column h-100">
-		<main class="flex-shrink-0">
+<main class="flex-shrink-0">
     <jsp:include page="/include/nav.jsp" />
     <div class="container mt-5 mb-5">
         <div class="about-container">
-            <h1>About LinguaLink</h1><br/>
+            <h1>About LinguaLink</h1>
             <h2>Through Language</h2>
             <p><strong>LinguaLink</strong>는 'Lingua'와 'Link'의 결합으로, 각각 '언어'와 '연결'을 의미합니다. 이 이름은 단순히 언어 교환을 넘어, 전 세계의 사람들이 서로의 문화를 이해하고, 다리 역할을 하는 플랫폼을 지향합니다. LinguaLink는 사용자들이 새로운 언어를 배우는 동시에, 다양한 문화적 배경을 가진 친구들을 만나고 소통할 수 있는 공간을 제공합니다.</p>
-						<br/>
+
             <h2>왜 LinguaLink인가?</h2>
             <ul>
                 <li><strong>글로벌 커뮤니케이션 허브</strong>: LinguaLink는 전 세계 사람들이 언어를 통해 서로 연결되는 커뮤니케이션 허브입니다. 여기서 사용자는 자신이 배우고자 하는 언어를 모국어로 하는 사람들과 직접 대화하고 교류할 수 있습니다.</li>
@@ -91,7 +80,7 @@
                 <li><strong>맞춤형 학습 경험</strong>: LinguaLink는 사용자의 언어 학습 목표와 필요에 맞춰, 가장 적합한 언어 파트너를 연결해줍니다. 이를 통해 보다 효과적이고 즐거운 학습 경험을 제공합니다.</li>
                 <li><strong>커뮤니티 중심</strong>: LinguaLink는 단순한 언어 교환을 넘어서, 사용자들이 서로 돕고 배우는 커뮤니티를 형성합니다. 각종 이벤트와 그룹 활동을 통해 더욱 풍부한 언어 학습 환경을 조성합니다.</li>
             </ul>
-						<br/>
+
             <p>LinguaLink와 함께라면, 여러분은 언어의 장벽을 넘어 전 세계의 친구들과 소통하며, 진정한 글로벌 시민으로 성장할 수 있습니다. 지금 바로 LinguaLink에 가입하여 새로운 언어의 세계로 첫 발을 내딛어 보세요!</p>
 
             <h2>주요 기능</h2>
@@ -110,7 +99,7 @@
                 <li><strong>사용자 관리</strong>: 사용자 정보를 조회하고 관리할 수 있습니다.</li>
                 <li><strong>신고 관리</strong>: 사용자 신고를 처리하여 안전하고 쾌적한 학습 환경을 유지합니다.</li>
             </ul>
-						<br/>
+
             <h2>기능 소개</h2>
             <h3>회원 조회하기</h3>
             <p>전 세계 사용자들과 언어를 교환하며 학습할 수 있습니다 :) 나와 학습 목표, 관심사가 일치하는 사용자를 찾아보세요!</p>
@@ -120,7 +109,7 @@
 
             <h3>학습하기</h3>
             <p>나만의 단어장을 생성하고, 암기/테스트 기능을 활용하여 효과적으로 단어를 학습하세요. 맞춤형 퀴즈와 플래시카드를 통해 기억을 강화하고, 즐겁게 학습할 수 있습니다!</p>
-						<br/>
+
             <h2>LinguaLink의 주요 특징</h2>
             <h3>1. 원어민과 연결</h3>
             <p>LinguaLink는 전 세계 원어민과 함께 연습할 수 있는 기회를 제공합니다. 실제 대화에 참여함으로써 교과서에서는 얻을 수 없는 진정한 언어 능력과 문화적 통찰력을 얻을 수 있습니다.</p>
@@ -134,7 +123,7 @@
             <h3>4. 인터랙티브 학습 도구</h3>
             <p>LinguaLink는 언어 학습 경험을 향상시킬 수 있는 다양한 대화형 도구를 제공합니다. 라이브 채팅, 어휘 게임, 단어 퀴즈 등을 통해 학습을 재미있고 효과적으로 만들어줍니다.</p>
 
-            <h3>5. 지원 live 커뮤니티</h3>
+            <h3>5. 지원ive 커뮤니티</h3>
             <p>LinguaLink는 언어에 열정을 가진 학습자들과 선생님들이 모인 활기찬 커뮤니티를 제공합니다. 팁을 공유하고, 질문하고, 성과를 함께 축하하며 상호 지원과 격려를 받을 수 있습니다.</p>
 
             <p>LinguaLink와 함께 새로운 언어의 세계로 여행을 떠나보세요. 지금 바로 가입하여 글로벌 커뮤니티의 일원이 되세요!</p>

@@ -117,8 +117,8 @@
         <div class="row gx-5">
           <div class="col-lg-4 mb-5">
             <div class="serviceCard">
-              <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
-              <div class="card-body p-4 text-center">
+              <img class="card-img-top" src="${ctp}/images/logo/searchGreen.png" alt="..." />
+              <div class="card-body p-4 text-center" style="background-color:#fdfad1">
                 <h4><a class="card-title mb-3" href="#!">회원 조회하기</a></h4>
                 <p class="card-text mb-0">전 세계 사용자들과 언어를 교환하며 학습할 수 있습니다. 나와 학습 목표, 관심사가 일치하는 사용자를 찾아보세요!</p>
               </div>
@@ -133,8 +133,8 @@
           </div>
           <div class="col-lg-4 mb-5">
             <div class="serviceCard">
-              <img class="card-img-top padded-img" src="${ctp}/images/logo/chat.png" alt="Chat Logo" />
-              <div class="card-body p-4 text-center">
+              <img class="card-img-top padded-img" src="${ctp}/images/logo/chatGreen.png" alt="Chat Logo" />
+              <div class="card-body p-4 text-center" style="background-color:#fdfad1">
                 <h4><a class="card-title mb-3" href="#!">채팅하기</a></h4>
                 <p class="card-text mb-0">원어민과 실시간으로 채팅하며 자연스러운 대화 연습을 해보세요. 텍스트, 음성, 영상 채팅을 통해 다양한 언어 스킬을 향상시킬 수 있습니다!</p>
               </div>
@@ -149,8 +149,8 @@
           </div>
           <div class="col-lg-4 mb-5">
             <div class="serviceCard">
-              <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
-              <div class="card-body p-3 text-center">
+              <img class="card-img-top" src="${ctp}/images/logo/studyGreen.png" alt="..." />
+              <div class="card-body p-3 text-center"  style="background-color:#fdfad1">
                 <h4><a class="card-title mb-3" href="#!">학습하기</a></h4>
                 <p class="card-text mb-0">나만의 단어장을 생성하고 암기 테스트 기능을 활용하여 효과적으로 단어를 학습하세요. 맞춤형 퀴즈와 플래시카드를 통해 기억을 강화하고 즐겁게 학습할 수 있습니다.</p>
               </div>

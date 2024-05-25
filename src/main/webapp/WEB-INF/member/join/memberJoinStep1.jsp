@@ -90,7 +90,7 @@
 	              alert("이미 사용중인 아이디 입니다. 다시 입력하세요.");
 	              registerForm1.mid.focus();
 	            }
-	            else alert("사용 가능한 아이디 입니다.");
+	            else alert("사용 가능한 아이디입니다.");
 	          },
 	          error : function() {
 	            alert("전송 오류!");
@@ -144,10 +144,10 @@
           data : {nickName : nickName},
           success:function(res) {
             if(res != '0') {
-              alert("이미 사용중인 닉네임 입니다. 다시 입력하세요.");
+              alert("이미 사용중인 닉네임입니다. 다시 입력하세요.");
               registerForm1.nickName.focus();
             }
-            else alert("사용 가능한 닉네임 입니다.");
+            else alert("사용 가능한 닉네임입니다.");
           },
           error : function() {
             alert("전송 오류!");
