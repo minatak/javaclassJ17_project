@@ -77,8 +77,8 @@
       }
     </style>
   </head>
+  <jsp:include page="/include/nav.jsp" />
   <body>
-    <jsp:include page="/include/nav.jsp" />
     <main class="container">
       <div class="dashboard-header mt-5">
         <h1>Dashboard</h1>

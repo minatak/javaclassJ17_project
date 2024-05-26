@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXON Lv2 Gothic';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RixInooAriDuriR';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CWDangamAsac-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+    background-color: #fefefe;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    color: #35ae5f;
+}
+
+.admin-section {
+    margin-bottom: 30px;
+}
+
+.admin-section h2 {
+    font-size: 1.5em;
+}
+
+a {
+    text-decoration: none;
+    color: #35ae5f;
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+a:hover {
+    color: #fefefe;
+    background-color: #35ae5f;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+.admin-table th {
+    background-color: #f2f2f2;
+}
+
+.admin-profile-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    color: #35ae5f;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    border: 1.2px solid #39b766;
+    border-radius: 30px;
+    background-color: #fefefe;
+    color: #39b766;
+    padding: 7px 17px;
+    font-size: 1.3em;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+    color: #fefefe;
+    background-color: #35ae5f;
+}
+
+header .btn {
+    font-style: normal;
+    border: 1.2px solid #39b766;
+    border-radius: 30px;
+    background-color: #fefefe;
+    color: #39b766;
+    padding: 7px 17px;
+    display: inline-block;
+    font-size: 1.3em;
+    transition: transform 0.3s ease;
+}
+
+header .btn:hover {
+    transform: scale(1.05);
+    color: #fefefe;
+    background-color: #35ae5f;
+}

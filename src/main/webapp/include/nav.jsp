@@ -8,46 +8,71 @@
 
 <style>
 
-	@font-face {
-	  font-family: 'Pretendard-Regular';
-	  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-	  font-weight: 400;
-	  font-style: normal;
-	}
-			
-	
-	@font-face {
-	  font-family: 'NEXON Lv1 Gothic OTF';
-	  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-	  font-weight: normal;
-	  font-style: normal;
-	}
+    @font-face {
+      font-family: 'Pretendard-Regular';
+      src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
 
-	nav {
-	  background-color: #fdfad1 !important;
-	  color: #35ae5f !important;
-	  font-family: 'NEXON Lv1 Gothic OTF' !important;
-	}
-	
-	.nav-link, .navbar-brand {
-	  color: #35ae5f !important;
-	  font-family: 'NEXON Lv1 Gothic OTF' !important;
-	}
-	
-	.dropdown-item {
-	  color: #35ae5f !important;
-	  font-family: 'NEXON Lv1 Gothic OTF' !important;
-	}
+    @font-face {
+      font-family: 'NEXON Lv1 Gothic OTF';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-	.profile-dropdown img {
-	  border-radius: 50%;
-	  width: 40px;
-	  height: 40px;
-	  object-fit: cover;
-	}
-	
-	
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar {
+        padding-top: 0;
+        padding-bottom: 0;
+        background-color: #fdfad1 !important;
+        color: #35ae5f !important;
+        font-family: 'NEXON Lv1 Gothic OTF' !important;
+    }
+
+    .navbar .container {
+        display: flex;
+        justify-content: flex-end; /* 텍스트를 오른쪽 정렬 */
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .navbar-brand {
+        color: #35ae5f !important;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .nav-link, .navbar-brand {
+        color: #35ae5f !important;
+        font-family: 'NEXON Lv1 Gothic OTF' !important;
+    }
+
+    .dropdown-item {
+        color: #35ae5f !important;
+        font-family: 'NEXON Lv1 Gothic OTF' !important;
+    }
+
+    .profile-dropdown img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+    }
+
 </style>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container px-1">
+        <a class="navbar-brand" href="AdminMain.ad">admin</a>
+    </div>
+</nav>
+
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg">
     <div class="container px-5">
@@ -65,13 +90,13 @@
                         <li><a class="dropdown-item" href="#">English</a></li>
                         <li><a class="dropdown-item" href="#">한국어</a></li>
                     </ul>
-                </li>	
+                </li>    
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Service</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                        <li><a class="dropdown-item" href="#">회원 찾기</a></li>
-                        <li><a class="dropdown-item" href="#">채팅하기</a></li>
-                        <li><a class="dropdown-item" href="#">학습하기</a></li>
+                        <li><a class="dropdown-item" href="MemberList.mem">회원 찾기</a></li>
+                        <li><a class="dropdown-item" href="ChatList.chat">채팅하기</a></li>
+                        <li><a class="dropdown-item" href="VocaMain.st">학습하기</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown profile-dropdown ml-3">
@@ -82,11 +107,12 @@
                         <li><a class="dropdown-item" href="MemberMain.mem">회원 메인 페이지</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="MemberInfo.mem">회원 정보 확인</a></li>
-                        <li><a class="dropdown-item" href="MemberEdit.mem">회원 정보 수정</a></li>
+                        <li><a class="dropdown-item" href="MemberUpdate.mem">회원 정보 수정</a></li>
+                        <li><a class="dropdown-item" href="MemberInfoUpdate.mem">ㄴ 정보 수정</a></li>
+                        <li><a class="dropdown-item" href="MemberPwdUpdate.mem">ㄴ 비밀번호 수정</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
