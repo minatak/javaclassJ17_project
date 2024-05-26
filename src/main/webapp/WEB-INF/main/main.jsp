@@ -11,8 +11,6 @@
   <%@ include file="/include/bs4.jsp" %>
 	<link href="css/styles.css" rel="stylesheet" />
 	<link href="${ctp}/css/main.css" rel="stylesheet" />
-  <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 </head>
 <body class="d-flex flex-column h-100">
   <main class="flex-shrink-0">
