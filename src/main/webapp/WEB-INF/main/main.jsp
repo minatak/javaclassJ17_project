@@ -8,9 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LinguaLink</title>
   <%@ include file="/include/bs4.jsp" %>
-  <%@ include file="/include/bs4.jsp" %>
-	<link href="css/styles.css" rel="stylesheet" />
-	<link href="${ctp}/css/main.css" rel="stylesheet" />
+	<link href="${ctp}/css/styles.css" rel="stylesheet" />
+	<link href="${ctp}/css/main.css?after" rel="stylesheet" />
 </head>
 <body class="d-flex flex-column h-100">
   <main class="flex-shrink-0">
@@ -21,27 +20,25 @@
         <div class="row gx-5">
           <div class="col-lg-8 col-xl-7 col-xxl-6">
             <div class="my-5">
-              <c:choose>
-                <c:when test="${not empty user}">
-                  <h4 class="header_sub" style="font-family: 'Pretendard-Regular'; color:#39b766;">${user.name}님 환영합니다 :)</h4>
-                </c:when>
-                <c:otherwise>
+                <c:if test="${!empty sMid}">
+                  <h4 class="header_sub" style="font-family: 'NEXON Lv1 Gothic OTF'; color:#39b766;">${sName}님 환영합니다 :)</h4>
+                </c:if>
+                <c:if test="${empty sMid}">
                   <h4 class="header_sub" style="font-family: 'Pretendard-Regular'; color:#39b766;">Language Exchange</h4>
-                </c:otherwise>
-              </c:choose>
+              	</c:if>
               <h1 class="mb-3" style="font-family: 'CWDangamAsac-Bold'; font-size: 3em; color:#35ae5f;">LinguaLink</h1>
               <div class="header_des">
                 <p class="lead fw-normal mb-4">Lingua는 라틴어로 <b>언어</b>를 의미하며, Link는 <b>연결</b>을 의미합니다. 실용적 언어를 배우는 동시에, 다양한 문화적 배경을 가진 친구들을 만나고 소통할 수 있는 공간을 제공합니다.</p>
               </div>
               <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                <c:if test="${empty user}">
+                <c:if test="${empty sMid}">
                   <a class="btn btn-lg px-4 me-sm-3 mr-4" href="Register.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">지금 가입하기</a>
                   <a class="btn btn-lg px-4" href="Login.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">로그인하기</a>
                 </c:if>
-                <c:if test="${not empty user}">
-                  <a class="btn btn-lg px-4 me-sm-3 mr-4" href="Profile.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">프로필 관리</a>
-                  <a class="btn btn-lg px-4" href="Logout.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">로그아웃</a>
-                </c:if>
+                <c:if test="${!empty sMid}">
+                  <a class="btn btn-lg px-4 me-sm-3 mr-4" href="MemberMain.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">프로필 관리</a>
+                  <a class="btn btn-lg px-4" href="MemberLogout.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">로그아웃</a>
+               	</c:if>
               </div>
             </div>
           </div>
@@ -52,7 +49,7 @@
       </div>
     </header>
     <!-- 공부하는 언어 선택 아이콘. 로그인 상태일 경우 이 부분이 보이지 않음 ! -->
-    <c:if test="${empty user}">
+    <c:if test="${empty sMid}">
       <div class="container languageSelect mt-5 mb-5" style="background-color:#fefefe; font-family: 'NEXON Lv1 Gothic OTF' !important;">
         <div class="row gx-5 justify-content-center">
           <div class="col-lg-8 col-xl-6">
@@ -105,8 +102,8 @@
           <div class="col-lg-8 col-xl-6">
             <div class="text-center">
               <!-- 이 설명도 로그아웃 상태일 때만 보임. -->
-              <c:if test="${empty user}">
-                <h1 class="fw-bolder" style="font-family: 'CWDangamAsac-Bold';">주요 기능 페이지 바로가기</h1>
+              <c:if test="${empty sMid}">
+                <h1 style="font-family: 'CWDangamAsac-Bold'; color:#35ae5f">주요 기능 페이지 바로가기</h1>
                 <p class="lead fw-normal mb-5">아래 소개를 클릭 시 주요 기능 페이지로 바로 이동할 수 있습니다.</p>
               </c:if>
             </div>
@@ -123,7 +120,7 @@
               <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                 <div class="d-flex justify-content-center">
                   <div class="icon-container">
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-right" style="color:#35ae5f"></i>
                   </div>
                 </div>
               </div>
@@ -139,7 +136,7 @@
               <div class="card-footer p-3 pt-0 bg-transparent border-top-0">
                 <div class="d-flex justify-content-center">
                   <div class="icon-container">
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-right" style="color:#35ae5f"></i>
                   </div>
                 </div>
               </div>
@@ -152,10 +149,10 @@
                 <h4><a class="card-title mb-3" href="#!">학습하기</a></h4>
                 <p class="card-text mb-0">나만의 단어장을 생성하고 암기 테스트 기능을 활용하여 효과적으로 단어를 학습하세요. 맞춤형 퀴즈와 플래시카드를 통해 기억을 강화하고 즐겁게 학습할 수 있습니다.</p>
               </div>
-              <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+              <div class="card-footer p-4 pt-0 bg-transparent border-top-0" >
                 <div class="d-flex justify-content-center">
                   <div class="icon-container">
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-right" style="color:#35ae5f"></i>
                   </div>
                 </div>
               </div>
@@ -169,13 +166,13 @@
       <div class="container px-5 my-5">
         <div class="row gx-5 justify-content-center">
           <div class="col-lg-10 col-xl-7">
-            <div class="text-center">
+            <div class="text-center"  style="color:#35ae5f">
               <div class="fs-4 mb-4 quote_main">"새로운 언어를 배우는 것은 새로운 삶을 얻는 것이다. 두 개의 언어를 알고 있으면 두 개의 삶을 산다."</div>
               <div class="d-flex align-items-center justify-content-center">
                 <img class="rounded-circle me-3 mr-2" style="border: 1.5px solid #39b766;" src="${ctp}/images/man.jpg" />
                 <div class="fw-bold quote mb-2">
                   Ludwig Wittgenstein
-                  <span class="fw-bold mx-1">/</span>
+                  <span class="fw-bold mx-1" style="color:#35ae5f">/</span>
                   영국 철학자
                 </div>
               </div>
@@ -189,7 +186,5 @@
   <jsp:include page="/include/footer.jsp" />
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Core theme JS-->
-  <script src="js/scripts.js"></script>
 </body>
 </html>

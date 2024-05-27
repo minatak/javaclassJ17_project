@@ -9,7 +9,7 @@
 	<title>회원가입</title>
 	<%@ include file="/include/bs4.jsp" %>
 	<link href="css/styles.css" rel="stylesheet" />
-	<link href="${ctp}/css/join.css" rel="stylesheet" /> 
+	<link href="${ctp}/css/join.css?after1" rel="stylesheet" /> 
 	<script>
 		'use strict';
 		
@@ -17,10 +17,10 @@
 		let nickCheckSw = 0;
 		
 		function fCheck() {
-		/* 
-		// 정규식을 이용한 유효성검사처리.....
+		
+		// 정규식을 이용한 유효성 검사 처리 
     let regMid = /^[a-zA-Z0-9_]{4,20}$/;    // 아이디는 4~20의 영문 대/소문자와 숫자와 밑줄 가능
-    let regPwd = /^[a-zA-Z!@#$%^*+=-]{8,16}$/   // 비밀번호 8~16의 영문 대/소문자와 특수문자 숫자와 밑줄 가능
+    let regPwd = /^[a-zA-Z0-9!@#$%^*+=-_]{4,16}$/   // 비밀번호 8~16의 영문 대/소문자와 특수문자 숫자와 밑줄 가능
     let regNickName = /^[가-힣0-9]+$/;                    // 닉네임은 한글, 숫자 만 가능
     let regName = /^[가-힣a-zA-Z]+$/;                // 이름은 한글/영문 가능
     let regEmail = /^[a-zA-Z0-9_]{4,20}$/; // 4~20의 영문 대/소문자와 숫자와 밑줄 가능
@@ -51,12 +51,7 @@
       registerForm1.name.focus();
       return false;
     }
-    else if(!regEmail.test(email1)) {
-      alert("4~20의 영문 대/소문자와 숫자와 밑줄 가능");
-      registerForm1.email1.focus();
-      return false;
-    } */
-            
+   
     if(idCheckSw == 0) {
       alert("아이디 중복체크버튼을 눌러주세요");
       document.getElementById("midBtn").focus();
@@ -75,12 +70,11 @@
 	    let mid = registerForm1.mid.value;
 	    
 	    if(mid.trim() == "") {
-	      alert("아이디를 입력하세요!");
+	      alert("아이디를 입력하세요");
 	      registerForm1.mid.focus();
 	    }
 	    else {
 	      idCheckSw = 1;
-	        
 	     		$.ajax({
 	          url  : "${ctp}/MemberIdCheck.mem",
 	          type : "get",
@@ -98,41 +92,13 @@
 	      	});
 	    }
 	  }	 
-	  /* 
-	  function idCheck() {
-		    let mid = registerForm1.mid.value;
 
-		    if(mid.trim() === "") {
-		        alert("아이디를 입력하세요!");
-		        registerForm1.mid.focus();
-		    } else {
-		        $.ajax({
-		            url: `${ctp}/MemberIdCheck.mem`,
-		            type: "get",
-		            data: {mid: mid},
-		            success: function(res) {
-		                if(res !== '0') {
-		                    alert("이미 사용중인 아이디 입니다. 다시 입력하세요.");
-		                    registerForm1.mid.focus();
-		                } else {
-		                    alert("사용 가능한 아이디 입니다.");
-		                }
-		            },
-		            error: function(jqXHR, textStatus, errorThrown) {
-		                console.error("Error: ", textStatus, errorThrown);
-		                alert("전송 오류!");
-		            }
-		        });
-		    }
-		}
- */
-    
     // 닉네임 중복체크
     function nickCheck() {
       let nickName = registerForm1.nickName.value;
       
       if(nickName.trim() == "") {
-        alert("닉네임을 입력하세요!");
+        alert("닉네임을 입력하세요");
         registerForm1.nickName.focus();
       }
       else {
@@ -199,20 +165,16 @@
 	            <input type="text" id="mid" name="mid" placeholder="아이디를 입력하세요" required>
           </div>
           <div class="form-group">
-            <label for="password">Password *</label>
-            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+            <label for="pwd">Password *</label>
+            <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요" required>
           </div>
           <div class="form-group">
             <label for="name">Name *</label>
             <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
           </div>
           <div class="form-group">
-          	<label for="nickName">Nickname *&nbsp; &nbsp;<input type="button" value="닉네임 중복체크" id="nickNameBtn" class="checkBtn" onclick="nickCheck()"/></label>
+          	<label for="nickName">Nickname *&nbsp; &nbsp;<input type="button" value="닉네임 중복체크" id="nickNameBtn" class="btn checkBtn" onclick="nickCheck()"/></label>
             <input type="text" id="nickName" name="nickName" placeholder="닉네임을 입력하세요" required>
-          </div>
-          <div class="form-group">
-            <label for="password">Password *</label>
-            <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요" required>
           </div>
           <div class="form-group">
             <label for="email">Email *</label>
@@ -237,7 +199,7 @@
             <input type="date" id="birthday" name="birthday" class="mb-2" required>
           </div>
           <div class="form-group text-center ">
-            <input type="submit" value="다음" class="myBtn">
+            <input type="button" onclick="fCheck()" value="다음으로" class="myBtn">
           </div>
           
         </form>
@@ -249,7 +211,5 @@
 <jsp:include page="/include/footer.jsp" />
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
 </body>
 </html>

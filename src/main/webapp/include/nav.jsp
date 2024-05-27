@@ -67,12 +67,13 @@
 
 </style>
 
-<nav class="navbar navbar-expand-lg">
-    <div class="container px-1">
-        <a class="navbar-brand" href="AdminMain.ad">admin</a>
-    </div>
-</nav>
-
+<c:if test="${sLevel == 0}">
+	<nav class="navbar navbar-expand-lg">
+	    <div class="container px-1">
+	        <a class="navbar-brand" href="AdminMain.ad">admin</a>
+	    </div>
+	</nav>
+</c:if>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg">
     <div class="container px-5">
@@ -82,8 +83,9 @@
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="Main.com">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="About.com">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="Login.mem">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="Register.mem">Join</a></li>
+                <c:if test="${empty sMid}"><li class="nav-item"><a class="nav-link" href="Login.mem">Login</a></li></c:if>
+                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="MemberLogout.mem">Logout</a></li></c:if>
+                <c:if test="${empty sMid}"><li class="nav-item"><a class="nav-link" href="Register.mem">Join</a></li></c:if>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Language</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -99,19 +101,22 @@
                         <li><a class="dropdown-item" href="VocaMain.st">학습하기</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown profile-dropdown ml-3">
-                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://via.placeholder.com/40" alt="Profile Picture">
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="MemberMain.mem">회원 메인 페이지</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="MemberInfo.mem">회원 정보 확인</a></li>
-                        <li><a class="dropdown-item" href="MemberUpdate.mem">회원 정보 수정</a></li>
-                        <li><a class="dropdown-item" href="MemberInfoUpdate.mem">ㄴ 정보 수정</a></li>
-                        <li><a class="dropdown-item" href="MemberPwdUpdate.mem">ㄴ 비밀번호 수정</a></li>
-                    </ul>
-                </li>
+                <c:if test="${!empty sMid}">
+	                <li class="nav-item dropdown profile-dropdown ml-3">
+	                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	                        <img src="${ctp}/images/member/${sPhoto}" alt="Profile Picture">
+	                    </a>
+	                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+	                        <li><a class="dropdown-item" href="MemberMain.mem">회원 메인 페이지</a></li>
+	                        <li><a class="dropdown-item" href="MemberInfo.mem">회원 정보 확인</a></li>
+	                        <li><a class="dropdown-item" href="MemberUpdate.mem">회원 정보 수정</a></li>
+	                        <li><a class="dropdown-item" href="MemberInfoUpdate.mem">ㄴ 정보 수정</a></li>
+	                        <li><a class="dropdown-item" href="MemberPwdUpdate.mem">ㄴ 비밀번호 수정</a></li>
+	                        <li><hr class="dropdown-divider"></li>
+	                        <li><a class="dropdown-item" href="MemberLogout.mem">Logout</a></li>
+	                    </ul>
+	                </li>
+                </c:if>
             </ul>
         </div>
     </div>

@@ -143,11 +143,11 @@
 		    <h1>Login</h1>
 		    <form name="loginForm" method="post" action="${ctp}/MemberLoginOk.mem">
 		      <div class="form-group">
-		        <label for="username">Username</label>
+		        <label for="mid">Username</label>
 		        <input type="text" id="mid" name="mid" value="${mid}" placeholder="아이디를 입력하세요" required autofocus>
 		      </div>
 		      <div class="form-group">
-		        <label for="password">Password</label>
+		        <label for="pwd">Password</label>
 		        <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요" required>    
 		      </div>
 		      <div class="form-group">
@@ -166,7 +166,5 @@
 	<jsp:include page="/include/footer.jsp" />
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
 </body>
 </html>

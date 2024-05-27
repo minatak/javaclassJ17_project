@@ -5,13 +5,13 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class MemberJoinOk2Command implements MemberInterface {
+public class MemberInfoUpdateOkCommand implements MemberInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mid = request.getParameter("mid")==null? "" : request.getParameter("mid");
-		String pwd = request.getParameter("pwd")==null? "" : request.getParameter("pwd");
 		String nickName = request.getParameter("nickName")==null? "" : request.getParameter("nickName");
 		String name = request.getParameter("name")==null? "" : request.getParameter("name");
 		String email = request.getParameter("email")==null? "" : request.getParameter("email");
@@ -25,42 +25,48 @@ public class MemberJoinOk2Command implements MemberInterface {
 		String languageLevel = request.getParameter("languageLevel")==null? "" : request.getParameter("languageLevel");
 		String content = request.getParameter("content")==null? "" : request.getParameter("content");
 		
-		System.out.println("photo : " + photo);
+		// 닉네임 중복체크....
+		HttpSession session = request.getSession();
+		String sNickName = (String) session.getAttribute("sNickName");
+		
+		MemberDAO dao = new MemberDAO();
+		MemberVO vo = dao.getMemberNickCheck(nickName);
+		
+		// 세션의 닉네임과 앞에서 넘어온 닉네임을 비교해서 같지 않으면 사용자가 닉네임을 수정한 것이다.
+		if(!nickName.equals(sNickName)) {
+			if(vo.getNickName() != null) {
+				request.setAttribute("msg", "이미 사용중인 닉네임 입니다.");
+				request.setAttribute("url", "MemberInfoUpdate.mem");
+				return;
+			}
+		}
 		
 		// 모든 체크가 끝난 자료는 vo에 담아서 DB에 저장처리한다.
-		MemberDAO dao = new MemberDAO();
-		MemberVO vo = new MemberVO();
-		
+		vo = new MemberVO();
 		vo.setMid(mid);
-		vo.setPwd(pwd);
 		vo.setNickName(nickName);
 		vo.setName(name);
-		vo.setEmail(email);
-		vo.setGender(gender);
-		vo.setBirthday(birthday);
-		vo.setPhoto(photo);
-		vo.setCountry(country);
-		vo.setCity(city);
-		vo.setNativeLanguage(nativeLanguage);
-		vo.setLearningLanguage(learningLanguage);
-		vo.setLanguageLevel(languageLevel);
-		vo.setContent(content);
+		vo.setName(email);
+		vo.setName(gender);
+		vo.setName(birthday);
+		vo.setName(photo);
+		vo.setName(country);
+		vo.setName(city);
+		vo.setName(nativeLanguage);
+		vo.setName(learningLanguage);
+		vo.setName(languageLevel);
+		vo.setName(content);
 		
-		dao.setMemberJoinOk(vo);
+		int res = dao.setMemberUpdateOk(vo);
 		
-		request.setAttribute("vo", vo);
-		//int res = dao.setMemberJoinOk(vo);
-		
-		//if(res != 0) {
-			/*
-			 * request.setAttribute("message", "회원 가입되셨습니다.\\n다시 로그인해 주세요.");
-			 * request.setAttribute("url", "MemberLogin.mem");
-			 */
-			//request.getRequestDispatcher("MemberJoinComplete.mem").forward(request, response);
-		//}
-		//else System.out.println("MemberJoinOk2Command 오류 - 회원가입 실패.");
-		
-
+		if(res != 0) {
+			request.setAttribute("sNickName", vo.getNickName());
+			request.setAttribute("message", "회원 정보가 수정되었습니다.");
+			request.setAttribute("url", "MemberMain.mem");
+		}
+		else {
+			request.setAttribute("message", "회원정보 수정에 실패했습니다.");
+			request.setAttribute("url", "MemberUpdate.mem");
+		}
 	}
-
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -9,7 +10,7 @@
     <title>회원 메인 페이지</title>
     <%@ include file="/include/bs4.jsp" %>
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="${ctp}/css/join.css" rel="stylesheet" />
+    <link href="${ctp}/css/join.css?after" rel="stylesheet" />  
     <style>
       body {
         font-family: 'NEXON Lv1 Gothic OTF';
@@ -24,6 +25,13 @@
         font-family: 'CWDangamAsac-Bold';
         color: #35ae5f;
       }
+      profile-card {
+      	display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
       .profile-card,
       .recent-activities,
       .quick-links,
@@ -46,13 +54,9 @@
         border-radius: 50%;
         width: 100px;
         height: 100px;
-        text-align: center;
         margin-bottom: 20px;
       }
-      .profile-card .profile-info {
-        text-align: center;
-      }
-      .profile-card .profile-info p {
+      .profile-info p {
         margin: 5px 0;
         color: #6f5340;
       }
@@ -71,10 +75,10 @@
       .quick-links a {
         color: #35ae5f;
       }
-      .quick-links a:hover {
+      /* .quick-links a:hover {
         color: #379866;
         text-decoration: none;
-      }
+      } */
     </style>
   </head>
   <jsp:include page="/include/nav.jsp" />
@@ -85,14 +89,14 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <div class="profile-card">
+          <div class="profile-card" style="text-align:center;">
             <h3>프로필 정보</h3>
-            <img src="https://via.placeholder.com/100" style="text-align:center;">
+            <img src="${ctp}/images/member/${vo.photo}">
             <div class="profile-info">
-              <p>이름: 홍길동</p>
-              <p>이메일: honggildong@example.com</p>
-              <p>성별: 남성</p>
-              <p>생일: 1990-01-01</p>
+              <p>이름 : ${vo.name}</p>
+              <p>이메일 : ${vo.email}</p>
+              <p>성별 : ${vo.gender}</p>
+              <p>생년월일 : ${fn:substring(vo.birthday,0,10)}</p>
             </div>
           </div>
         </div>

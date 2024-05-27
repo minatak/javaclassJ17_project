@@ -51,7 +51,7 @@ public class MemberDAO {
 				vo.setPwd(rs.getString("pwd"));
 				vo.setNickName(rs.getString("nickName"));
 				vo.setName(rs.getString("name"));
-				vo.setEmail(rs.getString("eamil"));
+				vo.setEmail(rs.getString("email"));
 				vo.setGender(rs.getString("gender"));
 				vo.setBirthday(rs.getString("birthday"));
 				vo.setPhoto(rs.getString("photo"));
@@ -84,15 +84,15 @@ public class MemberDAO {
 			pstmt.setString(2, vo.getPwd());
 			pstmt.setString(3, vo.getNickName());
 			pstmt.setString(4, vo.getName());
-			pstmt.setString(9, vo.getEmail());
-			pstmt.setString(5, vo.getGender());
-			pstmt.setString(6, vo.getBirthday());
-			pstmt.setString(13, vo.getPhoto());
-			pstmt.setString(7, vo.getCountry());
-			pstmt.setString(8, vo.getCity());
-			pstmt.setString(10, vo.getNativeLanguage());
-			pstmt.setString(11, vo.getLearningLanguage());
-			pstmt.setString(12, vo.getLanguageLevel());
+			pstmt.setString(5, vo.getEmail());
+			pstmt.setString(6, vo.getGender());
+			pstmt.setString(7, vo.getBirthday());
+			pstmt.setString(8, vo.getPhoto());
+			pstmt.setString(9, vo.getCountry());
+			pstmt.setString(10, vo.getCity());
+			pstmt.setString(11, vo.getNativeLanguage());
+			pstmt.setString(12, vo.getLearningLanguage());
+			pstmt.setString(13, vo.getLanguageLevel());
 			pstmt.setString(14, vo.getContent());
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -169,5 +169,49 @@ public class MemberDAO {
 		return vos;
 	}
 
+	//비밀번호 변경처리
+	public int setMemberPwdChange(String mid, String pwd) {
+		int res = 0;
+		try {
+			sql = "update member set pwd=? where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, mid);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	//회원 정보 수정처리 (아이디는 수정 불가능)
+	public int setMemberUpdateOk(MemberVO vo) {
+		int res = 0;
+		try {
+			sql = "update member set nickName=?, name=?, email=?, gender=?, birthday=?, photo=?, country=?, "
+					+ "city=?, nativeLanguage=?, learningLanguage=?, languageLevel=?, content=? where mid=?";
+			pstmt.setString(1, vo.getNickName());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getEmail());
+			pstmt.setString(4, vo.getGender());
+			pstmt.setString(5, vo.getBirthday());
+			pstmt.setString(6, vo.getPhoto());
+			pstmt.setString(7, vo.getCountry());
+			pstmt.setString(8, vo.getCity());
+			pstmt.setString(9, vo.getNativeLanguage());
+			pstmt.setString(10, vo.getLearningLanguage());
+			pstmt.setString(11, vo.getLanguageLevel());
+			pstmt.setString(12, vo.getContent());
+			pstmt.setString(13, vo.getMid());
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
 	
 }

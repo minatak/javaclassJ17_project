@@ -154,7 +154,7 @@
 	}
 	.flag:hover img {
     transform: scale(1.05);
-  /*   border: 2px solid #35ae5f; /* 테두리를 추가합니다 */  */
+  /*   border: 2px solid #35ae5f; /* 테두리를 추가합니다 */  
 	}
 	.country {
     margin-top: 10px;

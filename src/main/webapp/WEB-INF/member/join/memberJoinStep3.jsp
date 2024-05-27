@@ -9,9 +9,63 @@
 <title>가입 완료</title>
 <%@ include file="/include/bs4.jsp" %>
 <link href="css/styles.css" rel="stylesheet" />
-<link href="${ctp}/css/join.css" rel="stylesheet" /> 
-<style>
+	<style>
+	
+	.complete-container {
+	 font-family: 'NEXON Lv1 Gothic OTF';
+  background-color: #fefefe;
+  padding: 30px;
+  max-width: 750px;
+  text-align: center;
+  margin: 20px auto;
+}
+	
+		.complete-container p {
+		  color: #6f5340;
+		  font-size: 16px;
+		  margin-bottom: 30px;
+		}
+		
+		h1 {
+  color: #35ae5f;
+  font-family: 'CWDangamAsac-Bold';
+  margin-bottom: 20px;
+}
+		.myBtn {
+  border: 1.2px solid #39b766;
+  color: #fefefe;
+  background-color: #35ae5f;
+  padding: 10px 20px;
+  font-size: 14px;
+  margin: 10px;
+  display: inline-block;
+  text-decoration: none;
+}
+	.step {
+  background-color: #c7e9c6;
+  border-radius: 50px;
+  color: #35ae5f;
+  padding: 10px;
+  font-family: 'Cafe24SsurroundAir';
+}
 
+.proceedingStep {
+  background-color: #90bc8e;
+  color: #ffffff;
+}
+	@font-face {
+  font-family: 'CWDangamAsac-Bold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cafe24SsurroundAir';
+  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+	
 		a:hover,
 		a:focus,
 		a:active,
@@ -19,7 +73,7 @@
 			color: #fefefe; /* 링크의 상태별로 색상 변경 */
 			text-decoration: none;
 		}
-</style>
+	</style>
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
@@ -54,7 +108,5 @@
 <jsp:include page="/include/footer.jsp" />
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
 </body>
 </html>

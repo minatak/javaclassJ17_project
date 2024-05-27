@@ -6,25 +6,13 @@
   font-size: 14px;
 }
 
-.complete-container {
-  background-color: #fefefe;
-  padding: 30px;
-  max-width: 750px;
-  text-align: center;
-  margin: 20px auto;
-}
 
-.complete-container h1 {
+ h1 {
   color: #35ae5f;
   font-family: 'CWDangamAsac-Bold';
   margin-bottom: 20px;
 }
 
-.complete-container p {
-  color: #6f5340;
-  font-size: 16px;
-  margin-bottom: 30px;
-}
 
 .register-container {
   background-color: #fefefe;

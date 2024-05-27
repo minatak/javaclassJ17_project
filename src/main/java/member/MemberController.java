@@ -25,14 +25,14 @@ public class MemberController extends HttpServlet {
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
 		
-		
 		/*
 		 * if(com.equals("/Register")) { viewPage += "/register.jsp"; }
 		 */
-		if(com.equals("/Register")) {
+		if(com.equals("/Register")) { // 회원가입 처리 
 			viewPage += "/join/memberJoinStep1.jsp";
 		}
 		else if(com.equals("/MemberIdCheck")) {
+			System.out.println("Controller");
 			command = new MemberIdCheckCommand();
 			command.execute(request, response);
 			return;
@@ -45,37 +45,61 @@ public class MemberController extends HttpServlet {
 		else if(com.equals("/MemberJoinOk1")) {
 			command = new MemberJoinOk1Command();
 			command.execute(request, response);
-			/* return; */
-			viewPage = "/include/message.jsp"; 
-		}
-		else if(com.equals("/MemberJoinStep2")) {
 			viewPage += "/join/memberJoinStep2.jsp";
 		}
-		else if(com.equals("/MemberJoinOk2.mem")) {
+		else if(com.equals("/MemberJoinOk2")) {
 			command = new MemberJoinOk2Command();
 			command.execute(request, response);
 			viewPage += "/join/memberJoinStep3.jsp";
 		}
-		else if(com.equals("/MemberJoinComplete")) {
-			viewPage += "/join/memberJoinStep3.jsp";
-		}
-		else if(com.equals("/Login")) {
+		else if(com.equals("/Login")) { // 로그인 처리
 			viewPage += "/login.jsp";
 		}
-		else if(com.equals("/MemberMain")) {
-			viewPage += "/memberMain.jsp";
+		else if(com.equals("/MemberLoginOk")) {
+			command = new MemberLoginOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
 		}
-		else if(com.equals("/MemberInfo")) {
-			viewPage += "/update/memberInfo.jsp";
+		else if(com.equals("/MemberLogout")) {
+			command = new MemberLogoutCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(level > 4) {
+			request.setAttribute("message", "로그인후 사용하세요");
+			request.setAttribute("url", request.getContextPath()+"/MemberLogin.mem");
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/MemberMain")) {  
+			command = new MemberMainCommand();
+			command.execute(request, response);
+			viewPage += "/memberMain.jsp";
 		}
 		else if(com.equals("/MemberUpdate")) {
 			viewPage += "/update/memberUpdateMain.jsp";
 		}
-		else if(com.equals("/MemberPwdUpdate")) {
-			viewPage += "/update/memberPwdUpdate.jsp";
+		else if(com.equals("/MemberPwdCheckAjax")) {
+			command = new MemberPwdCheckAjaxCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/MemberPwdChangeCheck")) {
+			command = new MemberPwdChangeCheckCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
 		}
 		else if(com.equals("/MemberInfoUpdate")) {
+			command = new MemberInfoUpdateCommand();
+			command.execute(request, response);
 			viewPage += "/update/memberInfoUpdate.jsp";
+		}
+		else if(com.equals("/MemberInfoUpdateOk")) {
+			command = new MemberInfoUpdateOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/MemberInfo")) { // 여기부터 컨트롤러 수정해야 함 !
+			viewPage += "/update/memberInfo.jsp";
 		}
 		else if(com.equals("/MemberList")) {
 			viewPage += "/memberList.jsp";

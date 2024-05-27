@@ -8,8 +8,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입</title>
 <%@ include file="/include/bs4.jsp" %>
+<script>
+	'use strict';
+	
+	/*   // 선택된 사진 미리보기
+    function imgCheck(e) {
+    	if(e.files && e.files[0]) {
+    		let reader = new FileReader();
+    		reader.onload = function(e) {
+    			document.getElementById("photoDemo").src = e.target.result;
+    		}
+    		reader.readAsDataURL(e.files[0]);
+    	}
+    } */
+
+</script>
 <link href="css/styles.css" rel="stylesheet" />
-<link href="${ctp}/css/join.css" rel="stylesheet" /> 
+<link href="${ctp}/css/join.css?after" rel="stylesheet" /> 
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
@@ -38,21 +53,21 @@
         <form name="registerForm2" method="post" action="${ctp}/MemberJoinOk2.mem">
           <div class="form-group">
             <label for="profilePicture">프로필 사진</label>
-            <input type="file" id="file" name="fName" onchange="imgCheck(this)"> 
+            <input type="file" id="fName" name="fName" onchange="imgCheck(this)"> 
           </div>
           <div class="form-group">
             <label for="country">거주하는 나라 *</label>
             <select id="country" name="country" required>
               <option value="">선택하세요</option>
-              <option value="korea">한국</option>
-              <option value="usa">미국</option>
-              <option value="usa">미국</option>
-              <option value="usa">미국</option>
-              <option value="usa">미국</option>
-              <option value="usa">미국</option>
-              <option value="usa">미국</option>
-              <option value="usa">미국</option>
-              <option>기타</option>
+              <option value="한국">한국</option>
+              <option value="미국">미국</option>
+              <option value="스페인">스페인</option>
+              <option value="프랑스">프랑스</option>
+              <option value="일본">일본</option>
+              <option value="독일">독일</option>
+              <option value="중국">중국</option>
+              <option value="러시아">러시아</option>
+              <option value="기타">기타</option>
               <!-- 추가 나라 옵션 -->
             </select>
           </div>
@@ -64,14 +79,14 @@
             <label for="nativeLanguage">모국어 *</label>
             <select id="nativeLanguage" name="nativeLanguage" required>
               <option value="">선택하세요</option>
-              <option value="korean">한국어</option>
-              <option value="english">영어</option>
-              <option value="spanish">스페인어</option>
-              <option value="french">프랑스어</option>
-              <option value="japanese">일본어</option>
-              <option value="german">독일어</option>
-              <option value="chinese">중국어</option>
-              <option value="russian">러시아어</option>
+              <option value="한국어">한국어</option>
+              <option value="영어">영어</option>
+              <option value="스페인어">스페인어</option>
+              <option value="프랑스어">프랑스어</option>
+              <option value="일본어">일본어</option>
+              <option value="독일어">독일어</option>
+              <option value="중국어">중국어</option>
+              <option value="러시아어">러시아어</option>
               <option>기타</option>
             </select>
           </div>
@@ -79,28 +94,28 @@
             <label for="learningLanguage">학습할 언어 *</label>
             <select id="learningLanguage" name="learningLanguage" required>
               <option value="">선택하세요</option>
-              <option value="korean">한국어</option>
-              <option value="english">영어</option>
-              <option value="spanish">스페인어</option>
-              <option value="french">프랑스어</option>
-              <option value="japanese">일본어</option>
-              <option value="german">독일어</option>
-              <option value="chinese">중국어</option>
-              <option value="russian">러시아어</option>
+              <option value="한국어">한국어</option>
+              <option value="영어">영어</option>
+              <option value="스페인어">스페인어</option>
+              <option value="프랑스어">프랑스어</option>
+              <option value="일본어">일본어</option>
+              <option value="독일어">독일어</option>
+              <option value="중국어">중국어</option>
+              <option value="러시아어">러시아어</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="learningLevel">학습할 언어의 수준 *</label>
-            <select id="learningLevel" name="learningLevel" required>
+            <label for="languageLevel">학습할 언어의 수준 *</label>
+            <select id="languageLevel" name="languageLevel" required>
               <option value="">선택하세요</option>
-              <option value="beginner">초급</option>
-              <option value="intermediate">중급</option>
-              <option value="advanced">고급</option>
+              <option value="초급">초급</option>
+              <option value="중급">중급</option>
+              <option value="고급">고급</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="bio">자기소개</label>
-            <textarea id="bio" name="bio" rows="4" placeholder="자기소개를 입력하세요"></textarea>
+            <label for="content">자기소개 *</label>
+            <textarea id="content" name="content" rows="4" placeholder="자기소개를 입력하세요" required></textarea>
           </div>
           <div>
           	<input type="hidden" name="mid" value="${vo.mid}">
@@ -109,7 +124,7 @@
           	<input type="hidden" name="name" value="${vo.name}">
           	<input type="hidden" name="gender" value="${vo.gender}">
           	<input type="hidden" name="birthday" value="${vo.birthday}">
-          	<input type="hidden" name="emaiil" value="${vo.emaiil}">
+          	<input type="hidden" name="email" value="${vo.email}">
           </div>
           <div class="form-group text-center">
             <input type="submit" value="가입하기" class="myBtn">
@@ -122,7 +137,5 @@
 <jsp:include page="/include/footer.jsp" />
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
 </body>
 </html>

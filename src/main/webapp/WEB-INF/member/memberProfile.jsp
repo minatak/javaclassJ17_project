@@ -4,53 +4,53 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>${member.name}의 프로필</title>
+    <title>${vo.name}의 프로필</title>
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/css/user.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
-        <h1>${member.name}의 프로필</h1>
+        <h1>${vo.name}의 프로필</h1>
         <div class="profile-card">
-            <img src="${member.photo}" alt="Profile Photo" class="profile-photo" />
+            <img src="${vo.photo}" alt="Profile Photo" class="profile-photo" />
             <div class="profile-info">
                 <table>
                     <tr>
                         <th>이름</th>
-                        <td>${member.name}</td>
+                        <td>${vo.name}</td>
                     </tr>
                     <tr>
                         <th>도시</th>
-                        <td>${member.city}</td>
+                        <td>${vo.city}</td>
                     </tr>
                     <tr>
                         <th>본국</th>
-                        <td>${member.country}</td>
+                        <td>${vo.country}</td>
                     </tr>
                     <tr>
                         <th>현재 국가</th>
-                        <td>${member.currentCountry}</td>
+                        <td>${vo.currentCountry}</td>
                     </tr>
                     <tr>
                         <th>연령</th>
-                        <td>${member.age}</td>
+                        <td>${vo.age}</td>
                     </tr>
                     <tr>
                         <th>성별</th>
-                        <td>${member.gender}</td>
+                        <td>${vo.gender}</td>
                     </tr>
                     <tr>
                         <th>모국어</th>
-                        <td>${member.nativeLanguage}</td>
+                        <td>${vo.nativeLanguage}</td>
                     </tr>
                     <tr>
                         <th>학습할 언어</th>
-                        <td>${member.practicingLanguage}</td>
+                        <td>${vo.practicingLanguage}</td>
                     </tr>
                 </table>
                 <div class="description">
                     <h3>설명</h3>
-                    <p>${member.description}</p>
+                    <p>${vo.content}</p>
                     <button id="translateBtn">번역하기</button>
                 </div>
             </div>
