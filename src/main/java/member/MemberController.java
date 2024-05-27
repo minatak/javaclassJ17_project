@@ -67,7 +67,7 @@ public class MemberController extends HttpServlet {
 		}
 		else if(level > 4) {
 			request.setAttribute("message", "로그인후 사용하세요");
-			request.setAttribute("url", request.getContextPath()+"/MemberLogin.mem");
+			request.setAttribute("url", request.getContextPath()+"/Login.mem");
 			viewPage = "/include/message.jsp";
 		}
 		else if(com.equals("/MemberMain")) {  
@@ -98,10 +98,12 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		else if(com.equals("/MemberInfo")) { // 여기부터 컨트롤러 수정해야 함 !
-			viewPage += "/update/memberInfo.jsp";
+		else if(com.equals("/MemberInfo")) { 
+			command = new MemberInfoOkCommand();
+			command.execute(request, response);
+			viewPage += "/memberInfo.jsp";
 		}
-		else if(com.equals("/MemberList")) {
+		else if(com.equals("/MemberList")) { // 여기부터 컨트롤러 수정해야 함 !
 			viewPage += "/memberList.jsp";
 		}
 		else if(com.equals("/MemberProfile")) {

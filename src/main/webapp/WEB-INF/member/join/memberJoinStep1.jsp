@@ -37,7 +37,7 @@
       return false;
     }
     else if(!regPwd.test(pwd)) {
-	    alert("비밀번호는 8~16자리의 영문/특수문자만 가능합니다.");
+	    alert("비밀번호는 4~16자리의 영문/특수문자만 입력 가능합니다.");
 	    registerForm1.pwd.focus();
     	return false;
     }

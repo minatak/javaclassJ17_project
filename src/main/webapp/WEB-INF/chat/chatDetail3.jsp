@@ -147,32 +147,17 @@
             max-width: 60%;
             color: #000;
             font-size: 14px;
-            position: relative;
         }
 
         .message.sent .content {
             background-color: #35ae5f;
             color: #fff;
-            position: relative;
         }
 
         .message .timestamp {
             font-size: 12px;
             color: #aaa;
             margin-top: 5px;
-        }
-
-        .message .translate-btn {
-            position: absolute;
-            bottom: 5px;
-            right: 10px;
-            background-color: #39b766;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
-            font-size: 12px;
-            cursor: pointer;
         }
 
         .chat-footer {
@@ -204,40 +189,11 @@
             background-color: #39b766;
         }
     </style>
-    <script>
-        async function translateText(text, sourceLang, targetLang, callback) {
-            const requestData = {
-                q: text,
-                source: sourceLang,
-                target: targetLang,
-                format: "text"
-            };
-
-            const response = await fetch('https://libretranslate.com/translate', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestData)
-            });
-
-            const data = await response.json();
-            callback(data.translatedText);
-        }
-
-        function handleTranslate(button) {
-            const messageContent = button.closest('.content');
-            const textToTranslate = messageContent.textContent.trim();
-            translateText(textToTranslate, 'en', 'ko', (translatedText) => {
-                alert(`Translated Text: ${translatedText}`);
-            });
-        }
-    </script>
 </head>
 <body>
 <div class="sidebar">
     <div class="profile">
-        <img src="${ctp}/images/profile.jpg" alt="Profile Image">
+        <img src="${ctp}/images/member/${vo.photo}" alt="Profile Image">
         <h2>사용자 이름</h2>
     </div>
     <div class="search">
@@ -252,7 +208,7 @@
 <div class="chat-container">
     <div class="chat-header">
         <div class="user-info">
-            <img src="${ctp}/images/sender.jpg" alt="Sender Image">
+            <img src="${ctp}/images/member/${vo.photo}" alt="Sender Image">
             <div>
                 <h3>Chris Marina</h3>
                 <span class="status">온라인</span>
@@ -270,23 +226,20 @@
             <div class="content">
                 Where are you?
                 <div class="timestamp">06-09 14:24 PM</div>
-                <button class="translate-btn" onclick="handleTranslate(this)">번역하기</button>
             </div>
         </div>
         <div class="message sent">
             <div class="content">
                 Living room...
                 <div class="timestamp">06-09 14:24 PM</div>
-                <button class="translate-btn" onclick="handleTranslate(this)">번역하기</button>
             </div>
             <img src="${ctp}/images/profile.jpg" alt="My Image" class="profile-img">
         </div>
         <div class="message received">
             <img src="${ctp}/images/sender.jpg" alt="Sender Image" class="profile-img">
             <div class="content">
-                Hey, I want show you some amazing photos.
-                <div class="timestamp">06-10 10:26 AM</div>
-                <button class="translate-btn" onclick="handleTranslate(this)">번역하기</button>
+		            Hey, I want show you some amazing photos.
+		            <div class="timestamp">06-10 10:26 AM</div>
             </div>
         </div>
         <div class="message received">
@@ -295,14 +248,12 @@
                 <img src="${ctp}/images/photo1.jpg" alt="Photo 1" style="width: 100%; border-radius: 10px;">
                 <img src="${ctp}/images/photo2.jpg" alt="Photo 2" style="width: 100%; border-radius: 10px;">
                 <div class="timestamp">06-10 10:26 AM</div>
-                <button class="translate-btn" onclick="handleTranslate(this)">번역하기</button>
             </div>
         </div>
         <div class="message sent">
             <div class="content">
                 Nice! Show me
                 <div class="timestamp">06-10 10:27 AM</div>
-                <button class="translate-btn" onclick="handleTranslate(this)">번역하기</button>
             </div>
             <img src="${ctp}/images/profile.jpg" alt="My Image" class="profile-img">
         </div>

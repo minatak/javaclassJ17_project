@@ -30,7 +30,7 @@ public class ChatController extends HttpServlet {
 			viewPage += "/chatList.jsp";
 		}
 		else if(com.equals("/ChatDetail")) {
-			viewPage += "/chatList.jsp";
+			viewPage += "/chatDetail.jsp";
 		}
 		
 

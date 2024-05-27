@@ -58,8 +58,8 @@ public class MemberDAO {
 				vo.setCountry(rs.getString("country"));
 				vo.setCity(rs.getString("city"));
 				vo.setNativeLanguage(rs.getString("nativeLanguage"));
-				vo.setContent(rs.getString("learningLanguage"));
-				vo.setLearningLanguage(rs.getString("languageLevel"));
+				vo.setLearningLanguage(rs.getString("learningLanguage"));
+				vo.setLanguageLevel(rs.getString("languageLevel"));
 				vo.setContent(rs.getString("content"));
 				vo.setUserDel(rs.getString("userDel"));
 				vo.setLevel(rs.getInt("level"));

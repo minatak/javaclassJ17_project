@@ -82,25 +82,32 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="Main.com">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="About.com">About</a></li>
+                <c:if test="${empty sMid}"><li class="nav-item"><a class="nav-link" href="About.com">About</a></li></c:if>
                 <c:if test="${empty sMid}"><li class="nav-item"><a class="nav-link" href="Login.mem">Login</a></li></c:if>
-                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="MemberLogout.mem">Logout</a></li></c:if>
                 <c:if test="${empty sMid}"><li class="nav-item"><a class="nav-link" href="Register.mem">Join</a></li></c:if>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Language</a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">English</a></li>
-                        <li><a class="dropdown-item" href="#">한국어</a></li>
-                    </ul>
-                </li>    
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Service</a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                        <li><a class="dropdown-item" href="MemberList.mem">회원 찾기</a></li>
-                        <li><a class="dropdown-item" href="ChatList.chat">채팅하기</a></li>
-                        <li><a class="dropdown-item" href="VocaMain.st">학습하기</a></li>
-                    </ul>
-                </li>
+                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="MemberList.mem">Find</a></li></c:if>
+                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="ChatList.chat">Message</a></li></c:if>
+                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="ChatDetail.chat">Message디테일</a></li></c:if>
+                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="VocaMain.st">Study</a></li></c:if>
+                <%-- <c:if test="${empty sMid}"> --%>
+	                <li class="nav-item dropdown">
+	                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Language</a>
+	                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+	                        <li><a class="dropdown-item" href="#">English</a></li>
+	                        <li><a class="dropdown-item" href="#">한국어</a></li>
+	                    </ul>
+	                </li>    
+                <%-- </c:if> --%>
+                <c:if test="${empty sMid}">
+	                <li class="nav-item dropdown">
+	                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Service</a>
+	                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+	                        <li><a class="dropdown-item" href="MemberList.mem">회원 찾기</a></li>
+	                        <li><a class="dropdown-item" href="ChatList.chat">채팅하기</a></li>
+	                        <li><a class="dropdown-item" href="VocaMain.st">학습하기</a></li>
+	                    </ul>
+	                </li>
+                </c:if>
                 <c:if test="${!empty sMid}">
 	                <li class="nav-item dropdown profile-dropdown ml-3">
 	                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -110,8 +117,6 @@
 	                        <li><a class="dropdown-item" href="MemberMain.mem">회원 메인 페이지</a></li>
 	                        <li><a class="dropdown-item" href="MemberInfo.mem">회원 정보 확인</a></li>
 	                        <li><a class="dropdown-item" href="MemberUpdate.mem">회원 정보 수정</a></li>
-	                        <li><a class="dropdown-item" href="MemberInfoUpdate.mem">ㄴ 정보 수정</a></li>
-	                        <li><a class="dropdown-item" href="MemberPwdUpdate.mem">ㄴ 비밀번호 수정</a></li>
 	                        <li><hr class="dropdown-divider"></li>
 	                        <li><a class="dropdown-item" href="MemberLogout.mem">Logout</a></li>
 	                    </ul>

@@ -19,7 +19,7 @@
         <h1 style="font-family: 'CWDangamAsac-Bold';">회원 정보 수정</h1>
         <form name="registerForm1" method="post" action="${ctp}/MemberInfoUpdateOk.mem">
           <div class="form-group ">
-            <label for="mid">ID *</label>
+            <label for="mid">ID (수정 불가)</label>
             <input type="text" id="mid" name="mid" value="${vo.mid}" readonly>
           </div>
           <div class="form-group">
@@ -49,7 +49,11 @@
 			    </div>
           <div class="form-group">
             <label for="birthday">Birthday *</label>
-            <input type="date" id="birthday" name="birthday" value="${vo.birthday}" class="mb-2" required>
+            <input type="date" id="birthday" name="birthday" value="${birthday}" class="mb-2" required>
+          </div>
+          <div class="form-group">
+            <label for="profilePicture">프로필 사진</label>
+            <input type="file" id="fName" name="fName"> 
           </div>
           <div class="form-group">
             <label for="country">Country *</label>
@@ -80,7 +84,7 @@
             <textarea id="content" name="content" rows="5" required>${vo.content}</textarea>
           </div>
           <div class="form-group text-center ">
-            <input type="submit" value=수정하" class="myBtn">
+            <input type="submit" value="수정하기" class="myBtn">
           </div>
           
         </form>

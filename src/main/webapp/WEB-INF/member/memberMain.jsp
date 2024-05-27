@@ -12,73 +12,71 @@
     <link href="css/styles.css" rel="stylesheet" />
     <link href="${ctp}/css/join.css?after" rel="stylesheet" />  
     <style>
-      body {
+    body {
+        background-color: #f3f4f6;    
         font-family: 'NEXON Lv1 Gothic OTF';
-        background-color: #f3f4f6;
+    }
+     main body {
+        font-family: 'NEXON Lv1 Gothic OTF';
         font-size: 14px;
       }
-      .dashboard-header {
+      main .dashboard-header {
         text-align: center;
         margin-bottom: 30px;
       }
-      h1 {
+      main h1 {
         font-family: 'CWDangamAsac-Bold';
         color: #35ae5f;
       }
-      profile-card {
+      main profile-card {
       	display: flex;
         justify-content: center;
         text-align: center;
         margin-bottom: 20px;
       }
       
-      .profile-card,
-      .recent-activities,
-      .quick-links,
-      .notifications {
+      main .profile-card,
+      main .recent-activities,
+      main .quick-links,
+      main .notifications {
         padding: 20px;
         margin-bottom: 20px;
         border: 1px solid #ddd; 
         border-radius: 8px;
         background-color: #fefefe;
       }
-      .profile-card h3,
-      .recent-activities h3,
-      .quick-links h3,
-      .notifications h3 {
+      main h3 {
         font-family: 'CWDangamAsac-Bold';
         color: #36b574;
         margin-bottom: 20px;
       }
-      .profile-card img {
+      main .profile-card img {
         border-radius: 50%;
         width: 100px;
         height: 100px;
         margin-bottom: 20px;
       }
-      .profile-info p {
+      main .profile-info p {
         margin: 5px 0;
         color: #6f5340;
       }
-      .recent-activities ul,
-      .quick-links ul,
-      .notifications ul {
+      main .recent-activities ul,
+      main .quick-links ul,
+      main .notifications ul {
         list-style: none;
         padding: 0;
       }
-      .recent-activities li,
-      .quick-links li,
-      .notifications li {
+     	main li {
         margin-bottom: 10px;
         color: #6f5340;
       }
-      .quick-links a {
+      main .quick-links a {
         color: #35ae5f;
       }
-      /* .quick-links a:hover {
+      .quick-links a:hover {
         color: #379866;
         text-decoration: none;
-      } */
+      } 
     </style>
   </head>
   <jsp:include page="/include/nav.jsp" />
@@ -112,13 +110,12 @@
           <div class="quick-links">
             <h3>빠른 링크</h3>
             <ul>
-              <li><a href="#">내 프로필 편집</a></li>
-              <li><a href="#">새 게시물 작성</a></li>
+              <li><a href="MemberUpdate.mem">내 프로필 편집</a></li>
               <li><a href="#">메시지 확인</a></li>
-              <li><a href="#">설정</a></li>
+              <li><a href="#">회원 보기</a></li>
             </ul>
           </div>
-          <div class="notifications">
+          <div class="quick-links">
             <h3>알림</h3>
             <ul>
               <li>새로운 친구 요청: <a href="#">김철수</a></li>

@@ -19,7 +19,7 @@
         <style>
     body {
         font-family: 'NEXON Lv1 Gothic OTF';
-        background-color: #f3f4f6;
+       /*  background-color: #f3f4f6; */
     }
  		h1 {
 		  margin-bottom: 20px;
