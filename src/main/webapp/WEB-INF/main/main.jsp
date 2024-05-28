@@ -49,7 +49,7 @@
       </div>
     </header>
     <!-- 공부하는 언어 선택 아이콘. 로그인 상태일 경우 이 부분이 보이지 않음 ! -->
-    <c:if test="${empty sMid}">
+    <!-- <c:if test="${empty sMid}"> -->
       <div class="container languageSelect mt-5 mb-5" style="background-color:#fefefe; font-family: 'NEXON Lv1 Gothic OTF' !important;">
         <div class="row gx-5 justify-content-center">
           <div class="col-lg-8 col-xl-6">
@@ -61,40 +61,40 @@
         </div>
         <div class="flagGroup mr-5 ml-5">
           <div class="flag">
-            <a href="MemberList.mem?flag=kr"><img src="${ctp}/images/flag/KR.jpg" alt="Korean Flag"></a>
+            <a href="MemberList.mem?flag=KR"><img src="${ctp}/images/flag/KR.jpg" alt="Korean Flag"></a>
             <div class="country">한국어</div>
           </div>
           <div class="flag">
-            <a href="#"><img src="${ctp}/images/flag/US.gif" alt="US Flag"></a>
+            <a href="MemberList.mem?flag=US"><img src="${ctp}/images/flag/US.gif" alt="US Flag"></a>
             <div class="country">영어</div>
           </div>
           <div class="flag">
-            <a href="#"><img src="${ctp}/images/flag/ES.gif" alt="Spanish Flag"></a>
+            <a href="MemberList.mem?flag=ES"><img src="${ctp}/images/flag/ES.gif" alt="Spanish Flag"></a>
             <div class="country">스페인어</div>
           </div>
           <div class="flag">
-            <a href="#"><img src="${ctp}/images/flag/FR.gif" alt="French Flag"></a>
+            <a href="MemberList.mem?flag=FR"><img src="${ctp}/images/flag/FR.gif" alt="French Flag"></a>
             <div class="country">프랑스어</div>
           </div>
           <div class="flag">
-            <a href="#"><img src="${ctp}/images/flag/JP.gif" alt="Japanese Flag"></a>
+            <a href="MemberList.mem?flag=JP"><img src="${ctp}/images/flag/JP.gif" alt="Japanese Flag"></a>
             <div class="country">일본어</div>
           </div>
           <div class="flag">
-            <a href="#"><img src="${ctp}/images/flag/DE.gif" alt="German Flag"></a>
+            <a href="MemberList.mem?flag=DE"><img src="${ctp}/images/flag/DE.gif" alt="German Flag"></a>
             <div class="country">독일어</div>
           </div>
           <div class="flag">
-            <a href="#"><img src="${ctp}/images/flag/CN.gif" alt="Chinese Flag"></a>
+            <a href="MemberList.mem?flag=CN"><img src="${ctp}/images/flag/CN.gif" alt="Chinese Flag"></a>
             <div class="country">중국어</div>
           </div>
           <div class="flag">
-            <a href="#"><img src="${ctp}/images/flag/RU.gif" alt="Russian Flag"></a>
+            <a href="MemberList.mem?flag=RU"><img src="${ctp}/images/flag/RU.gif" alt="Russian Flag"></a>
             <div class="country">러시아어</div>
           </div>
         </div>
       </div>
-    </c:if>
+    <!-- </c:if> -->
     <!-- service preview section-->
     <section class="pb-1 pt-5" style="background-color:#fbfbf1;">
       <div class="container px-5 my-5">

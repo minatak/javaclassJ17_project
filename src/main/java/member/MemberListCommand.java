@@ -18,6 +18,18 @@ public class MemberListCommand implements MemberInterface {
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = dao.getMemberIdCheck(mid);
 		
+		String flag = request.getParameter("flag")==null ? "" : request.getParameter("flag");
+		String language = "";
+		
+		if(flag.equals("KR")) language = "한국어";
+		else if(flag.equals("US")) language = "영어";
+		else if(flag.equals("CN")) language = "중국어";
+		else if(flag.equals("DE")) language = "독일어";
+		else if(flag.equals("ES")) language = "스페인어";
+		else if(flag.equals("JP")) language = "일본어";
+		else if(flag.equals("RU")) language = "러시아어";
+		else if(flag.equals("FR")) language = "프랑스어";
+		
 		
 		// System.out.println("vos : " + vos);
 		
@@ -32,7 +44,14 @@ public class MemberListCommand implements MemberInterface {
 		if(pageSize > 5) pag = 1;
 			
 		// 3. 총 레코드 건수를 구한다. (sql 명령어 중 count 함수를 이용)
-	  int totRecCnt = dao.getTotRecCnt(vo.getLearningLanguage());
+	  int totRecCnt = 0;
+	  
+	  if(flag.equals("")) {
+	  	totRecCnt = dao.getTotRecCnt(vo.getLearningLanguage());	  	
+	  }
+	  else {
+	  	totRecCnt = dao.getTotRecCnt(flag);	  	
+	  }
 		
 		// 4. 총 페이지 건수를 구한다. 
 		int totPage = (totRecCnt % pageSize)==0 ? (totRecCnt / pageSize) : (totRecCnt / pageSize) + 1;
