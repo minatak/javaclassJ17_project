@@ -204,20 +204,6 @@
       margin-left: 0;
       margin-right: 10px;
     }
-    
-      .message.received {
-        display: flex;
-        align-items: flex-start; /* 세로 정렬을 위해 */
-    }
-
-    .content {
-        margin-right: 10px; /* 버튼과의 간격을 조정 */
-    }
-
-    .translate-btn {
-        display: block; /* 버튼을 블록 요소로 만들어 줌으로써 한 줄에 하나씩 표시되도록 함 */
-        margin-top: 5px; /* 텍스트 아래에 간격을 조정 */
-    }
 
     .chat-footer {
       padding: 20px;
@@ -246,15 +232,6 @@
 
     .chat-footer button:hover {
       background-color: #39b766;
-    }
-    
-    .search {
-	    display: flex;
-	    align-items: center;
-    }
-
-    .search input[type="text"] {
-     	margin: 5px; /* 아이콘과의 간격 조정 */
     }
     </style>
     <script>
@@ -350,12 +327,11 @@
     </div>
     <!-- 왼쪽의 채팅 목록 창 -->
     <div class="friends-list">
-        <div class="search">
+        <div class="search" style="display:inline-block">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder="검색...">
             <span><i class="fa-solid fa-plus"></i></span>
         </div>
-        
         
         <c:forEach var="vo" items="${vos}" varStatus="st">
             <div class="friend">
@@ -439,23 +415,14 @@
             </c:forEach>
             
             <!-- 내용 예시. 이런식으로 시간 순으로 정렬되어야 함. -->
-            <%-- <div class="message received">
+            <div class="message received">
                 <img src="${ctp}/images/member/noimage.png" alt="Sender Image" class="profile-img">
                 <div class="content">
                     Hey, I want show you some amazing photos.
                 </div>
                     <span class="translate-btn" onclick="handleTranslate(this)">번역하기</span>
                     <div class="timestamp">06-10 10:26 AM</div>
-            </div> --%>
-            
-            <div class="message received">
-    <img src="${ctp}/images/member/noimage.png" alt="Sender Image" class="profile-img">
-    <div class="content">
-        Hey, I want show you some amazing photos.
-        <span class="translate-btn" onclick="handleTranslate(this)">번역하기</span>
-    </div>
-    <div class="timestamp">06-10 10:26 AM</div>
-</div>
+            </div>
                 
             <div class="message sent">
                 <div class="timestamp">10:27 AM</div>

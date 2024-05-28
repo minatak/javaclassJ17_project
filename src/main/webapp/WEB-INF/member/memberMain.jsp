@@ -112,7 +112,7 @@
             <ul>
               <li><a href="MemberUpdate.mem">내 프로필 편집</a></li>
               <li><a href="#">메시지 확인</a></li>
-              <li><a href="#">회원 보기</a></li>
+              <li><a href="MemberList.mem">회원 보기</a></li>
             </ul>
           </div>
           <div class="quick-links">

@@ -69,6 +69,7 @@ public class MemberLoginOkCommand implements MemberInterface {
 		session.setAttribute("sName", vo.getName());
 		session.setAttribute("sNickName", vo.getNickName());
 		session.setAttribute("sLevel", vo.getLevel());
+		//session.setAttribute("sLearningLanguage", vo.getLearningLanguage());
 		session.setAttribute("strLevel", strLevel);
 		session.setAttribute("sPhoto", vo.getPhoto());
 

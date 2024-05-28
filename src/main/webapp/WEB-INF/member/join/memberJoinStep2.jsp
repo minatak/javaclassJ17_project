@@ -87,7 +87,7 @@
               <option value="독일어">독일어</option>
               <option value="중국어">중국어</option>
               <option value="러시아어">러시아어</option>
-              <option>기타</option>
+              <option value="기타">기타</option>
             </select>
           </div>
           <div class="form-group">
@@ -102,6 +102,7 @@
               <option value="독일어">독일어</option>
               <option value="중국어">중국어</option>
               <option value="러시아어">러시아어</option>
+              <option value="기타">기타</option>
             </select>
           </div>
           <div class="form-group">

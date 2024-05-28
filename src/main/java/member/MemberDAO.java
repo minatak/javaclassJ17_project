@@ -130,12 +130,14 @@ public class MemberDAO {
 		return vo;
 	}
 	
-//회원 전체 리스트
-	public ArrayList<MemberVO> getMemberList() {
+	// 회원 전체 리스트
+	public ArrayList<MemberVO> getMemberList(int startIndexNo, int pageSize) {
 		ArrayList<MemberVO> vos = new ArrayList<MemberVO>();
 		try {
-			sql = "select * from member order by idx";
+			sql = "select * from member order by idx desc limit ?,?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startIndexNo);
+			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -152,13 +154,44 @@ public class MemberDAO {
 				vo.setCountry(rs.getString("country"));
 				vo.setCity(rs.getString("city"));
 				vo.setNativeLanguage(rs.getString("nativeLanguage"));
-				vo.setContent(rs.getString("learningLanguage"));
-				vo.setLearningLanguage(rs.getString("languageLevel"));
+				vo.setLearningLanguage(rs.getString("learningLanguage"));
+				vo.setLanguageLevel(rs.getString("languageLevel"));
 				vo.setContent(rs.getString("content"));
 				vo.setUserDel(rs.getString("userDel"));
 				vo.setLevel(rs.getInt("level"));
 				vo.setStartDate(rs.getString("startDate"));
 				vo.setLastDate(rs.getString("lastDate"));
+				
+				if(vo.getCountry().equals("한국")) vo.setMyFlag("KR.jpg");
+				else if(vo.getCountry().equals("미국")) vo.setMyFlag("US.gif");
+				else if(vo.getCountry().equals("스페인")) vo.setMyFlag("ES.gif");
+				else if(vo.getCountry().equals("프랑스")) vo.setMyFlag("FR.gif");
+				else if(vo.getCountry().equals("일본")) vo.setMyFlag("JP.gif");
+				else if(vo.getCountry().equals("독일")) vo.setMyFlag("DE.gif");
+				else if(vo.getCountry().equals("중국")) vo.setMyFlag("CN.gif");
+				else if(vo.getCountry().equals("러시아")) vo.setMyFlag("RU.gif");
+				else  vo.setMyFlag("noFlag");
+				
+				if(vo.getNativeLanguage().equals("한국어")) vo.setMyLangFlag("KR.jpg");
+				else if(vo.getNativeLanguage().equals("영어")) vo.setMyLangFlag("US.gif");
+				else if(vo.getNativeLanguage().equals("스페인어")) vo.setMyLangFlag("ES.gif");
+				else if(vo.getNativeLanguage().equals("프랑스어")) vo.setMyLangFlag("FR.gif");
+				else if(vo.getNativeLanguage().equals("일본어")) vo.setMyLangFlag("JP.gif");
+				else if(vo.getNativeLanguage().equals("독일어")) vo.setMyLangFlag("DE.gif");
+				else if(vo.getNativeLanguage().equals("중국어")) vo.setMyLangFlag("CN.gif");
+				else if(vo.getNativeLanguage().equals("러시아어")) vo.setMyLangFlag("RU.gif");
+				else  vo.setMyLangFlag("noFlag");
+				
+				if(vo.getLearningLanguage().equals("한국어")) vo.setWantLangFlag("KR.jpg");
+				else if(vo.getLearningLanguage().equals("영어")) vo.setWantLangFlag("US.gif");
+				else if(vo.getLearningLanguage().equals("스페인어")) vo.setWantLangFlag("ES.gif");
+				else if(vo.getLearningLanguage().equals("프랑스어")) vo.setWantLangFlag("FR.gif");
+				else if(vo.getLearningLanguage().equals("일본어")) vo.setWantLangFlag("JP.gif");
+				else if(vo.getLearningLanguage().equals("독일어")) vo.setWantLangFlag("DE.gif");
+				else if(vo.getLearningLanguage().equals("중국어")) vo.setWantLangFlag("CN.gif");
+				else if(vo.getLearningLanguage().equals("러시아어")) vo.setWantLangFlag("RU.gif");
+				else vo.setWantLangFlag("noFlag");
+				
 				vos.add(vo);
 			}
 		} catch (SQLException e) {
@@ -212,6 +245,194 @@ public class MemberDAO {
 			pstmtClose();
 		}
 		return res;
+	}
+
+	public int getTotRecCnt(String nativeLanguage) {
+		int totRecCnt = 0;
+		try {
+			sql = "select count(*) as cnt1 from member where nativeLanguage=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nativeLanguage);
+			rs = pstmt.executeQuery();
+			rs.next();
+			totRecCnt += rs.getInt("cnt1");
+			rsClose();
+			
+			sql = "select count(*) as cnt2 from member where nativeLanguage != ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nativeLanguage);
+			rs = pstmt.executeQuery();
+			rs.next();
+			totRecCnt += rs.getInt("cnt2");
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return totRecCnt;
+	}
+
+	// 회원 전체 리스트 - 본인의 '배우는 언어(learningLanguage)'가 '모국어(nativeLanguage)'인 사람들이 위쪽으로 뜨고, 그 이후에는 나머지가 뜨도록 처리. 
+	public ArrayList<MemberVO> getMemberListLearningLanguage(String nativeLanguage, int startIndexNo, int pageSize) {
+		ArrayList<MemberVO> vos = new ArrayList<MemberVO>();
+		try {
+			sql = "select * from member where nativeLanguage=? union select * from member where nativeLanguage != ? limit ?,?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nativeLanguage);
+			pstmt.setString(2, nativeLanguage);
+			pstmt.setInt(3, startIndexNo);
+			pstmt.setInt(4, pageSize);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new MemberVO();
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setPwd(rs.getString("pwd"));
+				vo.setNickName(rs.getString("nickName"));
+				vo.setName(rs.getString("name"));
+				vo.setEmail(rs.getString("email"));
+				vo.setGender(rs.getString("gender"));
+				vo.setBirthday(rs.getString("birthday"));
+				vo.setPhoto(rs.getString("photo"));
+				vo.setCountry(rs.getString("country"));
+				vo.setCity(rs.getString("city"));
+				vo.setNativeLanguage(rs.getString("nativeLanguage"));
+				vo.setLearningLanguage(rs.getString("learningLanguage"));
+				vo.setLanguageLevel(rs.getString("languageLevel"));
+				vo.setContent(rs.getString("content"));
+				vo.setUserDel(rs.getString("userDel"));
+				vo.setLevel(rs.getInt("level"));
+				vo.setStartDate(rs.getString("startDate"));
+				vo.setLastDate(rs.getString("lastDate"));
+				
+				if(vo.getCountry().equals("한국")) vo.setMyFlag("KR.jpg");
+				else if(vo.getCountry().equals("미국")) vo.setMyFlag("US.gif");
+				else if(vo.getCountry().equals("스페인")) vo.setMyFlag("ES.gif");
+				else if(vo.getCountry().equals("프랑스")) vo.setMyFlag("FR.gif");
+				else if(vo.getCountry().equals("일본")) vo.setMyFlag("JP.gif");
+				else if(vo.getCountry().equals("독일")) vo.setMyFlag("DE.gif");
+				else if(vo.getCountry().equals("중국")) vo.setMyFlag("CN.gif");
+				else if(vo.getCountry().equals("러시아")) vo.setMyFlag("RU.gif");
+				else  vo.setMyFlag("noFlag");
+				
+				if(vo.getNativeLanguage().equals("한국어")) vo.setMyLangFlag("KR.jpg");
+				else if(vo.getNativeLanguage().equals("영어")) vo.setMyLangFlag("US.gif");
+				else if(vo.getNativeLanguage().equals("스페인어")) vo.setMyLangFlag("ES.gif");
+				else if(vo.getNativeLanguage().equals("프랑스어")) vo.setMyLangFlag("FR.gif");
+				else if(vo.getNativeLanguage().equals("일본어")) vo.setMyLangFlag("JP.gif");
+				else if(vo.getNativeLanguage().equals("독일어")) vo.setMyLangFlag("DE.gif");
+				else if(vo.getNativeLanguage().equals("중국어")) vo.setMyLangFlag("CN.gif");
+				else if(vo.getNativeLanguage().equals("러시아어")) vo.setMyLangFlag("RU.gif");
+				else  vo.setMyLangFlag("noFlag");
+				
+				if(vo.getLearningLanguage().equals("한국어")) vo.setWantLangFlag("KR.jpg");
+				else if(vo.getLearningLanguage().equals("영어")) vo.setWantLangFlag("US.gif");
+				else if(vo.getLearningLanguage().equals("스페인어")) vo.setWantLangFlag("ES.gif");
+				else if(vo.getLearningLanguage().equals("프랑스어")) vo.setWantLangFlag("FR.gif");
+				else if(vo.getLearningLanguage().equals("일본어")) vo.setWantLangFlag("JP.gif");
+				else if(vo.getLearningLanguage().equals("독일어")) vo.setWantLangFlag("DE.gif");
+				else if(vo.getLearningLanguage().equals("중국어")) vo.setWantLangFlag("CN.gif");
+				else if(vo.getLearningLanguage().equals("러시아어")) vo.setWantLangFlag("RU.gif");
+				else vo.setWantLangFlag("noFlag");
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vos;
+	}
+
+	public int getTotSearchRecCnt(String search, String select) {
+		int totRecCnt = 0;
+		try {
+			sql = "select count(*) as cnt from member where ?=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, search);
+			pstmt.setString(2, select);
+			rs = pstmt.executeQuery();
+			rs.next();
+			totRecCnt = rs.getInt("cnt");
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return totRecCnt;
+	}
+	
+	// 회원 조건 검색으로 가져오기 
+	public ArrayList<MemberVO> getMemberSearchList(String search, String select) {
+		ArrayList<MemberVO> vos = new ArrayList<MemberVO>();
+		try {
+			sql = "select * from member where "+search+" = ? order by idx desc"; 
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, select);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new MemberVO();
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setPwd(rs.getString("pwd"));
+				vo.setNickName(rs.getString("nickName"));
+				vo.setName(rs.getString("name"));
+				vo.setEmail(rs.getString("email"));
+				vo.setGender(rs.getString("gender"));
+				vo.setBirthday(rs.getString("birthday"));
+				vo.setPhoto(rs.getString("photo"));
+				vo.setCountry(rs.getString("country"));
+				vo.setCity(rs.getString("city"));
+				vo.setNativeLanguage(rs.getString("nativeLanguage"));
+				vo.setLearningLanguage(rs.getString("learningLanguage"));
+				vo.setLanguageLevel(rs.getString("languageLevel"));
+				vo.setContent(rs.getString("content"));
+				vo.setUserDel(rs.getString("userDel"));
+				vo.setLevel(rs.getInt("level"));
+				vo.setStartDate(rs.getString("startDate"));
+				vo.setLastDate(rs.getString("lastDate"));
+				
+				if(vo.getCountry().equals("한국")) vo.setMyFlag("KR.jpg");
+				else if(vo.getCountry().equals("미국")) vo.setMyFlag("US.gif");
+				else if(vo.getCountry().equals("스페인")) vo.setMyFlag("ES.gif");
+				else if(vo.getCountry().equals("프랑스")) vo.setMyFlag("FR.gif");
+				else if(vo.getCountry().equals("일본")) vo.setMyFlag("JP.gif");
+				else if(vo.getCountry().equals("독일")) vo.setMyFlag("DE.gif");
+				else if(vo.getCountry().equals("중국")) vo.setMyFlag("CN.gif");
+				else if(vo.getCountry().equals("러시아")) vo.setMyFlag("RU.gif");
+				else  vo.setMyFlag("noFlag");
+				
+				if(vo.getNativeLanguage().equals("한국어")) vo.setMyLangFlag("KR.jpg");
+				else if(vo.getNativeLanguage().equals("영어")) vo.setMyLangFlag("US.gif");
+				else if(vo.getNativeLanguage().equals("스페인어")) vo.setMyLangFlag("ES.gif");
+				else if(vo.getNativeLanguage().equals("프랑스어")) vo.setMyLangFlag("FR.gif");
+				else if(vo.getNativeLanguage().equals("일본어")) vo.setMyLangFlag("JP.gif");
+				else if(vo.getNativeLanguage().equals("독일어")) vo.setMyLangFlag("DE.gif");
+				else if(vo.getNativeLanguage().equals("중국어")) vo.setMyLangFlag("CN.gif");
+				else if(vo.getNativeLanguage().equals("러시아어")) vo.setMyLangFlag("RU.gif");
+				else  vo.setMyLangFlag("noFlag");
+				
+				if(vo.getLearningLanguage().equals("한국어")) vo.setWantLangFlag("KR.jpg");
+				else if(vo.getLearningLanguage().equals("영어")) vo.setWantLangFlag("US.gif");
+				else if(vo.getLearningLanguage().equals("스페인어")) vo.setWantLangFlag("ES.gif");
+				else if(vo.getLearningLanguage().equals("프랑스어")) vo.setWantLangFlag("FR.gif");
+				else if(vo.getLearningLanguage().equals("일본어")) vo.setWantLangFlag("JP.gif");
+				else if(vo.getLearningLanguage().equals("독일어")) vo.setWantLangFlag("DE.gif");
+				else if(vo.getLearningLanguage().equals("중국어")) vo.setWantLangFlag("CN.gif");
+				else if(vo.getLearningLanguage().equals("러시아어")) vo.setWantLangFlag("RU.gif");
+				else vo.setWantLangFlag("noFlag");
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vos;
 	}
 	
 }

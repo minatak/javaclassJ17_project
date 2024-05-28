@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/admin/admin.css" rel="stylesheet" />
+     <%@ include file="/include/bs4.jsp" %>
+	<link href="${ctp}/css/styles.css" rel="stylesheet" />
+	<link href="${ctp}/css/admin.css" rel="stylesheet" />
 </head>
     <jsp:include page="/include/nav.jsp" />
 <body>
@@ -13,12 +16,16 @@
         <h1>Admin Dashboard</h1>
         <div class="admin-section">
             <h2>User Management</h2>
-            <a href="${pageContext.request.contextPath}/AdminUserManagement.ad">회원 관리</a>
+            <a href="${ctp}/AdminUserManagement.ad">회원 관리</a>
         </div>
         <div class="admin-section">
             <h2>Report Management</h2>
-            <a href="${pageContext.request.contextPath}/AdminReports.ad">신고 관리</a>
+            <a href="${ctp}/AdminReports.ad">신고 관리</a>
         </div>
     </div>
+ <!-- Footer-->
+  <jsp:include page="/include/footer.jsp" />
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

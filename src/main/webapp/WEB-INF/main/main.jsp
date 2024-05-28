@@ -21,7 +21,7 @@
           <div class="col-lg-8 col-xl-7 col-xxl-6">
             <div class="my-5">
                 <c:if test="${!empty sMid}">
-                  <h4 class="header_sub" style="font-family: 'NEXON Lv1 Gothic OTF'; color:#39b766;">${sName}님 환영합니다 :)</h4>
+                  <h5 class="header_sub" style="font-family: 'NEXON Lv1 Gothic OTF'; color:#39b766;"><b>${sName}</b>님 환영합니다 :)</h5>
                 </c:if>
                 <c:if test="${empty sMid}">
                   <h4 class="header_sub" style="font-family: 'Pretendard-Regular'; color:#39b766;">Language Exchange</h4>
@@ -36,7 +36,7 @@
                   <a class="btn btn-lg px-4" href="Login.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">로그인하기</a>
                 </c:if>
                 <c:if test="${!empty sMid}">
-                  <a class="btn btn-lg px-4 me-sm-3 mr-4" href="MemberMain.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">프로필 관리</a>
+                  <a class="btn btn-lg px-4 me-sm-3 mr-4" href="MemberMain.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">대시보드</a>
                   <a class="btn btn-lg px-4" href="MemberLogout.mem" style="font-family: 'NEXON Lv1 Gothic OTF';">로그아웃</a>
                	</c:if>
               </div>
@@ -61,7 +61,7 @@
         </div>
         <div class="flagGroup mr-5 ml-5">
           <div class="flag">
-            <a href="#"><img src="${ctp}/images/flag/KR.jpg" alt="Korean Flag"></a>
+            <a href="MemberList.mem?flag=kr"><img src="${ctp}/images/flag/KR.jpg" alt="Korean Flag"></a>
             <div class="country">한국어</div>
           </div>
           <div class="flag">
@@ -111,10 +111,10 @@
         </div>
         <div class="row gx-5">
           <div class="col-lg-4 mb-5">
-            <div class="serviceCard">
+            <div class="serviceCard" onclick="location.href='${ctp}/MemberList.mem'">
               <img class="card-img-top" src="${ctp}/images/logo/searchGreen.png" alt="..." />
               <div class="card-body p-4 text-center" >
-                <h4><a class="card-title mb-3" href="#!">회원 조회하기</a></h4>
+                <h4><a class="card-title mb-3" href="MemberList.mem">회원 조회하기</a></h4>
                 <p class="card-text mb-0">전 세계 사용자들과 언어를 교환하며 학습할 수 있습니다. 나와 학습 목표, 관심사가 일치하는 사용자를 찾아보세요!</p>
               </div>
               <div class="card-footer p-4 pt-0 bg-transparent border-top-0">

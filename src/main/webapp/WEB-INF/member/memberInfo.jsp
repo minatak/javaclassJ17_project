@@ -128,7 +128,7 @@
 <main class="flex-shrink-0">
     <div class="container join-container mt-5 mb-5">
         <div class="register-container">
-            <h1 class="mb-4">회원 정보</h1>
+            <h1 class="mb-4">나의 정보</h1>
             <img src="${ctp}/images/member/${vo.photo}" alt="Profile Image" class="profile-image" />
             <form name="registerForm1" method="post" action="${ctp}/MemberInfoUpdate.mem">
                 <div class="form-group mt-2">
@@ -180,6 +180,7 @@
     </div>
 </main>
 <jsp:include page="/include/footer.jsp" />
-<script src="${ctp}/js/scripts.js"></script>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

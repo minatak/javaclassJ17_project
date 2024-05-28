@@ -5,8 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin User Management</title>
-    <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/admin/admin.css" rel="stylesheet" />
+        <%@ include file="/include/bs4.jsp" %>
+	<link href="${ctp}/css/styles.css" rel="stylesheet" />
+	<link href="${ctp}/css/admin.css" rel="stylesheet" />
 </head>
 <body>
     <jsp:include page="/include/nav.jsp" />
@@ -26,23 +27,27 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="user" items="${users}">
+                <c:forEach var="vo" items="${vos}">
                     <tr>
-                        <td><img src="${user.photo}" alt="Profile Photo" class="admin-profile-photo" /></td>
-                        <td>${user.name}</td>
-                        <td>${user.country}</td>
-                        <td>${user.city}</td>
-                        <td>${user.nativeLanguage}</td>
-                        <td>${user.practicingLanguage}</td>
-                        <td>${user.description}</td>
+                        <td><img src="${vo.photo}" alt="Profile Photo" class="admin-profile-photo" /></td>
+                        <td>${vo.name}</td>
+                        <td>${vo.country}</td>
+                        <td>${vo.city}</td>
+                        <td>${vo.nativeLanguage}</td>
+                        <td>${vo.practicingLanguage}</td>
+                        <td>${vo.content}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/adminEditUser.chat?id=${user.id}">Edit</a>
-                            <a href="${pageContext.request.contextPath}/adminDeleteUser.chat?id=${user.id}" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                            <a href="${ctp}/adminEditUser.chat?id=${vo.id}">Edit</a>
+                            <a href="${ctp}/adminDeleteUser.chat?id=${vo.id}" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
     </div>
+<!-- Footer-->
+<jsp:include page="/include/footer.jsp" />
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

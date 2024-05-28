@@ -127,7 +127,7 @@
     <jsp:include page="/include/nav.jsp" />
     <div class="container message-container mt-5 mb-5">
         <div class="message-header">
-            <h1>메시지 목록</h1>
+            <h1>메세지 목록</h1>
         </div>
         <ul class="message-list">
             <c:forEach var="message" items="${messages}">
@@ -144,6 +144,7 @@
     </div>
 </main>
 <jsp:include page="/include/footer.jsp" />
-<script src="${ctp}/js/scripts.js"></script>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

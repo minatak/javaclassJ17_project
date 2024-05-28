@@ -65,10 +65,20 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		else if(com.equals("/MemberList")) {
+			command = new MemberListCommand();
+			command.execute(request, response);
+			viewPage += "/memberList.jsp";
+		}
 		else if(level > 4) {
 			request.setAttribute("message", "로그인후 사용하세요");
 			request.setAttribute("url", request.getContextPath()+"/Login.mem");
 			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/MemberSearchList")) {
+			command = new MemberSearchListCommand();
+			command.execute(request, response);
+			viewPage += "/memberSearchList.jsp";
 		}
 		else if(com.equals("/MemberMain")) {  
 			command = new MemberMainCommand();
@@ -103,10 +113,9 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage += "/memberInfo.jsp";
 		}
-		else if(com.equals("/MemberList")) { // 여기부터 컨트롤러 수정해야 함 !
-			viewPage += "/memberList.jsp";
-		}
-		else if(com.equals("/MemberProfile")) {
+		else if(com.equals("/MemberProfile")) { // 쌤은 MemberSearch 라는 이름으로 한 부분.
+			command = new MemberProfileCommand();
+			command.execute(request, response);
 			viewPage += "/memberProfile.jsp";
 		}
 		

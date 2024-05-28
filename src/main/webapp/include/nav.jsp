@@ -114,9 +114,9 @@
 	                        <img src="${ctp}/images/member/${sPhoto}" alt="Profile Picture">
 	                    </a>
 	                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-	                        <li><a class="dropdown-item" href="MemberMain.mem">회원 메인 페이지</a></li>
-	                        <li><a class="dropdown-item" href="MemberInfo.mem">회원 정보 확인</a></li>
-	                        <li><a class="dropdown-item" href="MemberUpdate.mem">회원 정보 수정</a></li>
+	                        <li><a class="dropdown-item" href="MemberMain.mem">대시보드</a></li>
+	                        <li><a class="dropdown-item" href="MemberInfo.mem">내 정보 확인</a></li>
+	                        <li><a class="dropdown-item" href="MemberUpdate.mem">정보 수정</a></li>
 	                        <li><hr class="dropdown-divider"></li>
 	                        <li><a class="dropdown-item" href="MemberLogout.mem">Logout</a></li>
 	                    </ul>

@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원 정보 게시판</title>
+  <title>회원 검색 리스트</title>
   <%@ include file="/include/bs4.jsp" %>
   <link href="${ctp}/css/styles.css" rel="stylesheet" />
   <link href="${ctp}/css/join.css" rel="stylesheet" />
@@ -156,93 +156,14 @@
       }
     }
     
-    function fCheck() {
-    	let select = searchForm.search.value.trim();
-    	let languageSelect = searchForm.languageSelect.value.trim();
-    	let countrySelect = searchForm.countrySelect.value.trim();
-    	
-    	if(select == "") {
-    		alert("조건을 선택해주세요");
-    	}
-    	else if(languageSelect == "" && countrySelect == "") {
-    		alert("조건을 선택해주세요");
-    	}
-    	else {
-    		searchForm.submit();
-    	}
-		}
-    
 	</script> 
 </head>
 <jsp:include page="/include/nav.jsp" />
 <body>
   <main class="container">
     <div class="container">
-      <h1>회원 찾기</h1>
-      
-      <!-- 검색기 시작 -->
-			<div class="search-bar text-center mb-4">
-			  <form name="searchForm" method="post" action="MemberSearchList.mem">
-			    <b>검색 : </b>
-			    <select name="search" id="search" style="width: 17%;" onchange="updateSearchBox()">
-			      <option value="">선택</option>
-			      <option value="nativeLanguage">모국어</option>
-			      <option value="learningLanguage" >학습중인 언어</option>
-			      <option value="country">거주 국가</option>
-			    </select>
-			    <span>가 </span>
-			
-			    <!-- 언어 셀렉트 박스 -->
-			    <select name="languageSelect" id="languageSelect" style="display: none;">
-			      <option value="">선택</option>
-			      <option value="한국어">한국어</option>
-			      <option value="영어">영어</option>
-			      <option value="스페인어">스페인어</option>
-			      <option value="프랑스어">프랑스어</option>
-			      <option value="일본어">일본어</option>
-			      <option value="독일어">독일어</option>
-			      <option value="중국어">중국어</option>
-			      <option value="러시아어">러시아어</option>
-			      <option value="기타">기타</option>
-			    </select>
-			
-			    <!-- 국가 셀렉트 박스 -->
-			    <select name="countrySelect" id="countrySelect" style="display: none;">
-			      <option value="">선택</option>
-			      <option value="한국">한국</option>
-			      <option value="미국">미국</option>
-			      <option value="스페인">스페인</option>
-			      <option value="프랑스">프랑스</option>
-			      <option value="일본">일본</option>
-			      <option value="독일">독일</option>
-			      <option value="중국">중국</option>
-			      <option value="러시아">러시아</option>
-			      <option value="기타">기타</option>
-			    </select>
-			
-			    <span>인 회원 조회하기</span> 
-			    <input type="button" onclick="fCheck()" value="검색" class="btn searchButton"/>
-			  </form>
-			</div>
-			
-			<!-- 검색어 입력 바 -->
-			<!-- 
-			<div class="search-bar">
-			  <select name="searchType" id="searchType" style="height: 30px; background-color: #fefefe;  border: 1px solid #8f7252;">
-			    <option value="id">아이디</option>
-			    <option value="name">이름</option>
-			    <option value="nickname">닉네임</option>
-			  </select>
-			  <input type="text" placeholder="검색어를 입력하세요" id="searchKeyword" />
-			  <button type="button" onclick="performSearch()">검색</button>
-			</div>
-      
-      <div class="search-bar">
-        <input type="text" placeholder="검색어를 입력하세요" />
-        <button type="button">검색</button>
-      </div>
-       -->
-      
+      <h1>회원 검색 리스트</h1>
+      <c:if test="${!empty sMid}"><font color="blue">${search}</font>가 <font color="blue">${select}</font>인 값을 검색한 결과 <font color="red"><b>${searchCnt}</b></font> 건의 게시글이 검색되었습니다.</c:if>
       <c:forEach var="vo" items="${vos}" varStatus="st">
         <div class="member-card" onclick="location.href='${ctp}/MemberProfile.mem?mid=${vo.mid}'">
           <img src="${ctp}/images/member/${vo.photo}" class="profile-photo" />
@@ -265,7 +186,7 @@
           </div>
         </div>
       </c:forEach>
-      
+      <input type="button" value="돌아가기" onclick="location.href='MemberList.mem';" class="btn searchButton"/>
      	<!-- 블록페이지 시작 -->
 			<div class="text-center">
 			  <ul class="pagination justify-content-center">

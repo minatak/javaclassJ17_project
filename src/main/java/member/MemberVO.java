@@ -21,6 +21,10 @@ public class MemberVO {
 	private String startDate;
 	private String lastDate;
 	
+	private String myFlag; // 내 나라의 국기
+	private String myLangFlag; // 모국어 국기
+	private String wantLangFlag; // 배우고 싶은 언어의 나라 국기
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -135,13 +139,31 @@ public class MemberVO {
 	public void setLastDate(String lastDate) {
 		this.lastDate = lastDate;
 	}
+	public String getMyFlag() {
+		return myFlag;
+	}
+	public void setMyFlag(String myFlag) {
+		this.myFlag = myFlag;
+	}
+	public String getMyLangFlag() {
+		return myLangFlag;
+	}
+	public void setMyLangFlag(String myLangFlag) {
+		this.myLangFlag = myLangFlag;
+	}
+	public String getWantLangFlag() {
+		return wantLangFlag;
+	}
+	public void setWantLangFlag(String wantLangFlag) {
+		this.wantLangFlag = wantLangFlag;
+	}
 	@Override
 	public String toString() {
 		return "MemberVO [idx=" + idx + ", mid=" + mid + ", pwd=" + pwd + ", nickName=" + nickName + ", name=" + name
 				+ ", email=" + email + ", gender=" + gender + ", birthday=" + birthday + ", photo=" + photo + ", country="
 				+ country + ", city=" + city + ", nativeLanguage=" + nativeLanguage + ", learningLanguage=" + learningLanguage
 				+ ", languageLevel=" + languageLevel + ", content=" + content + ", userDel=" + userDel + ", level=" + level
-				+ ", startDate=" + startDate + ", lastDate=" + lastDate + "]";
+				+ ", startDate=" + startDate + ", lastDate=" + lastDate + ", myFlag=" + myFlag + ", myLangFlag=" + myLangFlag
+				+ ", wantLangFlag=" + wantLangFlag + "]";
 	}
-	
 }
