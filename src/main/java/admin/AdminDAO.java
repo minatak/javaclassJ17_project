@@ -114,35 +114,36 @@ public class AdminDAO {
 	       conn.setAutoCommit(false);
 	       
 	       // member 테이블에서 회원 삭제
-	       String sql1 = "delete from member where mid = ?";
-	       pstmt = conn.prepareStatement(sql1);
+	       sql = "delete from member where mid = ?";
+	       pstmt = conn.prepareStatement(sql);
 	       pstmt.setString(1, mid);
-	       res = pstmt.executeUpdate();
+	       pstmt.executeUpdate();
+	       pstmtClose();
 	
 	       // report 테이블에서 회원 관련 데이터 삭제
-	       String sql2 = "delete from report where reportedMid = ?";
-	       pstmt = conn.prepareStatement(sql2);
+	       sql = "delete from report where reportedMid = ?";
+	       pstmt = conn.prepareStatement(sql);
 	       pstmt.setString(1, mid);
-	       res += pstmt.executeUpdate();
+	       res = pstmt.executeUpdate();
 	
 	       // 트랜잭션 커밋
 	       conn.commit();
 	   } catch (SQLException e) {
-	       try {
-	           // 트랜잭션 롤백
-	           conn.rollback();
-	       } catch (SQLException rollbackEx) {
-	           System.out.println("롤백 오류 : " + rollbackEx.getMessage());
-	       }
-	       System.out.println("SQL 오류 : " + e.getMessage());
+	  	 System.out.println("SQL 오류 : " + e.getMessage());
+       try {
+           // 트랜잭션 롤백
+           conn.rollback();
+       } catch (SQLException rollbackEx) {
+           System.out.println("롤백 오류 : " + rollbackEx.getMessage());
+       }
 	   } finally {
-	       try {
-	           // 원래대로 자동 커밋 설정
-	           conn.setAutoCommit(true);
-	       } catch (SQLException autoCommitEx) {
-	           System.out.println("자동 커밋 설정 오류 : " + autoCommitEx.getMessage());
-	       }
-	       pstmtClose();            
+       try {
+           // 원래대로 자동 커밋 설정
+           conn.setAutoCommit(true);
+       } catch (SQLException autoCommitEx) {
+           System.out.println("자동 커밋 설정 오류 : " + autoCommitEx.getMessage());
+       }
+       pstmtClose();            
 	   }
 	   return res;
 	}
