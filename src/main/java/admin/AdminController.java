@@ -33,18 +33,40 @@ public class AdminController extends HttpServlet {
 			viewPage += "/adminUserManagement.jsp";
 		}
 		else if(com.equals("/AdminReports")) {
+			command = new MemberReportListCommand();
+			command.execute(request, response);
 			viewPage += "/adminReports.jsp";
 		}
 		else if(com.equals("/AdminEditUser")) {
 			viewPage += "/adminEditUser.jsp";
 		}
-		
-
-//		else if(com.equals("/MemberNickCheck")) {
-//			command = new MemberNickCheckCommand();
+		else if(com.equals("/MemberReportInput")) {
+			command = new MemberReportInputCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/MemberDeleteOk")) {
+			command = new MemberDeleteOkCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/MemberHideOk")) {
+			command = new MemberHideOkCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/CancelReportOk")) {
+			command = new CancelReportOkCommand();
+			command.execute(request, response);
+			return;
+		}
+//		else if(com.equals("/ReportCheck")) {
+//			command = new ReportCheckCommand();
 //			command.execute(request, response);
 //			return;
 //		}
+		
+
 		
 //		else if(com.equals("/MemberLoginOk")) {
 //			command = new MemberLoginOkCommand();

@@ -30,7 +30,8 @@ public class MemberListCommand implements MemberInterface {
 		else if(flag.equals("RU")) language = "러시아어";
 		else if(flag.equals("FR")) language = "프랑스어";
 		
-		
+//		System.out.println("flag : " + flag);
+//		System.out.println("language : " + language);
 		// System.out.println("vos : " + vos);
 		
 		// request.setAttribute("vos", vos);
@@ -50,7 +51,7 @@ public class MemberListCommand implements MemberInterface {
 	  	totRecCnt = dao.getTotRecCnt(vo.getLearningLanguage());	  	
 	  }
 	  else {
-	  	totRecCnt = dao.getTotRecCnt(flag);	  	
+	  	totRecCnt = dao.getTotRecCnt(language);	  	
 	  }
 		
 		// 4. 총 페이지 건수를 구한다. 
@@ -76,7 +77,16 @@ public class MemberListCommand implements MemberInterface {
 		
 		// 한 페이지에 표시할 건수만(pageSize 수만큼)을 DAO에서 가져온다. 
 		//ArrayList<MemberVO> vos = dao.getMemberList(startIndexNo, pageSize);
-		ArrayList<MemberVO> vos = dao.getMemberListLearningLanguage(vo.getLearningLanguage(), startIndexNo, pageSize);
+		
+		 if(flag.equals("")) {
+			 ArrayList<MemberVO> vos = dao.getMemberListLearningLanguage(vo.getLearningLanguage(), startIndexNo, pageSize);
+			 request.setAttribute("vos", vos);
+		  }
+		  else {
+		  	ArrayList<MemberVO> vos = dao.getMemberListLearningLanguage(language, startIndexNo, pageSize);
+		  	request.setAttribute("vos", vos);		  	
+		  	request.setAttribute("language", language);
+		  }
 		
 		// 설정(지정)된 페이지의 모든 자료(변수)들을 viewPage로 넘겨줄 준비를 한다.
 		request.setAttribute("pag", pag);
@@ -87,7 +97,6 @@ public class MemberListCommand implements MemberInterface {
 		request.setAttribute("blockSize", blockSize);
 		request.setAttribute("curBlock", curBlock);
 		request.setAttribute("lastBlock", lastBlock);
-		request.setAttribute("vos", vos);
 		
 	}
 

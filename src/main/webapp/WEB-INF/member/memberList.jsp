@@ -178,6 +178,12 @@
 <body>
   <main class="container">
     <div class="container">
+    <c:if test="${!empty language}">
+      <h1>회원 리스트 미리보기</h1>
+    	<h5 style="text-align:center;" >모국어가 ${language}인 회원님들입니다 :)</h5>
+    	<h5 style="text-align:center;" class="mb-5">지금 가입해서 ${language}로 대화를 시작해보세요 !</h5>
+    </c:if>
+    <c:if test="${empty language}">
       <h1>회원 찾기</h1>
       
       <!-- 검색기 시작 -->
@@ -224,7 +230,7 @@
 			    <input type="button" onclick="fCheck()" value="검색" class="btn searchButton"/>
 			  </form>
 			</div>
-			
+			</c:if>
 			<!-- 검색어 입력 바 -->
 			<!-- 
 			<div class="search-bar">
@@ -266,6 +272,7 @@
         </div>
       </c:forEach>
       
+      <c:if test="${empty language}">
      	<!-- 블록페이지 시작 -->
 			<div class="text-center">
 			  <ul class="pagination justify-content-center">
@@ -280,8 +287,7 @@
 			  </ul>
 			</div>
 			<!-- 블록페이지 끝 -->
-	    
-	    
+	    </c:if>
 	    
 	  </div> <!-- container -->
   </main>

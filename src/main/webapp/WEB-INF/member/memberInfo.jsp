@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="ko">
@@ -147,7 +148,7 @@
                     <div><strong>Gender:</strong> ${vo.gender}</div>
                 </div>
                 <div class="form-group">
-                    <div><strong>Birthday:</strong> ${vo.birthday}</div>
+                    <div><strong>Birthday:</strong> ${fn:substring(vo.birthday,0,4)}년 ${fn:substring(vo.birthday,5,7)}월 ${fn:substring(vo.birthday,8,10)}일</div>
                 </div>
                 <div class="form-group">
                     <div><strong>Country:</strong> ${vo.country}</div>

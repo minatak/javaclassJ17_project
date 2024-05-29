@@ -14,6 +14,11 @@
 <body>
     <div class="container">
         <h1>Admin Dashboard</h1>
+        <div>
+				  <p>신고회원 (최근1주일) : ?건</p>
+				  <p>신규등록회원 : <a href="MemberList.ad?level=1"><b>${mCount}</b></a>건</p>
+				  <p>탈퇴신청회원 : <a href=""><b>${m99Count}</b></a>건</p>
+        </div>
         <div class="admin-section">
             <h2>User Management</h2>
             <a href="${ctp}/AdminUserManagement.ad">회원 관리</a>

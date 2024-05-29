@@ -134,7 +134,7 @@ public class MemberDAO {
 	public ArrayList<MemberVO> getMemberList(int startIndexNo, int pageSize) {
 		ArrayList<MemberVO> vos = new ArrayList<MemberVO>();
 		try {
-			sql = "select * from member order by idx desc limit ?,?";
+			sql = "select * from member where userDel = 'NO' order by idx desc limit ?,?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startIndexNo);
 			pstmt.setInt(2, pageSize);
@@ -225,6 +225,7 @@ public class MemberDAO {
 		try {
 			sql = "update member set nickName=?, name=?, email=?, gender=?, birthday=?, photo=?, country=?, "
 					+ "city=?, nativeLanguage=?, learningLanguage=?, languageLevel=?, content=? where mid=?";
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getNickName());
 			pstmt.setString(2, vo.getName());
 			pstmt.setString(3, vo.getEmail());
@@ -276,7 +277,7 @@ public class MemberDAO {
 	public ArrayList<MemberVO> getMemberListLearningLanguage(String nativeLanguage, int startIndexNo, int pageSize) {
 		ArrayList<MemberVO> vos = new ArrayList<MemberVO>();
 		try {
-			sql = "select * from member where nativeLanguage=? union select * from member where nativeLanguage != ? limit ?,?";
+			sql = "select * from member where nativeLanguage=? union select * from member where nativeLanguage != ? and userDel = 'NO' limit ?,?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, nativeLanguage);
 			pstmt.setString(2, nativeLanguage);
@@ -368,7 +369,7 @@ public class MemberDAO {
 	public ArrayList<MemberVO> getMemberSearchList(String search, String select) {
 		ArrayList<MemberVO> vos = new ArrayList<MemberVO>();
 		try {
-			sql = "select * from member where "+search+" = ? order by idx desc"; 
+			sql = "select * from member where "+search+" = ? and userDel = 'NO' order by idx desc"; 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, select);
 			rs = pstmt.executeQuery();

@@ -35,27 +35,30 @@ public class MemberInfoUpdateOkCommand implements MemberInterface {
 		// 세션의 닉네임과 앞에서 넘어온 닉네임을 비교해서 같지 않으면 사용자가 닉네임을 수정한 것이다.
 		if(!nickName.equals(sNickName)) {
 			if(vo.getNickName() != null) {
-				request.setAttribute("msg", "이미 사용중인 닉네임 입니다.");
+				request.setAttribute("message", "이미 사용중인 닉네임 입니다.");
 				request.setAttribute("url", "MemberInfoUpdate.mem");
 				return;
 			}
 		}
+		
+		System.out.println("nickName : " + nickName);
+		System.out.println("name : " + name);
 		
 		// 모든 체크가 끝난 자료는 vo에 담아서 DB에 저장처리한다.
 		vo = new MemberVO();
 		vo.setMid(mid);
 		vo.setNickName(nickName);
 		vo.setName(name);
-		vo.setName(email);
-		vo.setName(gender);
-		vo.setName(birthday);
-		vo.setName(photo);
-		vo.setName(country);
-		vo.setName(city);
-		vo.setName(nativeLanguage);
-		vo.setName(learningLanguage);
-		vo.setName(languageLevel);
-		vo.setName(content);
+		vo.setEmail(email);
+		vo.setGender(gender);
+		vo.setBirthday(birthday);
+		vo.setPhoto(photo);
+		vo.setCountry(country);
+		vo.setCity(city);
+		vo.setNativeLanguage(nativeLanguage);
+		vo.setLearningLanguage(learningLanguage);
+		vo.setLanguageLevel(languageLevel);
+		vo.setContent(content);
 		
 		int res = dao.setMemberUpdateOk(vo);
 		

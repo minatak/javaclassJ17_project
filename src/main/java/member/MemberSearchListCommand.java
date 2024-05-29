@@ -21,10 +21,10 @@ public class MemberSearchListCommand implements MemberInterface {
 		
 		MemberDAO dao = new MemberDAO();
 		
-		System.out.println("search : " + search);
-		System.out.println("languageSelect : " + languageSelect);
-		System.out.println("countrySelect : " + countrySelect);
-		System.out.println("select : " + select);
+//		System.out.println("search : " + search);
+//		System.out.println("languageSelect : " + languageSelect);
+//		System.out.println("countrySelect : " + countrySelect);
+//		System.out.println("select : " + select);
 		
 		// request.setAttribute("vos", vos);
 

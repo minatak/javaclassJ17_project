@@ -49,7 +49,7 @@
       </div>
     </header>
     <!-- 공부하는 언어 선택 아이콘. 로그인 상태일 경우 이 부분이 보이지 않음 ! -->
-    <!-- <c:if test="${empty sMid}"> -->
+    <c:if test="${empty sMid}"> 
       <div class="container languageSelect mt-5 mb-5" style="background-color:#fefefe; font-family: 'NEXON Lv1 Gothic OTF' !important;">
         <div class="row gx-5 justify-content-center">
           <div class="col-lg-8 col-xl-6">
@@ -94,7 +94,7 @@
           </div>
         </div>
       </div>
-    <!-- </c:if> -->
+    </c:if> 
     <!-- service preview section-->
     <section class="pb-1 pt-5" style="background-color:#fbfbf1;">
       <div class="container px-5 my-5">
@@ -103,8 +103,8 @@
             <div class="text-center">
               <!-- 이 설명도 로그아웃 상태일 때만 보임. -->
               <c:if test="${empty sMid}">
-                <h1 style="font-family: 'CWDangamAsac-Bold'; color:#35ae5f">주요 기능 페이지 바로가기</h1>
-                <p class="lead fw-normal mb-5">아래 소개를 클릭 시 주요 기능 페이지로 바로 이동할 수 있습니다.</p>
+                <h1 style="font-family: 'CWDangamAsac-Bold'; color:#35ae5f" class="mb-3">주요 기능 페이지 바로가기</h1>
+                <!-- <p class="lead fw-normal mb-5">아래 소개를 클릭 시 주요 기능 페이지로 바로 이동할 수 있습니다.</p> -->
               </c:if>
             </div>
           </div>

@@ -163,7 +163,9 @@
   <main class="container">
     <div class="container">
       <h1>회원 검색 리스트</h1>
-      <c:if test="${!empty sMid}"><font color="blue">${search}</font>가 <font color="blue">${select}</font>인 값을 검색한 결과 <font color="red"><b>${searchCnt}</b></font> 건의 게시글이 검색되었습니다.</c:if>
+      <div class="text-center">
+      	<font color="blue">${search}</font>가 <font color="blue">${select}</font>인 값을 검색한 결과 <font color="red"><b>${searchCnt}</b></font>건의 게시글이 검색되었습니다. 
+      </div>
       <c:forEach var="vo" items="${vos}" varStatus="st">
         <div class="member-card" onclick="location.href='${ctp}/MemberProfile.mem?mid=${vo.mid}'">
           <img src="${ctp}/images/member/${vo.photo}" class="profile-photo" />
@@ -186,7 +188,9 @@
           </div>
         </div>
       </c:forEach>
-      <input type="button" value="돌아가기" onclick="location.href='MemberList.mem';" class="btn searchButton"/>
+      <div class="text-right">
+      	<input type="button" value="돌아가기" onclick="location.href='MemberList.mem';" class="btn btn-success"/>
+      </div>
      	<!-- 블록페이지 시작 -->
 			<div class="text-center">
 			  <ul class="pagination justify-content-center">
