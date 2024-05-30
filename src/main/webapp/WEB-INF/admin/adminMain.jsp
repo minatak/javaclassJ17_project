@@ -58,7 +58,7 @@
         }
         .quick-links a:hover {
             background-color: #d7d1b9;
-      color: #322d27;
+      			color: #322d27;
             text-decoration: none;
         }
         .quick-links {
