@@ -109,6 +109,9 @@
     	background-color: #fdfad1;
       padding: 2px 4px;
     }
+    a {
+    	 text-decoration: none;
+    }
   </style>
 </head>
 <jsp:include page="/include/nav.jsp" />

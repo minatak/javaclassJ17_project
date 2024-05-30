@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Edit User</title>
+    <title>회원 정보 수정</title>
     <%@ include file="/include/bs4.jsp" %>
 		<link href="${ctp}/css/styles.css" rel="stylesheet" />
 		<link href="${ctp}/css/admin.css" rel="stylesheet" />
@@ -12,34 +12,33 @@
 <body>
     <jsp:include page="/include/nav.jsp" />
     <div class="container">
-        <h1>Edit User</h1>
-        <form action="${pageContext.request.contextPath}/adminUpdateUser.chat" method="post">
-            <input type="hidden" name="id" value="${user.id}" />
+        <h1>회원 정보 수정</h1>
+        <form action="AdminMemberUpdate.ad" method="post">
+            <input type="hidden" name="mid" value="${vo.mid}" />
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" value="${user.name}" required />
+                <input type="text" id="name" name="name" value="${vo.name}" required />
             </div>
             <div class="form-group">
                 <label for="country">Country:</label>
-                <input type="text" id="country" name="country" value="${user.country}" required />
+                <input type="text" id="country" name="country" value="${vo.country}" required />
             </div>
             <div class="form-group">
                 <label for="city">City:</label>
-                <input type="text" id="city" name="city" value="${user.city}" required />
+                <input type="text" id="city" name="city" value="${vo.city}" required />
             </div>
             <div class="form-group">
                 <label for="nativeLanguage">Native Language:</label>
-                <input type="text" id="nativeLanguage" name="nativeLanguage" value="${user.nativeLanguage}" required />
+                <input type="text" id="nativeLanguage" name="nativeLanguage" value="${vo.nativeLanguage}" required />
             </div>
             <div class="form-group">
-                <label for="practicingLanguage">Practicing Language:</label>
-                <input type="text" id="practicingLanguage" name="practicingLanguage" value="${user.practicingLanguage}" required />
+                <label for="practicingLanguage">Learning Language:</label>
+                <input type="text" id="practicingLanguage" name="learningLanguage" value="${vo.learningLanguage}" required />
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea id="description" name="description" required>${user.description}</textarea>
             </div>
-            <button type="submit">Update</button>
+            <button type="submit">수정하기</button>
         </form>
     </div>
 <!-- Footer-->

@@ -503,5 +503,35 @@ public class MemberDAO {
 		}
 		return vos;
 	}
+
+	//회원 탈퇴 신청처리
+	public int setMemberDeleteUpdate(String mid) {
+		int res = 0;
+		try {
+			sql = "update member set userDel = 'OK', level=99 where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	// 로그인시에 처리할 내용들을 업데이트 시켜줌 (일단 마지막 접속일 바꾸는 처리)
+	public void setLoginUpdate(MemberVO vo) {
+		try {
+			sql = "update member set lastDate=now() where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getMid());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+	}
 	
 }

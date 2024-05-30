@@ -149,6 +149,9 @@
 	   /*  color: #fefefe;  */
 	    background-color: #f0edca; /* 테두리 안의 배경색 */
 		}
+		a {
+    	 text-decoration: none;
+    }
   </style>
   <script>
     'use strict';

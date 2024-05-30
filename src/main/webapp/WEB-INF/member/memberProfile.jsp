@@ -175,16 +175,12 @@
             <td>${vo.name}</td>
           </tr>
           <tr>
-            <th><span class="highlight">도시</span></th>
-            <td>${vo.city}</td>
-          </tr>
-          <tr>
-            <th><span class="highlight">본국</span></th>
-            <td>${vo.country}</td>
-          </tr>
-          <tr>
             <th><span class="highlight">현재 국가</span></th>
             <td>${vo.country}</td>
+          </tr>
+          <tr>
+            <th><span class="highlight">도시</span></th>
+            <td>${vo.city}</td>
           </tr>
           <tr>
             <th><span class="highlight">연령</span></th>

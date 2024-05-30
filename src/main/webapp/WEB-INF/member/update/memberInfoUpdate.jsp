@@ -23,11 +23,14 @@
 	</style>
 	<script>
 		'use strict';
-		
-	  function deleteAccount() {
 
-	  
-	  }
+		function deleteAccount() {
+  		let ans = confirm("회원 탈퇴를 신청하시겠습니까?");
+  		if(ans) {
+  			ans = confirm("탈퇴하시면 한달간 같은 아이디로 가입하실수 없습니다.\n계속 진행하시겠습니까?");
+  			if(ans) location.href='MemberDeleteCheckOk.mem';
+  		}
+    }
 	  
 	</script>
 </head>
@@ -116,7 +119,5 @@
 <jsp:include page="/include/footer.jsp" />
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
 </body>
 </html>

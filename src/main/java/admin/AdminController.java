@@ -29,6 +29,14 @@ public class AdminController extends HttpServlet {
 		if(com.equals("/AdminMain")) {
 			viewPage += "/adminMain.jsp";
 		}
+		else if(com.equals("/AdminLeft")) {
+			viewPage += "/adminLeft.jsp";
+		}
+		else if(com.equals("/AdminContent")) {
+			command = new AdminContentCommand();
+			command.execute(request, response);
+			viewPage += "/adminContent.jsp";
+		}
 		else if(com.equals("/AdminUserManagement")) {
 			viewPage += "/adminUserManagement.jsp";
 		}
@@ -50,6 +58,11 @@ public class AdminController extends HttpServlet {
 			command.execute(request, response);
 			return;
 		}
+		else if(com.equals("/MemberShowOk")) {
+			command = new MemberShowOkCommand();
+			command.execute(request, response);
+			return;
+		}
 		else if(com.equals("/MemberHideOk")) {
 			command = new MemberHideOkCommand();
 			command.execute(request, response);
@@ -59,6 +72,11 @@ public class AdminController extends HttpServlet {
 			command = new CancelReportOkCommand();
 			command.execute(request, response);
 			return;
+		}
+		else if(com.equals("/AdminMemberList")) {
+			command = new AdminMemberListCommand();
+			command.execute(request, response);
+			viewPage += "/adminMemberList.jsp";
 		}
 //		else if(com.equals("/ReportCheck")) {
 //			command = new ReportCheckCommand();

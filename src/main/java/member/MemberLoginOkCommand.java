@@ -42,6 +42,7 @@ public class MemberLoginOkCommand implements MemberInterface {
 		}
 		
 		// 로그인 완료 후 회원일때 처리할 부분
+		dao.setLoginUpdate(vo);		
 		
 		// 쿠키에 아이디를 저장/해제 처리한다.
 		// 로그인시 아이디 저장 시킨다고 체크하면 쿠키에 아이디 저장하고, 그렇지 않으면 쿠키에서 아이디를 제거한다.

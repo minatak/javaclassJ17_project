@@ -277,11 +277,6 @@
 	            <td>${fn:substring(vo.reportDate, 0, 10)}</td>
 	            <c:if test="${vo.show == 'NO'}"><td>공개</td></c:if>
 	            <c:if test="${vo.show == 'OK'}"><td>비공개</td></c:if>
-	            <%-- <td>
-	              <a href="javascript:memberDeleteOk('${vo.mid}')" class="badge btn-primary">신고 취소</a>
-	              <a href="javascript:memberDeleteOk('${vo.mid}')" class="badge btn-success">회원 감추기</a>
-	              <a href="javascript:memberDeleteOk('${vo.mid}')" class="badge badge-danger">탈퇴처리</a>
-	            </td> --%>
 	            <c:set var="reportCnt" value="${reportCnt - 1}" />
 	          </tr>
 	        </c:forEach>
