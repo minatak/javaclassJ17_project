@@ -10,6 +10,26 @@
 	<%@ include file="/include/bs4.jsp" %>
 	<link href="css/styles.css" rel="stylesheet" />
 	<link href="${ctp}/css/join.css" rel="stylesheet" />
+	<style>
+		.dangerButton {
+			border: 1.2px solid #cf5a5a;
+			color: #fefefe;
+			background-color: #cf5a5a;
+			/* padding: 10px 20px; */
+			/* font-size: 14px; */
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+	<script>
+		'use strict';
+		
+	  function deleteAccount() {
+
+	  
+	  }
+	  
+	</script>
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
@@ -83,7 +103,8 @@
             <label for="content">Self Introduction</label>
             <textarea id="content" name="content" rows="5" required>${vo.content}</textarea>
           </div>
-          <div class="form-group text-center ">
+          <span style="float: right;"class="mb-3"><input type="button" value="회원 탈퇴" onclick="deleteAccount()" class="dangerButton"></span>
+          <div class="form-group text-center mt-5">
             <input type="submit" value="수정하기" class="myBtn">
           </div>
           

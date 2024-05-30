@@ -18,7 +18,7 @@ public class MemberListCommand implements MemberInterface {
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = dao.getMemberIdCheck(mid);
 		
-		String flag = request.getParameter("flag")==null ? "" : request.getParameter("flag");
+		String flag = request.getParameter("flag")==null ? "" : request.getParameter("flag");  
 		String language = "";
 		
 		if(flag.equals("KR")) language = "한국어";

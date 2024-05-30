@@ -118,6 +118,11 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage += "/memberProfile.jsp";
 		}
+		else if(com.equals("/RandomMember")) {  
+			command = new RandomMemberCommand();
+			command.execute(request, response);
+			viewPage += "/randomMember.jsp";
+		}
 		
 		
 //		else if(com.equals("/MemberLoginOk")) {

@@ -127,7 +127,10 @@
 		color: #fefefe; /* 마우스를 가져갈 때 색상을 변경하지 않습니다. */
 	}
 	
-	.card-text { font-family: 'NEXON Lv1 Gothic OTF'; }
+	.card-text { 
+		font-family: 'NEXON Lv1 Gothic OTF'; 
+		color : #39b766;
+	}
 	
 	.serviceCard { 
 		background-color: #fefefe; 
@@ -163,10 +166,12 @@
 
 	.serviceCard {
   	border-radius: 20px;
+  	/*background-color: #fdfad1;*/
 	}
 
 	.serviceCard:hover {
   	border: 1.5px solid #35ae5f; /* 테두리를 추가합니다 */ 
+  	/*background-color: #fdfad1;*/
 	}
 
 	.icon-container {
@@ -188,4 +193,12 @@
     height: auto;
     display: block;
     margin: auto;
+	}
+	.highlight {
+    background-color: #fdfad1;
+    padding: 2px 4px;
+  }
+  container .cardBox {
+		background-color: #fdfad1;
+		
 	}

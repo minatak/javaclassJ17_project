@@ -20,13 +20,6 @@ public class MemberSearchListCommand implements MemberInterface {
 		else if(!countrySelect.equals("")) select = countrySelect;
 		
 		MemberDAO dao = new MemberDAO();
-		
-//		System.out.println("search : " + search);
-//		System.out.println("languageSelect : " + languageSelect);
-//		System.out.println("countrySelect : " + countrySelect);
-//		System.out.println("select : " + select);
-		
-		// request.setAttribute("vos", vos);
 
 		// 1. 현재 페이지 번호를 구해온다.
 		int pag = request.getParameter("pag")==null ? 1 : Integer.parseInt(request.getParameter("pag"));
@@ -80,7 +73,6 @@ public class MemberSearchListCommand implements MemberInterface {
 		else if(search.equals("learningLanguage")) search = "학습중인 언어";
 		else if(search.equals("country")) search = "거주 국가";
 		
-		System.out.println("search : " + search);
 		request.setAttribute("search", search);
 		request.setAttribute("select", select);
 	}

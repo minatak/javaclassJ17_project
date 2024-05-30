@@ -132,6 +132,23 @@
     .member-info > p, .languages {
       margin-bottom: 10px; /* 태그 간 여백 추가 */
     }
+  	.randomBtn {
+	    font-family: 'NEXON Lv1 Gothic OTF';
+	    border: 1.2px solid #6d5a46; /* 글자 색과 같은 얇은 테두리 */
+	    border-radius: 30px; /* 모서리를 둥글게 */
+	    background-color: #fdfad1; /* 테두리 안의 배경색 */
+	    color: #6d5a46; /* 폰트 색깔 */
+	    padding: 5px 15px; /* 내부 여백 */
+	    display: inline-block; /* 글자 크기에 맞춰 테두리 크기 조정 */
+	    font-size: 1.3em;
+	    transition: transform 0.2s ease; /* 부드러운 전환 효과 */
+		}
+		
+		.randomBtn:hover {
+	    transform: scale(1.02);
+	   /*  color: #fefefe;  */
+	    background-color: #f0edca; /* 테두리 안의 배경색 */
+		}
   </style>
   <script>
     'use strict';
@@ -248,7 +265,8 @@
         <button type="button">검색</button>
       </div>
        -->
-      
+       <%-- <input type="button" onclick="href='${ctp}/RandomMember.mem';" value="랜덤 회원" class="btn searchButton"/> --%>
+      <a style="color: #6d5a46; font-size:14px;" class="randomBtn" href="${ctp}/RandomMember.mem">랜덤 회원 뽑기</a>
       <c:forEach var="vo" items="${vos}" varStatus="st">
         <div class="member-card" onclick="location.href='${ctp}/MemberProfile.mem?mid=${vo.mid}'">
           <img src="${ctp}/images/member/${vo.photo}" class="profile-photo" />

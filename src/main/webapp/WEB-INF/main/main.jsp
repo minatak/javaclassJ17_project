@@ -9,7 +9,7 @@
   <title>LinguaLink</title>
   <%@ include file="/include/bs4.jsp" %>
 	<link href="${ctp}/css/styles.css" rel="stylesheet" />
-	<link href="${ctp}/css/main.css?after" rel="stylesheet" />
+	<link href="${ctp}/css/main.css?after3" rel="stylesheet" />
 </head>
 <body class="d-flex flex-column h-100">
   <main class="flex-shrink-0">
@@ -97,7 +97,7 @@
     </c:if> 
     <!-- service preview section-->
     <section class="pb-1 pt-5" style="background-color:#fbfbf1;">
-      <div class="container px-5 my-5">
+      <div class="container px-5 my-5 cardBox">
         <div class="row gx-5 justify-content-center">
           <div class="col-lg-8 col-xl-6">
             <div class="text-center">
