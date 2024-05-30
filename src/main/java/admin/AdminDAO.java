@@ -295,6 +295,63 @@ public class AdminDAO {
 		}
 		return res;
 	}
-	
+
+	//신규회원 건수
+	public int getNewMemberListCount() {
+		int mCount = 0;
+		try { 
+			sql = "SELECT COUNT(*) AS cnt FROM member WHERE TIMESTAMPDIFF(DAY, startDate, CURDATE()) <= 10";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+		  if (rs.next()) {
+			  mCount = rs.getInt("cnt");
+		  }
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();			
+		}
+		return mCount;
+	}
+
+	// 일주일 이내로 신고가 접수된 회원 건수
+	public int getNewReportListCount() {
+		int rCount = 0;
+		try { 
+			sql = "SELECT COUNT(*) AS cnt FROM report WHERE TIMESTAMPDIFF(DAY, reportDate, CURDATE()) <= 7";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+		  if (rs.next()) {
+		  	rCount = rs.getInt("cnt");
+		  }
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();			
+		}
+		return rCount;
+	}
+
+	// 탈퇴 신청한 회원 (회원레벨이 99일경우 탈퇴 신청한 회원임)
+	public int getMemberDeleteCount() {
+		int m99Count = 0;
+		try {
+			sql = "select count(idx) as cnt from member where level = 99";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+        m99Count = rs.getInt("cnt");
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();			
+		}
+		return m99Count;
+	}
+
 	
 }

@@ -273,6 +273,7 @@
             <th>학습언어</th>
             <th>최종방문일</th>
             <th>활동여부</th>
+            <th>숨김여부</th>
           </tr>
         </thead>
         <tbody>
@@ -293,6 +294,10 @@
               <td>
                 <c:if test="${vo.level == 99}"><font color="red"><b>${active}</b></font></c:if>
                 <c:if test="${vo.level != 99}">${active}</c:if>
+              </td>
+              <td>
+                <c:if test="${vo.userDel == 'OK'}"><font color="red"><b>비공개</b></font></c:if>
+                <c:if test="${vo.userDel == 'NO'}">공개</c:if>
               </td>
             </tr>
           </c:forEach>

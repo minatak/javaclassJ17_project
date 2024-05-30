@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>관리자 메인</title>
     <%@ include file="/include/bs4.jsp" %>
     <link href="${ctp}/css/styles.css" rel="stylesheet" />
     <link href="${ctp}/css/admin.css?after1" rel="stylesheet" />
@@ -45,7 +45,7 @@
         main .quick-links a {
           padding: 7px 16px;
 		      border: none;
-		      background-color: #e0dac3;
+		      background-color: #fdfad1;
 		      font-size: 14px; 
 		      color: #5e503f; /* 색상 앞에 # 추가 */
 		      border: 1px solid #d0c2b0;
@@ -81,9 +81,9 @@
       <div class="admin-section">
         <h2>회원관리</h2>
         <div>
-          <p>신고회원 (최근1주일) : <b>?</b>건</p>
-          <p>신규등록회원 : <b>${mCount}</b>건</p>
-          <p>탈퇴신청회원 : <b>${m99Count}</b>건</p>
+          <p>최근 일주일 내 신고회원 : <b>${rCount}</b>건</p>
+          <p>신규 등록회원 : <b>${mCount}</b>건</p>
+          <p>탈퇴 신청회원 : <b>${m99Count}</b>건</p>
         </div>
       </div>
       </div>

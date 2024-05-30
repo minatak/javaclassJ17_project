@@ -241,7 +241,7 @@
 		    <div class="form-check form-check-inline">
 		      <input class="form-check-input" type="checkbox" id="selectAll" onclick="toggleAllCheckboxes(this)">
 		      <label class="form-check-label" for="selectAll">전체선택/취소</label>
-		    	<input type="button" value="돌아가기" onclick="location.href:" class="btn btn-success"/>
+		    	<!-- <input type="button" value="돌아가기" onclick="location.href:" class="btn btn-success"/> -->
 		    </div>
 	    </div>
       <div class="col text-right">

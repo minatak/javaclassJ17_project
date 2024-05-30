@@ -27,26 +27,14 @@ public class AdminController extends HttpServlet {
 		
 		
 		if(com.equals("/AdminMain")) {
-			viewPage += "/adminMain.jsp";
-		}
-		else if(com.equals("/AdminLeft")) {
-			viewPage += "/adminLeft.jsp";
-		}
-		else if(com.equals("/AdminContent")) {
 			command = new AdminContentCommand();
 			command.execute(request, response);
-			viewPage += "/adminContent.jsp";
-		}
-		else if(com.equals("/AdminUserManagement")) {
-			viewPage += "/adminUserManagement.jsp";
+			viewPage += "/adminMain.jsp";
 		}
 		else if(com.equals("/AdminReports")) {
 			command = new MemberReportListCommand();
 			command.execute(request, response);
 			viewPage += "/adminReports.jsp";
-		}
-		else if(com.equals("/AdminEditUser")) {
-			viewPage += "/adminEditUser.jsp";
 		}
 		else if(com.equals("/MemberReportInput")) {
 			command = new MemberReportInputCommand();
