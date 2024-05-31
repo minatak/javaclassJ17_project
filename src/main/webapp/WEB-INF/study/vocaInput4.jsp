@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>단어장 만들기</title>
+    <title>단어 인풋 페이지</title>
     <%@ include file="/include/bs4.jsp" %>
     <link href="${ctp}/css/styles.css" rel="stylesheet" />
     <style>
@@ -20,7 +20,7 @@
             margin-bottom: 30px;
         }
         h1 {
-            font-family: 'CWDangamAsac-Bold';
+            font-family: 'CWDangamAsac-Bold', sans-serif;
             color: #35ae5f;
         }
         .card {
@@ -43,9 +43,9 @@
             margin-bottom: 5px;
             color: #6f5340;
         }
-        
+        .input-group input/* ,
         .dynamic-inputs .word-input input,
-        .dynamic-inputs .word-input select {
+        .dynamic-inputs .word-input select  */{
             width: 100%;
             padding: 10px;
             border: none;
@@ -58,6 +58,18 @@
         .dynamic-inputs .word-input input:focus,
         .dynamic-inputs .word-input select:focus {
             border-bottom: 2px solid #35ae5f;
+        }
+        .btn {
+            padding: 10px 15px;
+            background-color: #35ae5f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #2e944e;
         }
         .dynamic-inputs .word-input {
             display: flex;
@@ -98,58 +110,33 @@
         .add-remove-buttons button:hover {
             background-color: #2e944e;
         }
-        .input-group {
-            display: flex;
-            align-items: center;
-        }
-        .name-input {
-            flex: 3; /* 75% */
-        }
-        .language-select {
-            flex: 1; /* 25% */
-        }
     </style>
     <script>
-        'use strict';
-        
-        let count = 5; // 초기 카운트 값
-        
-        function updateCount() {
-            const countElements = document.querySelectorAll('.word-input .count');
-            countElements.forEach((element, index) => {
-                element.innerText = index + 1;
-            });
-        }
-        
         function addWordInput() {
-            count++; // 카운트 증가
             const container = document.querySelector('.dynamic-inputs');
             const newInput = document.createElement('div');
-            
             newInput.className = 'word-input';
             newInput.innerHTML = `
                 <table>
                     <tr>
-                        <td class="count">${count}</td>
                         <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
                         <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="text" name="examples[]" class="example-input" placeholder="예문"></td>
                     </tr>
                 </table>
             `;
             container.appendChild(newInput);
-            updateCount();
         }
-        
+
         function removeWordInput() {
             const container = document.querySelector('.dynamic-inputs');
             if (container.children.length > 1) {
                 container.removeChild(container.lastElementChild);
-                count--; // 카운트 감소
-                updateCount();
             }
         }
     </script>
-
 </head>
 <body>
     <jsp:include page="/include/nav.jsp" />
@@ -160,45 +147,28 @@
         <div class="card">
             <form action="${ctp}/saveVocab.do" method="POST">
                 <div class="input-group">
-                    <input type="text" name="name" id="name" placeholder="단어장 이름을 입력하세요. (예: 여행 회화 필수 단어)" class="form-control name-input" required />
-                    <select name="language[]" class="form-select language-select" required>
+                    <label for="name">세트명</label>
+                    <select name="language[]" required>
                         <option value="English">English</option>
-                        <option value="Korean">한국어</option>
-                        <option value="Japanese">日本語</option>
-                        <option value="Chinese">中国人</option>
-                        <option value="Russian">Русский</option>
-                        <option value="Spanish">Español</option>
-                        <option value="French">Français</option>
-                        <option value="German">Allemand</option>
+                        <option value="Korean">Korean</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Russian">Russian</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
                     </select>
+                    <input type="text" name="name" id="name" placeholder="세트명을 입력하세요. (예: 중1 영어 천재교과서 1과)" required />
                 </div>
                 <div class="dynamic-inputs">
                     <div class="word-input">
                         <table>
                             <tr>
-                                <td class="count">1</td>
-                                <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어) friends" required></td>
-                                <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻) 친구" required></td>
-                            </tr>
-                            <tr>
-                                <td class="count">2</td>
                                 <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
                                 <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
                             </tr>
                             <tr>
-                                <td class="count">3</td>
-                                <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
-                                <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
-                            </tr>
-                            <tr>
-                                <td class="count">4</td>
-                                <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
-                                <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
-                            </tr>
-                            <tr>
-                                <td class="count">5</td>
-                                <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
-                                <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
+                                <td colspan="2"><input type="text" name="examples[]" class="example-input" placeholder="예문"></td>
                             </tr>
                         </table>
                     </div>

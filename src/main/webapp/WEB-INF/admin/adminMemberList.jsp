@@ -283,7 +283,7 @@
             <c:if test="${vo.level != 99}"><c:set var="active" value="활동중"/></c:if>
             <tr>
               <td><input type="checkbox" name="midFlag" id="midFlag${vo.mid}" value="${vo.mid}"/>${vo.idx}</td>
-              <td><a href="adminEditU.mem?mid=${vo.mid}">${vo.mid}</a></td>
+              <td><a href="#">${vo.mid}</a></td>
               <td>${vo.nickName}</td>
               <td>${vo.name}</td>
               <td>${fn:substring(vo.birthday,0,10)}</td>
@@ -361,7 +361,7 @@
             <c:if test="${vo.userDel == 'OK'}">
               <tr>
                 <td><input type="checkbox" name="midFlag" id="midFlag${vo.mid}" value="${vo.mid}"/>${vo.idx}</td>
-                <td><a href="MemberSearch.mem?mid=${vo.mid}">${vo.mid}</a></td>
+                <td><a href="#">${vo.mid}</a></td>
                 <td>${vo.nickName}</td>
                 <td>${vo.name}</td>
                 <td>${fn:substring(vo.birthday,0,10)}</td>
