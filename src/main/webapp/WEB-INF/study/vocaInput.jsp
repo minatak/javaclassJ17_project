@@ -25,6 +25,7 @@
     body {
       font-family: 'NEXON Lv1 Gothic OTF';
       /* background-color: #f3f4f6; */
+      color: #5e503f;
     }
     .dashboard-header {
       text-align: center;
@@ -75,6 +76,7 @@
       display: flex;
       flex-direction: column;
       margin-bottom: 10px;
+      color: #5e503f;
     }
     .dynamic-inputs .word-input table {
       width: 100%;
@@ -91,7 +93,8 @@
     }
     .dynamic-inputs .word-input .example-input {
       font-size: 12px;
-      color: #999;
+      /* color: #999; */
+      color: #5e503f;
       margin-top: -5px;
     }
     .add-remove-buttons,

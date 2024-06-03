@@ -40,9 +40,13 @@ public class StudyController extends HttpServlet {
 			viewPage = "/include/message.jsp";
 		}
 		else if(com.equals("/VocaDetail")) {
+			command = new VocaDetailCommand();
+			command.execute(request, response);
 			viewPage += "/vocaDetail.jsp";
 		}
 		else if(com.equals("/VocaEdit")) {
+			//command = new VocaEditCommand();
+			command.execute(request, response);
 			viewPage += "/vocaEdit.jsp";
 		}
 		

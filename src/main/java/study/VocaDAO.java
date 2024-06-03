@@ -68,10 +68,10 @@ public class VocaDAO {
       rs = pstmt.executeQuery();
 
       while (rs.next()) {
-          VocaVO vo = new VocaVO();
-          vo.setCategory(rs.getString("category"));
-          vo.setWordCnt(rs.getString("wordCnt"));
-          vos.add(vo);
+        VocaVO vo = new VocaVO();
+        vo.setCategory(rs.getString("category"));
+        vo.setWordCnt(rs.getString("wordCnt"));
+        vos.add(vo);
       }
     } catch (SQLException e) {
       System.out.println("SQL 오류 : " + e.getMessage());
@@ -80,6 +80,36 @@ public class VocaDAO {
     }
     return vos;
 	}
+
+	// 단어장 내용 꺼내오기
+	public ArrayList<VocaVO> getVocaDetail(String mid, String category) {
+		 ArrayList<VocaVO> vos = new ArrayList<VocaVO>();
+	    try {
+	      sql = "SELECT * FROM voca WHERE memberMid = ? and category = ? ORDER BY idx DESC";
+	      pstmt = conn.prepareStatement(sql);
+	      pstmt.setString(1, mid);
+	      pstmt.setString(2, category);
+	      rs = pstmt.executeQuery();
+
+	      while (rs.next()) {
+          VocaVO vo = new VocaVO();
+          vo.setIdx(rs.getInt("idx"));
+          vo.setMemberMid(rs.getString("memberMid"));
+          vo.setCategory(rs.getString("category"));
+          vo.setWord(rs.getString("word"));
+          vo.setMeaning(rs.getString("meaning"));
+          vo.setPartOfSpeech(rs.getString("partOfSpeech"));
+          vo.setExample(rs.getString("example"));
+         // vo.setWordCnt(rs.getString("wordCnt"));
+          vos.add(vo);
+	      }
+	    } catch (SQLException e) {
+	      System.out.println("SQL 오류 : " + e.getMessage());
+	    } finally {
+	      rsClose();
+	    }
+	    return vos;
+		}
 
 
 	

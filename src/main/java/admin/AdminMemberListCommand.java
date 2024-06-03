@@ -13,7 +13,7 @@ public class AdminMemberListCommand implements AdminInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-int level = request.getParameter("level")==null ? 999 : Integer.parseInt(request.getParameter("level"));
+		int level = request.getParameter("level")==null ? 999 : Integer.parseInt(request.getParameter("level"));
 		
 		AdminDAO dao = new AdminDAO();
 		
