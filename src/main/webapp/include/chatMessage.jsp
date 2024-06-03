@@ -36,7 +36,7 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
-      background-color: #f5f5f5;
+      background-color: #fff;
     }
     .newMessage-con	 {
       font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
@@ -44,7 +44,7 @@
       display: flex;
       flex-direction: column;
       height: 90vh;
-      background-color: #f5f5f5;
+      background-color: #fff;
       color: #36a65e;
       font-size:18px;
     }
@@ -61,7 +61,7 @@
       flex-grow: 1;
       padding: 20px;
       overflow-y: auto;
-      background-color: #f5f5f5;
+      background-color: #fff;
     } 
 
     .newMessage-con {

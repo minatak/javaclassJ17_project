@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>단어장 등록</title>
+  <title>단어장 만들기</title>
   <%@ include file="/include/bs4.jsp" %>
   <link href="${ctp}/css/styles.css" rel="stylesheet" />
   <style>
@@ -168,78 +168,25 @@
         updateCount();
       }
     }
-    
-  	function fCheck() {
-		  const form = document.forms['myform'];
-		  const category = form['category'].value;
-		  const words = form['words[]'];
-		  const meanings = form['meanings[]'];
-		  let wordsStr = '';
-		  let meaningsStr = '';
-	
-		  if (category.trim().length > 50) {
-		    alert('단어장 이름은 50자 이하로 입력해주세요.');
-		    form['category'].focus();
-		    return false;
-		  }
-	
-			for (let i = 0; i < words.length; i++) {
-		    if (words[i].value.trim().length === 0) {
-		      alert('단어를 입력해주세요.');
-		      words[i].focus();
-		      return false;
-		    }
-		    if (words[i].value.length > 100) {
-		      alert('단어는 100자 이하로 입력해주세요.');
-		      words[i].focus();
-		      return false;
-		    }
-		    if (meanings[i].value.trim().length === 0) {
-		      alert('뜻을 입력해주세요.');
-		      meanings[i].focus();
-		      return false;
-		    }
-		    if (meanings[i].value.length > 100) {
-		      alert('뜻은 100자 이하로 입력해주세요.');
-		      meanings[i].focus();
-		      return false;
-		    }
-		    if ((meanings[i].value.match(/\)/g) || []).length > 1) {
-		      alert('뜻에 괄호는 포함할 수 없습니다.');
-		      meanings[i].focus();
-		      return false;
-		    }
-		    if (meanings[i].value.includes('/')) {
-		      alert('뜻에 슬래시(/)를 사용할 수 없습니다.');
-		      meanings[i].focus();
-		      return false;
-		    }
-		    wordsStr += words[i].value + '/';
-		    meaningsStr += meanings[i].value + '/';
-			}
-			
-			form['wordsStr'].value = wordsStr.slice(0, -1);
-		  form['meaningsStr'].value = meaningsStr.slice(0, -1);
-		  form.submit();
-  	}
+    	
+		} 
   </script>
 </head>
 <body>
   <jsp:include page="/include/nav.jsp" />
   <main class="container">
     <p><br/></p>
-      <div class="dashboard-header">
+    <div class="dashboard-header">
       <h1>단어장 등록</h1>
     </div>
+      <!-- <a href="VocaMain.st" class="button" >돌아가기</a> -->
     <div class="card">
       <form name="myform" action="VocaInputOk.st" method="POST">
-        <div class="input-group">
+         <div class="input-group">
           <input type="text" name="category" id="category" placeholder="단어장 이름을 입력하세요 (예: 여행 회화 필수 단어)" class="form-control name-input" required />
           <input type="hidden" name="mid" id="mid" value="${sMid}" />
-          <input type="hidden" name="wordsStr" />
-          <input type="hidden" name="meaningsStr" />
         </div>
-        <div class="note mb-3 mt-1"> * 단어의 품사를 입력할 때는 뜻 앞에 품사를 입력 후 ')'를 써주시면 됩니다.</div>
+        <div class="note mb-3 mt-1"> * 단어의 품사를 입력할 때는 품사 입력 후 뜻 앞에 ')'를 써주시면 됩니다.</div>
         <div class="dynamic-inputs">
           <div class="word-input">
             <table>
@@ -253,12 +200,12 @@
                 <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
                 <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
               </tr>
-            	<tr>
+              <tr>
                 <td class="count" style="color: #7a6856;">3</td>
                 <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
                 <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
               </tr>
-              <tr>	
+              <tr>
                 <td class="count" style="color: #7a6856;">4</td>
                 <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
                 <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
@@ -267,7 +214,7 @@
                 <td class="count" style="color: #7a6856;">5</td>
                 <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
                 <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
-              </tr> 
+              </tr>
             </table>
           </div>
         </div>
@@ -277,8 +224,7 @@
             <button type="button" class="btn btn-success" onclick="removeWordInput()">-</button>
           </div>
           <div class="save-button">
-					<button class="btn btn-success" type="button" onclick="fCheck()">저장하기</button>  
-          <!--   <button class="btn btn-success" type="submit" >저장하기</button> -->
+          <button class="btn btn-success" type="submit" >저장하기</button> 
           </div>
         </div>
       </form>

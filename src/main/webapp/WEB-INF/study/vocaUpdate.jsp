@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>단어장 등록</title>
+  <title>단어장 수정</title>
   <%@ include file="/include/bs4.jsp" %>
   <link href="${ctp}/css/styles.css" rel="stylesheet" />
   <style>
@@ -229,12 +229,12 @@
   <main class="container">
     <p><br/></p>
       <div class="dashboard-header">
-      <h1>단어장 등록</h1>
+      <h1>단어장 수정</h1>
     </div>
     <div class="card">
-      <form name="myform" action="VocaInputOk.st" method="POST">
+      <form name="myform" action="VocaUpdateOk.st" method="POST">
         <div class="input-group">
-          <input type="text" name="category" id="category" placeholder="단어장 이름을 입력하세요 (예: 여행 회화 필수 단어)" class="form-control name-input" required />
+          <input type="text" value="${vo.category}" name="category" id="category" placeholder="단어장 이름을 입력하세요 (예: 여행 회화 필수 단어)" class="form-control name-input" required />
           <input type="hidden" name="mid" id="mid" value="${sMid}" />
           <input type="hidden" name="wordsStr" />
           <input type="hidden" name="meaningsStr" />
@@ -243,31 +243,15 @@
         <div class="dynamic-inputs">
           <div class="word-input">
             <table>
-              <tr>
-                <td class="count" style="color: #7a6856;">1</td>
-                <td style="width: 30%;"><input type="text" name="words[]" placeholder="friends" required></td>
-                <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="명사) 친구" required></td>
-              </tr>
-              <tr>
-                <td class="count" style="color: #7a6856;">2</td>
-                <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
-                <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
-              </tr>
-            	<tr>
-                <td class="count" style="color: #7a6856;">3</td>
-                <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
-                <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
-              </tr>
-              <tr>	
-                <td class="count" style="color: #7a6856;">4</td>
-                <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
-                <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
-              </tr>
-              <tr>
-                <td class="count" style="color: #7a6856;">5</td>
-                <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" required></td>
-                <td style="width: 70%;"><input type="text" name="meanings[]" placeholder="뜻" required></td>
-              </tr> 
+            	<c:set var="wordCnt" value="${wordCnt}" />
+				      <c:forEach var="vo" items="${vos}" varStatus="st">
+	              <tr>
+	                <td class="count" style="color: #7a6856;">${wordCnt}</td>
+	                <td style="width: 30%;"><input type="text" name="words[]" placeholder="단어" value="${vo.word}"></td>
+	                <td style="width: 60%;"><input type="text" name="meanings[]" placeholder="뜻" value="${vo.partOfSpeech})${vo.meaning}"></td>
+	                <td style="width: 10%;"><input type="button" onclick="removeWordInput()" value="삭제"></td>
+	              </tr>
+              </c:forEach>
             </table>
           </div>
         </div>
@@ -278,7 +262,6 @@
           </div>
           <div class="save-button">
 					<button class="btn btn-success" type="button" onclick="fCheck()">저장하기</button>  
-          <!--   <button class="btn btn-success" type="submit" >저장하기</button> -->
           </div>
         </div>
       </form>

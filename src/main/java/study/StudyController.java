@@ -27,13 +27,20 @@ public class StudyController extends HttpServlet {
 		
 		
 		if(com.equals("/VocaMain")) {
+			command = new VocaMainCommand();
+			command.execute(request, response);
 			viewPage += "/vocaMain.jsp";
-		}
-		else if(com.equals("/VocaDetail")) {
-			viewPage += "/vocaDetail.jsp";
 		}
 		else if(com.equals("/VocaInput")) {
 			viewPage += "/vocaInput.jsp";
+		}
+		else if(com.equals("/VocaInputOk")) {
+			command = new VocaInputOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/VocaDetail")) {
+			viewPage += "/vocaDetail.jsp";
 		}
 		else if(com.equals("/VocaEdit")) {
 			viewPage += "/vocaEdit.jsp";
@@ -46,11 +53,6 @@ public class StudyController extends HttpServlet {
 //			return;
 //		}
 		
-//		else if(com.equals("/MemberLoginOk")) {
-//			command = new MemberLoginOkCommand();
-//			command.execute(request, response);
-//			viewPage = "/include/message.jsp";
-//		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);  
 		dispatcher.forward(request, response);		
