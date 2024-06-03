@@ -19,6 +19,8 @@ public class ChatMainCommand implements ChatInterface {
 		String receiverMid = request.getParameter("receiverMid")== null ? "" : request.getParameter("receiverMid");
 		String searchStr = request.getParameter("searchStr")== null ? "" : request.getParameter("searchStr");
 		
+//		System.out.println("searchStr : " + searchStr);
+		
 		ChatDAO dao = new ChatDAO();
 		ArrayList<ChatVO> vos = null;
 		TreeSet<String> midVos = null;

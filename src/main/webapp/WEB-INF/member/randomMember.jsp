@@ -120,7 +120,7 @@
     <div class="container">
       <h1>랜덤 회원 추천</h1>
       <h5 style="text-align: center;">랜덤으로 추천된 회원입니다 :)</h5>
-        <div class="member-card" onclick="location.href='${ctp}/MemberProfile.mem?mid=${vo.mid}'">
+        <div class="member-card" >
           <img src="${ctp}/images/member/${vo.photo}" class="profile-photo" />
           <div class="member-info">
             <a href="${ctp}/MemberProfile.mem?mid=${vo.mid}">  
@@ -138,7 +138,7 @@
               </p>
             </div>
             <p>${vo.content}</p>
-            <button class="message-button" onclick="location.href='${ctp}/ChatList.chat?to=${vo.mid}'">메시지 보내기</button>
+            <button class="message-button" onclick="location.href='${ctp}/ChatMain.chat?receiverMid=${vo.mid}'">메시지 보내기</button>
           </div>
         </div>
 

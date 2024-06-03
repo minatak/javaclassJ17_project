@@ -14,7 +14,7 @@
     @charset "UTF-8";
 
     body {
-      font-family: 'NEXON Lv1 Gothic OTF';
+      font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
       background-color: #fefefe;
      /*  font-size: 14px; */
       margin: 0;
@@ -56,7 +56,7 @@
 
     .friends-list {
       width: 250px;
-      background-color: #76bc8f;
+      background-color: #3e3e3e;
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -66,6 +66,14 @@
     .friends-list .search {
       margin-bottom: 20px;
     }
+
+    /* .friends-list .search input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+    } */
 
     .friends-list .friend {
       display: flex;
@@ -99,24 +107,20 @@
       background-color: #f5f5f5;
     }
     .chat-header {
-      background-color: #ffffff;
-      border: 1.2px solid #dbe7df; /*  글자 색과 같은 얇은 테두리 */
-      border-top: none; 
-      border-left: none;
-      border-right: none;
-      color: #39b766;
+      background-color: #35ae5f;
+      color: #fff;
       padding: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .chat-header a {
-      text-decoration: none;
-      color: #39b766;
-    }
-    .chat-header a:hover {
-      text-decoration: none;
-      color: #37aa60;
+
+    .chat-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
     }
 
     .profile-img {
@@ -146,13 +150,11 @@
       font-size: 20px;
       cursor: pointer;
     }
-    
-    .chat-footer {
-      padding: 0 20px;
+     .chat-footer {
+      padding: 20px;
       background-color: #fff;
       display: flex;
       align-items: center;
-      height: 60px;
     }
 
     .chat-footer input {
@@ -161,9 +163,7 @@
       border: 1px solid #ddd;
       border-radius: 5px;
       margin-right: 10px;
-      font-size: 16px;
-      height: 40px;
-      color: #a88c6a; /* 글자 색상 */
+      font-size: 14px;
     }
 
     .chat-footer button {
@@ -173,27 +173,24 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      height: 40px; /* 버튼 높이를 input과 같게 설정 */
-      white-space: nowrap; /* 버튼 텍스트가 한 줄로 표시되도록 설정 */
     }
 
     .chat-footer button:hover {
       background-color: #39b766;
     }
-    
-    a {
-      text-decoration: none;
-      color: #fdfad1;
-    }
-    a:hover {
-      text-decoration: none;
-      color: #ece9c1;
-    }
-    
   </style>
   <script>
     'use strict';
+    
 
+/*     function sendMessage() {
+      var message = document.getElementById("message").value;
+      var senderMid = "${sMid}";
+      var receiverMid = "${sReceiverMid}";
+      // Add AJAX call to send the message
+    } */
+    
+    
     function sendMessage() {
     	let message = $("#message").val();
     	let senderMid = "${sMid}";
@@ -227,19 +224,21 @@
 			$("#message").on("keydown", function(e) {
 				if(e.keyCode == 13) sendMessage();
 			});
-		});
+	});
     
-  /* 	window.onload = function() {
-      let chatBox = document.getElementById("chatBox");
-        chatBox.contentWindow.scrollTo(0, chatBox.contentDocument.body.scrollHeight);
-    }; */
-      
+    
     
   </script>
 </head>
 <body>
   <jsp:include page="/include/nav.jsp" />
   <div class="chatBody">
+  <%-- 
+	  <div class="sidebar">
+	    <a href="MemberInfo.mem"><img src="${ctp}/images/member/noimage.png" alt="Profile Image"></a>
+	    <a href="Main.com" class="logout"><i class="fas fa-sign-out-alt"></i></a>
+	  </div>
+	   --%>
 	  <div class="friends-list">
 	    <form name="myform" method="post" action="ChatMain.chat">
 		    <div class="search input-group">
@@ -247,57 +246,20 @@
 		      <button onclick="submit" class="btn btn-success input-group-append"><i class="fa-solid fa-magnifying-glass"></i></button>
 		    </div>
 	    </form>
-	    <%-- 
-	    <c:if test="${fn:length(midVos) != 0}">
-		    <c:forEach var="v" items="${midVos}" varStatus="st">
-		      <c:set var="vo" value="${fn:split(v,'/')}"/>
-		      <c:if test="${vo[0] != sMid}">
-			      <div class="friend">
-			        <img src="${ctp}/images/member/${vo[1]}" alt="Friend Image">
-			        <div>
-			          <div class="name"><a href="ChatMain.chat?receiverMid=${vo[0]}">${vo[0]}</a></div>
-			        </div>
-			      </div>
-		      </c:if>
-		    </c:forEach>
-	    </c:if>
-	    <c:if test="${midVos == 'null'}">
-		    <c:forEach var="v" items="${vos}" varStatus="st">
+	    
+	    <c:forEach var="v" items="${midVos}" varStatus="st">
+	      <c:set var="vo" value="${fn:split(v,'/')}"/>
+	      <c:if test="${vo[0] != sMid}">
 		      <div class="friend">
-		        <img src="${ctp}/images/member/${vo.photo}" alt="Friend Image">
+		        <%-- <img src="${ctp}/images/member/${vo.photo}" alt="Friend Image"> --%>
+		        <img src="${ctp}/images/member/${vo[1]}" alt="Friend Image">
 		        <div>
-		          <div class="name"><a href="ChatMain.chat?receiverMid=${vo.receiverMid}">${vo.receiverMid}</a></div>
+		          <%-- <div class="name"><a href="ChatMain.chat?receiverMid=${vo.receiverMid}">${vo.receiverMid}</a></div> --%>
+		          <div class="name"><a href="ChatMain.chat?receiverMid=${vo[0]}">${vo[0]}</a></div>
 		        </div>
 		      </div>
-		    </c:forEach>
-	    </c:if>
-	     --%>
-	     
-	    <c:if test="${! empty midVos}">
-		    <c:forEach var="v" items="${midVos}" varStatus="st">
-	        <c:set var="vo" value="${fn:split(v, '/')}"/>
-	        <c:if test="${vo[0] != sMid}">
-            <div class="friend">
-              <img src="${ctp}/images/member/${vo[1]}" alt="Friend Image">
-              <div>
-                <div class="name"><a href="ChatMain.chat?receiverMid=${vo[0]}">${vo[0]}</a></div>
-              </div>
-            </div>
-	        </c:if>
-		    </c:forEach>
-			</c:if>
-			<c:if test="${empty midVos}">
-		    <c:forEach var="v" items="${vos}" varStatus="st">
-	        <div class="friend">
-            <img src="${ctp}/images/member/${v.photo}" alt="Friend Image">
-            <div>
-              <div class="name"><a href="ChatMain.chat?receiverMid=${v.receiverMid}">${v.receiverMid}</a></div>
-            </div>
-	        </div>
-		    </c:forEach>
-			</c:if>
-	     
-	    
+	      </c:if>
+	    </c:forEach>
 	  </div>
 	  
 	  <div class="chat-container">
@@ -306,7 +268,10 @@
 	        <a href="MemberProfile.mem?mid=${sReceiverMid}">
 	        <h3>${sReceiverMid}</h3></a>
 	      </div>
-	      <hr/>
+	      <div class="actions">
+	        <!-- <i class="fas fa-cog"></i> 
+	        <i class="fas fa-sign-out-alt"></i> -->
+	      </div>
 	    </div>
 	  
 		  <div class="chat-container">

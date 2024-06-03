@@ -6,26 +6,35 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 public class MemberJoinOk2Command implements MemberInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mid = request.getParameter("mid")==null? "" : request.getParameter("mid");
-		String pwd = request.getParameter("pwd")==null? "" : request.getParameter("pwd");
-		String nickName = request.getParameter("nickName")==null? "" : request.getParameter("nickName");
-		String name = request.getParameter("name")==null? "" : request.getParameter("name");
-		String email = request.getParameter("email")==null? "" : request.getParameter("email");
-		String gender = request.getParameter("gender")==null? "" : request.getParameter("gender");
-		String birthday = request.getParameter("birthday")==null? "" : request.getParameter("birthday");
-		String photo = request.getParameter("fName")=="" ? "noimage.png" : request.getParameter("fName");
-		String country = request.getParameter("country")==null? "" : request.getParameter("country");
-		String city = request.getParameter("city")==null? "" : request.getParameter("city");
-		String nativeLanguage = request.getParameter("nativeLanguage")==null? "" : request.getParameter("nativeLanguage");
-		String learningLanguage = request.getParameter("learningLanguage")==null? "" : request.getParameter("learningLanguage");
-		String languageLevel = request.getParameter("languageLevel")==null? "" : request.getParameter("languageLevel");
-		String content = request.getParameter("content")==null? "" : request.getParameter("content");
+		String realPath = request.getServletContext().getRealPath("/images/member");
+		int maxSize = 1024 * 1024 * 5;
+		String encoding = "UTF-8";
 		
-		System.out.println("photo : " + photo);
+		MultipartRequest multipartRequest = new MultipartRequest(request, realPath, maxSize, encoding, new DefaultFileRenamePolicy());
+		
+		String mid = multipartRequest.getParameter("mid")==null? "" : multipartRequest.getParameter("mid");
+		String pwd = multipartRequest.getParameter("pwd")==null? "" : multipartRequest.getParameter("pwd");
+		String nickName = multipartRequest.getParameter("nickName")==null? "" : multipartRequest.getParameter("nickName");
+		String name = multipartRequest.getParameter("name")==null? "" : multipartRequest.getParameter("name");
+		String email = multipartRequest.getParameter("email")==null? "" : multipartRequest.getParameter("email");
+		String gender = multipartRequest.getParameter("gender")==null? "" : multipartRequest.getParameter("gender");
+		String birthday = multipartRequest.getParameter("birthday")==null? "" : multipartRequest.getParameter("birthday");
+		String photo = multipartRequest.getFilesystemName("fName")== "" ? "noimage.png" : multipartRequest.getFilesystemName("fName");
+		String country = multipartRequest.getParameter("country")==null? "" : multipartRequest.getParameter("country");
+		String city = multipartRequest.getParameter("city")==null? "" : multipartRequest.getParameter("city");
+		String nativeLanguage = multipartRequest.getParameter("nativeLanguage")==null? "" : multipartRequest.getParameter("nativeLanguage");
+		String learningLanguage = multipartRequest.getParameter("learningLanguage")==null? "" : multipartRequest.getParameter("learningLanguage");
+		String languageLevel = multipartRequest.getParameter("languageLevel")==null? "" : multipartRequest.getParameter("languageLevel");
+		String content = multipartRequest.getParameter("content")==null? "" : multipartRequest.getParameter("content");
+		
+//		System.out.println("photo : " + photo);
 		
 		// 모든 체크가 끝난 자료는 vo에 담아서 DB에 저장처리한다.
 		MemberDAO dao = new MemberDAO();

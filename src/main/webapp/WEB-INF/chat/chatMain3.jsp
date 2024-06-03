@@ -67,6 +67,14 @@
       margin-bottom: 20px;
     }
 
+    /* .friends-list .search input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+    } */
+
     .friends-list .friend {
       display: flex;
       align-items: center;
@@ -146,13 +154,11 @@
       font-size: 20px;
       cursor: pointer;
     }
-    
-    .chat-footer {
-      padding: 0 20px;
+     .chat-footer {
+      padding: 20px;
       background-color: #fff;
       display: flex;
       align-items: center;
-      height: 60px;
     }
 
     .chat-footer input {
@@ -162,8 +168,6 @@
       border-radius: 5px;
       margin-right: 10px;
       font-size: 16px;
-      height: 40px;
-      color: #a88c6a; /* 글자 색상 */
     }
 
     .chat-footer button {
@@ -173,8 +177,6 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      height: 40px; /* 버튼 높이를 input과 같게 설정 */
-      white-space: nowrap; /* 버튼 텍스트가 한 줄로 표시되도록 설정 */
     }
 
     .chat-footer button:hover {
@@ -193,7 +195,16 @@
   </style>
   <script>
     'use strict';
+    
 
+/*     function sendMessage() {
+      var message = document.getElementById("message").value;
+      var senderMid = "${sMid}";
+      var receiverMid = "${sReceiverMid}";
+      // Add AJAX call to send the message
+    } */
+    
+    
     function sendMessage() {
     	let message = $("#message").val();
     	let senderMid = "${sMid}";
@@ -227,19 +238,21 @@
 			$("#message").on("keydown", function(e) {
 				if(e.keyCode == 13) sendMessage();
 			});
-		});
+	});
     
-  /* 	window.onload = function() {
-      let chatBox = document.getElementById("chatBox");
-        chatBox.contentWindow.scrollTo(0, chatBox.contentDocument.body.scrollHeight);
-    }; */
-      
+    
     
   </script>
 </head>
 <body>
   <jsp:include page="/include/nav.jsp" />
   <div class="chatBody">
+  <%-- 
+	  <div class="sidebar">
+	    <a href="MemberInfo.mem"><img src="${ctp}/images/member/noimage.png" alt="Profile Image"></a>
+	    <a href="Main.com" class="logout"><i class="fas fa-sign-out-alt"></i></a>
+	  </div>
+	   --%>
 	  <div class="friends-list">
 	    <form name="myform" method="post" action="ChatMain.chat">
 		    <div class="search input-group">
@@ -247,56 +260,21 @@
 		      <button onclick="submit" class="btn btn-success input-group-append"><i class="fa-solid fa-magnifying-glass"></i></button>
 		    </div>
 	    </form>
-	    <%-- 
-	    <c:if test="${fn:length(midVos) != 0}">
-		    <c:forEach var="v" items="${midVos}" varStatus="st">
-		      <c:set var="vo" value="${fn:split(v,'/')}"/>
-		      <c:if test="${vo[0] != sMid}">
-			      <div class="friend">
-			        <img src="${ctp}/images/member/${vo[1]}" alt="Friend Image">
-			        <div>
-			          <div class="name"><a href="ChatMain.chat?receiverMid=${vo[0]}">${vo[0]}</a></div>
-			        </div>
-			      </div>
-		      </c:if>
-		    </c:forEach>
-	    </c:if>
-	    <c:if test="${midVos == 'null'}">
-		    <c:forEach var="v" items="${vos}" varStatus="st">
+	    
+	    
+	    <c:forEach var="v" items="${midVos}" varStatus="st">
+	      <c:set var="vo" value="${fn:split(v,'/')}"/>
+	      <c:if test="${vo[0] != sMid}">
 		      <div class="friend">
-		        <img src="${ctp}/images/member/${vo.photo}" alt="Friend Image">
+		        <%-- <img src="${ctp}/images/member/${vo.photo}" alt="Friend Image"> --%>
+		        <img src="${ctp}/images/member/${vo[1]}" alt="Friend Image">
 		        <div>
-		          <div class="name"><a href="ChatMain.chat?receiverMid=${vo.receiverMid}">${vo.receiverMid}</a></div>
+		          <%-- <div class="name"><a href="ChatMain.chat?receiverMid=${vo.receiverMid}">${vo.receiverMid}</a></div> --%>
+		          <div class="name"><a href="ChatMain.chat?receiverMid=${vo[0]}">${vo[0]}</a></div>
 		        </div>
 		      </div>
-		    </c:forEach>
-	    </c:if>
-	     --%>
-	     
-	    <c:if test="${! empty midVos}">
-		    <c:forEach var="v" items="${midVos}" varStatus="st">
-	        <c:set var="vo" value="${fn:split(v, '/')}"/>
-	        <c:if test="${vo[0] != sMid}">
-            <div class="friend">
-              <img src="${ctp}/images/member/${vo[1]}" alt="Friend Image">
-              <div>
-                <div class="name"><a href="ChatMain.chat?receiverMid=${vo[0]}">${vo[0]}</a></div>
-              </div>
-            </div>
-	        </c:if>
-		    </c:forEach>
-			</c:if>
-			<c:if test="${empty midVos}">
-		    <c:forEach var="v" items="${vos}" varStatus="st">
-	        <div class="friend">
-            <img src="${ctp}/images/member/${v.photo}" alt="Friend Image">
-            <div>
-              <div class="name"><a href="ChatMain.chat?receiverMid=${v.receiverMid}">${v.receiverMid}</a></div>
-            </div>
-	        </div>
-		    </c:forEach>
-			</c:if>
-	     
+	      </c:if>
+	    </c:forEach>
 	    
 	  </div>
 	  

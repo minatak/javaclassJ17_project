@@ -29,8 +29,12 @@ public class ChatController extends HttpServlet {
 //		if(com.equals("/ChatList")) {
 //			viewPage += "/chatList.jsp";
 //		}
-		
-		if(com.equals("/ChatMain")) {
+		if(level > 4) {
+			request.setAttribute("message", "로그인후 사용하세요");
+			request.setAttribute("url", request.getContextPath()+"/Login.mem");
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/ChatMain")) {
 			command = new ChatMainCommand();
 			command.execute(request, response);
 			viewPage += "/chatMain.jsp";

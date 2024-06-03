@@ -123,9 +123,14 @@
 	                    </a>
 	                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
 	                        <li><a class="dropdown-item" href="MemberMain.mem">대시보드</a></li>
-	                        <li><a class="dropdown-item" href="MemberInfo.mem">내 정보 확인</a></li>
+	                        <li><a class="dropdown-item" href="MemberInfo.mem">정보 확인</a></li>
 	                        <li><a class="dropdown-item" href="MemberUpdate.mem">정보 수정</a></li>
 	                        <li><hr class="dropdown-divider"></li>
+	                        <c:if test="${sLevel == 0}">
+	                        <li><a class="dropdown-item" href="AdminMemberList.ad">회원 리스트</a></li>
+	                        <li><a class="dropdown-item" href="AdminReports.ad">신고 관리</a></li>
+	                        <li><hr class="dropdown-divider"></li>
+	                        </c:if>
 	                        <li><a class="dropdown-item" href="MemberLogout.mem">Logout</a></li>
 	                    </ul>
 	                </li>

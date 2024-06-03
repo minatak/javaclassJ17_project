@@ -23,13 +23,14 @@
     let regPwd = /^[a-zA-Z0-9!@#$%^*+=-_]{4,16}$/   // 비밀번호 8~16의 영문 대/소문자와 특수문자 숫자와 밑줄 가능
     let regNickName = /^[가-힣0-9]+$/;                    // 닉네임은 한글, 숫자 만 가능
     let regName = /^[가-힣a-zA-Z]+$/;                // 이름은 한글/영문 가능
-    let regEmail = /^[a-zA-Z0-9_]{4,20}$/; // 4~20의 영문 대/소문자와 숫자와 밑줄 가능
+    let regEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         
     // 검사를 끝내고 필요한 내역들을 변수에 담아 회원가입처리한다.
     let mid = registerForm1.mid.value.trim();
     let pwd = registerForm1.pwd.value.trim();
     let nickName = registerForm1.nickName.value;
     let name = registerForm1.name.value;
+    let email = registerForm1.email.value;
     
     if(!regMid.test(mid)) {
       alert("아이디는 4~20자리의 영문 소/대문자와 숫자, 언더바(_)만 사용가능합니다.");
@@ -47,10 +48,15 @@
 	    return false;
     }
     else if(!regName.test(name)) {
-      alert("성명은 한글과 영문대소문자만 사용가능합니다.");
+      alert("성명은 한글과 영문 대/소문자만 사용가능합니다.");
       registerForm1.name.focus();
       return false;
     }
+    else if(!regEmail.test(email)) {
+  	  alert("이메일 형식이 올바르지 않습니다.");
+  	  registerForm1.email.focus();
+  	  return false;
+  	}
    
     if(idCheckSw == 0) {
       alert("아이디 중복체크버튼을 눌러주세요");

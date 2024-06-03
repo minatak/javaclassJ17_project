@@ -32,6 +32,38 @@
   		}
     }
 	  
+		function fCheck() {
+	    	
+	    	// 전송전에 파일에 관련된 사항들을 체크해준다.
+			let fName = document.getElementById("file").value;
+			if(fName.trim() != "") {
+				let ext = fName.substring(fName.lastIndexOf(".")+1).toLowerCase();
+				let maxSize = 1024 * 1024 * 5;
+				let fileSize = document.getElementById("file").files[0].size;
+				
+				if(ext != 'jpg' && ext != 'gif' && ext != 'png' && ext != 'jfif') {
+					alert("업로드 가능한 파일 형식이 아닙니다.");
+					return false;
+				}
+				else if(fileSize > maxSize) {
+					alert("업로드할 파일의 최대용량은 5MByte입니다.");
+					return false;
+				}
+			}
+			else return false;	
+	
+	    let nativeLanguage = document.getElementById("nativeLanguage").value;
+	    let learningLanguage = document.getElementById("learningLanguage").value;
+	
+	    if (nativeLanguage == learningLanguage) {
+	        alert("학습할 언어는 모국어와 달라야합니다.");
+	        return false;
+	    }
+	
+	    document.registerForm1.submit();
+	    
+		}
+		
 	</script>
 </head>
 <body class="d-flex flex-column h-100">
@@ -40,7 +72,7 @@
     <div class="container join-container mt-5 mb-5">
       <div class="register-container">
         <h1 style="font-family: 'CWDangamAsac-Bold';">회원 정보 수정</h1>
-        <form name="registerForm1" method="post" action="${ctp}/MemberInfoUpdateOk.mem">
+        <form name="registerForm1" method="post" action="${ctp}/MemberInfoUpdateOk.mem" enctype="multipart/form-data">
           <div class="form-group ">
             <label for="mid">ID (수정 불가)</label>
             <input type="text" id="mid" name="mid" value="${vo.mid}" readonly>
@@ -76,7 +108,7 @@
           </div>
           <div class="form-group">
             <label for="profilePicture">프로필 사진</label>
-            <input type="file" id="fName" name="fName"> 
+            <input type="file" id="file" name="fName"> 
           </div>
           <div class="form-group">
             <label for="country">Country *</label>
@@ -108,7 +140,8 @@
           </div>
           <span style="float: right;"class="mb-3"><input type="button" value="회원 탈퇴" onclick="deleteAccount()" class="dangerButton"></span>
           <div class="form-group text-center mt-5">
-            <input type="submit" value="수정하기" class="myBtn">
+            <!-- <input type="submit" value="수정하기" class="myBtn"> -->
+            <button type="button" class="myBtn" onclick="fCheck()">수정하기</button>  
           </div>
           
         </form>

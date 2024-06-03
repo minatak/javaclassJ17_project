@@ -4,56 +4,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>회원가입</title>
-	<%@ include file="/include/bs4.jsp" %>
-	<script>
-	    'use strict';
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회원가입</title>
+<%@ include file="/include/bs4.jsp" %>
+<script>
+	'use strict';
 	
-	   /*  function imgCheck(e) {
-	        if (e.files && e.files[0]) {
-	            let reader = new FileReader();
-	            reader.onload = function(e) {
-	                document.getElementById("photoDemo").src = e.target.result;
-	            }
-	            reader.readAsDataURL(e.files[0]);
-	        }
-	    } */
-	
-		function fCheck() {
-	    	
-	    	// 전송전에 파일에 관련된 사항들을 체크해준다.
-			let fName = document.getElementById("file").value;
-			if(fName.trim() != "") {
-				let ext = fName.substring(fName.lastIndexOf(".")+1).toLowerCase();
-				let maxSize = 1024 * 1024 * 5;
-				let fileSize = document.getElementById("file").files[0].size;
-				
-				if(ext != 'jpg' && ext != 'gif' && ext != 'png' && ext != 'jfif') {
-					alert("그림파일만 업로드 가능합니다.");
-					return false;
-				}
-				else if(fileSize > maxSize) {
-					alert("업로드할 파일의 최대용량은 5MByte입니다.");
-					return false;
-				}
+	/*   // 선택된 사진 미리보기
+    function imgCheck(e) {
+    	if(e.files && e.files[0]) {
+    		let reader = new FileReader();
+    		reader.onload = function(e) {
+    			document.getElementById("photoDemo").src = e.target.result;
+    		}
+    		reader.readAsDataURL(e.files[0]);
+    	}
+    } */
+
+  function fCheck() {
+    	
+		// 전송전에 파일에 관련된 사항들을 체크해준다.
+		let fName = document.getElementById("file").value;
+		if(fName.trim() != "") {
+			let ext = fName.substring(fName.lastIndexOf(".")+1).toLowerCase();
+			let maxSize = 1024 * 1024 * 5;
+			let fileSize = document.getElementById("file").files[0].size;
+			
+			if(ext != 'jpg' && ext != 'gif' && ext != 'png') {
+				alert("그림파일만 업로드 가능합니다.");
+				return false;
 			}
-			else return false;	
-	
-	    let nativeLanguage = document.getElementById("nativeLanguage").value;
-	    let learningLanguage = document.getElementById("learningLanguage").value;
-	
-	    if (nativeLanguage == learningLanguage) {
-	        alert("학습할 언어는 모국어와 달라야합니다.");
-	        return false;
-	    }
-	
-	    document.registerForm2.submit();
-	    
+			else if(fileSize > maxSize) {
+				alert("업로드할 파일의 최대용량은 5MByte입니다.");
+				return false;
+			}
 		}
-	    
-	</script>
+		else return false;		
+		
+		let nativeLanguage = document.getElementById("nativeLanguage").value;
+		let learningLanguage = document.getElementById("learningLanguage").value;
+		
+		if(nativeLanguage == learningLanguage) {
+			alert("학습할 언어는 모국어와 달라야합니다.");
+			return false;
+		}
+		
+		myform.submit();
+  }
+	
+</script>
 <link href="css/styles.css" rel="stylesheet" />
 <link href="${ctp}/css/join.css?after" rel="stylesheet" /> 
 </head>
@@ -81,11 +81,10 @@
             <div class="m-2">가입완료</div>
           </div>
         </div>
-        
-        <form name="registerForm2" method="post" action="${ctp}/MemberJoinOk2.mem" enctype="multipart/form-data">
+        <form name="registerForm2" method="post" action="${ctp}/MemberJoinOk2.mem">
           <div class="form-group">
             <label for="profilePicture">프로필 사진</label>
-            <input type="file" id="file" name="fName"> 
+            <input type="file" id="fName" name="fName" onchange="imgCheck(this)"> 
           </div>
           <div class="form-group">
             <label for="country">거주하는 나라 *</label>

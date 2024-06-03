@@ -153,10 +153,10 @@
 		      <div class="form-group">
 		      	<input type="submit" value="Login" class="myBtn">
 		      </div>
-		      <div class="form-group otherLink">
+		      <div class="form-group otherLink text-center">
 		        <input type="checkbox" name="idSave" checked />아이디 저장 |
-		        <a class="custom-btn" href="${ctp}/Register.mem">회원가입</a> |
-		        <a class="custom-btn" href="${ctp}/MemberJoin.mem'">아이디/비밀번호 찾기</a>
+		        <a class="custom-btn" href="${ctp}/Register.mem">회원가입</a> 
+		        <%-- <a class="custom-btn" href="${ctp}/MemberJoin.mem'">아이디/비밀번호 찾기</a> --%>
 		      </div>
 		    </form>
 		  </div>	

@@ -43,6 +43,9 @@
     .admin-section {
       margin-bottom: 30px;
     }
+ /*    .admin-section h2 {
+      font-size: 1.5em;
+    } */
     a {
       text-decoration: none;
       color: #534737;
@@ -53,6 +56,7 @@
     a:hover {
       color: #534737;
       background-color: #fdfad1;
+  /*     padding: 2px 4px; */
     }
     .admin-table {
       width: 100%;
@@ -83,7 +87,7 @@
       border: none;
       background-color: #e0dac3;
       font-size: 14px;
-      color: #5e503f;
+      color: #5e503f; /* 색상 앞에 # 추가 */
       border: 1px solid #5e503f;
       border-radius: 15px; 
       cursor: pointer;
@@ -96,7 +100,8 @@
   </style>
   <script>
     'use strict';
-
+    
+    
     $(function(){
       $("#userDispaly").hide();
       
@@ -111,140 +116,144 @@
         }
       });
     });
+     
+     
+		// 전체선택/취소
+		function toggleAllCheckboxes(source) {
+		 const checkboxes = document.querySelectorAll('input[name="midFlag"]');
+		 checkboxes.forEach(checkbox => checkbox.checked = source.checked);
+		}
     
-    function toggleAllCheckboxes(source) {
-      const checkboxes = document.querySelectorAll('input[name="midFlag"]');
-      checkboxes.forEach(checkbox => checkbox.checked = source.checked);
-    }
     
     function memberDeleteOk() {
-      let selectMemberArray = '';
-      
-      for(let i=0; i<myform.midFlag.length; i++) {
-        if(myform.midFlag[i].checked) selectMemberArray += myform.midFlag[i].value + "/";
-      }
-      if(selectMemberArray == '') {
-        alert("삭제할 회원을 한 명 이상 선택하세요");
-        return false;
-      }
-      
-      let ans = confirm("선택하신 회원을 영구삭제하시겠습니까?");
-      if(!ans) return false;
-      
-      selectMemberArray = selectMemberArray.substring(0,selectMemberArray.lastIndexOf("/"));
-      let query = {
-        selectMemberArray : selectMemberArray
-      }
-      
-      $.ajax({
-        url  : "MemberDeleteOk.ad",
-        type : "post",
-        data : query,
-        success:function(res) {
-          if(res != "0") { 
-            alert("선택하신 회원이 영구삭제되었습니다");
-            location.reload();
-          }
-          else alert("회원 삭제에 실패했습니다");
-        },
-        error : function() {
-          alert("전송 실패");
+        let selectMemberArray = '';
+    		
+        for(let i=0; i<myform.midFlag.length; i++) {
+          if(myform.midFlag[i].checked) selectMemberArray += myform.midFlag[i].value + "/";
         }
-      });
-    }
-    
-    function memberHideOk() {
-      let selectMemberArray = '';
-      
-      for(let i=0; i<myform.midFlag.length; i++) {
-        if(myform.midFlag[i].checked) selectMemberArray += myform.midFlag[i].value + "/";
-      }
-      if(selectMemberArray == '') {
-        alert("숨김 처리할 회원을 한 명 이상 선택하세요");
-        return false;
-      }
-      
-      let ans = confirm("선택하신 회원을 회원 조회 리스트에서 감추시겠습니까?");
-      if(!ans) return false;
-      
-      selectMemberArray = selectMemberArray.substring(0,selectMemberArray.lastIndexOf("/"));
-      let query = {
-        selectMemberArray : selectMemberArray
-      }
-      
-      $.ajax({
-        url  : "MemberHideOk.ad",
-        type : "post",
-        data : query,
-        success:function(res) {
-          if(res != "0") { 
-            alert("선택하신 회원이 숨김 처리되었습니다");
-            location.reload();
-          }
-          else alert("회원 감추기에 실패했습니다");
-        },
-        error : function() {
-          alert("전송 실패");
+      	if(selectMemberArray == '') {
+      		alert("삭제할 회원을 한 명 이상 선택하세요");
+      		return false;
+      	}
+      	
+      	let ans = confirm("선택하신 회원을 영구삭제하시겠습니까?");
+      	if(!ans) return false;
+      	
+      	selectMemberArray = selectMemberArray.substring(0,selectMemberArray.lastIndexOf("/"));
+        let query = {
+      		  selectMemberArray : selectMemberArray
         }
-      });
-    }
-    
-    function memberShowOk() {
-      let selectMemberArray = '';
-      
-      for(let i=0; i<hideMyform.midFlag.length; i++) {
-        if(hideMyform.midFlag[i].checked) selectMemberArray += hideMyform.midFlag[i].value + "/";
-      }
-      if(selectMemberArray == '') {
-        alert("보임 처리할 회원을 한 명 이상 선택하세요");
-        return false;
-      }
-      
-      let ans = confirm("선택하신 회원을 회원 조회 리스트에서 공개하시겠습니까?");
-      if(!ans) return false;
-      
-      selectMemberArray = selectMemberArray.substring(0,selectMemberArray.lastIndexOf("/"));
-      let query = {
-        selectMemberArray : selectMemberArray
+        
+        $.ajax({
+      	  url  : "MemberDeleteOk.ad",
+      	  type : "post",
+      	  data : query,
+      	  success:function(res) {
+      		  if(res != "0") { 
+      			  alert("선택하신 회원이 영구삭제되었습니다");
+      			  location.reload();
+      		  }
+      		  else alert("회원 삭제에 실패했습니다");
+      	  },
+      	  error : function() {
+      		  alert("전송 실패");
+      	  }
+        });
       }
       
-      $.ajax({
-        url  : "MemberShowOk.ad",
-        type : "post",
-        data : query,
-        success:function(res) {
-          if(res != "0") { 
-            alert("선택하신 회원이 공개 처리되었습니다");
-            location.reload();
-          }
-          else alert("회원 공개에 실패했습니다");
-        },
-        error : function() {
-          alert("전송 실패");
+      function memberHideOk() {
+        let selectMemberArray = '';
+    		
+        for(let i=0; i<myform.midFlag.length; i++) {
+          if(myform.midFlag[i].checked) selectMemberArray += myform.midFlag[i].value + "/";
         }
-      });
-    }
-    
-    function modalCheck(mid, nickName, name, email, gender, birthday, startDate) {
-      document.getElementById('modalMid').innerText = mid;
-      document.getElementById('modalNickName').innerText = nickName;
-      document.getElementById('modalName').innerText = name;
-      document.getElementById('modalEmail').innerText = email;
-      document.getElementById('modalGender').innerText = gender;
-      document.getElementById('modalBirthday').innerText = birthday;
-      startDate = startDate.substring(0,10);
-      document.getElementById('modalStartDate').innerText = startDate;
-    }
+      	if(selectMemberArray == '') {
+      		alert("숨김 처리할 회원을 한 명 이상 선택하세요");
+      		return false;
+      	}
+      	
+      	let ans = confirm("선택하신 회원을 회원 조회 리스트에서 감추시겠습니까?");
+      	if(!ans) return false;
+      	
+      	selectMemberArray = selectMemberArray.substring(0,selectMemberArray.lastIndexOf("/"));
+        let query = {
+      		  selectMemberArray : selectMemberArray
+        }
+        
+        $.ajax({
+      	  url  : "MemberHideOk.ad",
+      	  type : "post",
+      	  data : query,
+      	  success:function(res) {
+      		  if(res != "0") { 
+      			  alert("선택하신 회원이 숨김 처리되었습니다");
+      			  location.reload();
+      		  }
+      		  else alert("회원 감추기에 실패했습니다");
+      	  },
+      	  error : function() {
+      		  alert("전송 실패");
+      	  }
+        });
+      }
+      
+      function memberShowOk() {
+        let selectMemberArray = '';
+    		
+        for(let i=0; i<hideMyform.midFlag.length; i++) {
+          if(hideMyform.midFlag[i].checked) selectMemberArray += hideMyform.midFlag[i].value + "/";
+        }
+      	if(selectMemberArray == '') {
+      		alert("보임 처리할 회원을 한 명 이상 선택하세요");
+      		return false;
+      	}
+      	
+      	let ans = confirm("선택하신 회원을 회원 조회 리스트에서 공개하시겠습니까?");
+      	if(!ans) return false;
+      	
+      	selectMemberArray = selectMemberArray.substring(0,selectMemberArray.lastIndexOf("/"));
+        let query = {
+      		  selectMemberArray : selectMemberArray
+        }
+        
+        $.ajax({
+      	  url  : "MemberShowOk.ad",
+      	  type : "post",
+      	  data : query,
+      	  success:function(res) {
+      		  if(res != "0") { 
+      			  alert("선택하신 회원이 공개 처리되었습니다");
+      			  location.reload();
+      		  }
+      		  else alert("회원 공개에 실패했습니다");
+      	  },
+      	  error : function() {
+      		  alert("전송 실패");
+      	  }
+        });
+      }
+      
+      function modalCheck(mid, nickName, name, email, gender, birthday, startDate) {
+          document.getElementById('modalMid').innerText = mid;
+          document.getElementById('modalNickName').innerText = nickName;
+          document.getElementById('modalName').innerText = name;
+          document.getElementById('modalEmail').innerText = email;
+          document.getElementById('modalGender').innerText = gender;
+          document.getElementById('modalBirthday').innerText = birthday;
+          document.getElementById('modalStartDate').innerText = startDate;
+        }
   </script>
 </head>
-<jsp:include page="/include/nav.jsp" />
+  <jsp:include page="/include/nav.jsp" />
 <body>
   <div class="container mt-4">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" name="userInfor" id="userInfor" />
-      <label class="form-check-label" for="userInfor">숨김처리 회원 모아보기 / 전체회원 보기</label> 
-    </div>
-    <hr/>
+      <div class="form-check form-check-inline">
+       <input class="form-check-input" type="checkbox" name="userInfor" id="userInfor" />
+        <label class="form-check-label" for="userInfor">숨김처리 회원 모아보기 / 전체회원 보기</label> 
+        <!-- <input type="button" id="hideMembers" value="숨김처리 회원 모아보기" class="btn btn-success" onclick="showAllMembers()"/>
+        <input type="button" id="allMembers" value="전체회원 보기" class="btn btn-success" onclick="showHideMembers()" style="display:none;"/> -->
+      </div>
+      <hr/>
     <div id="totalList">
       <h1>전체 회원 리스트</h1>
       <div class="row mt-5 mb-2">
@@ -323,7 +332,7 @@
 			<!-- 블록페이지 끝 -->
     </div>
     <div id="userDispaly">
-     <h1>숨김 처리한 회원 리스트</h1>
+      <h1>숨김 처리한 회원 리스트</h1>
       <div class="row mt-5 mb-2">
       <div class="col">
 		    <div class="form-check form-check-inline">
@@ -350,41 +359,45 @@
             <th>거주국</th>
             <th>모국어</th>
             <th>학습언어</th>
+            <th>언어실력</th>
             <th>최종방문일</th>
             <th>활동여부</th>
           </tr>
         </thead>
         <tbody>
         <form name="hideMyform">
-          <c:forEach var="vo" items="${hideMemberList}" varStatus="st">
+          <c:forEach var="vo" items="${vos}" varStatus="st">
            	<c:if test="${vo.level == 99}"><c:set var="active" value="탈퇴신청"/></c:if>
             <c:if test="${vo.level != 99}"><c:set var="active" value="활동중"/></c:if>
-            <tr>
-              <td><input type="checkbox" name="midFlag" id="midFlag${vo.mid}" value="${vo.mid}"/>${vo.idx}</td>
-              <%-- <td><a href="#">${vo.mid}</a></td> --%>
-              <td><a href="#" class="info" onclick="modalCheck('${vo.mid}', '${vo.nickName}', '${vo.name}', '${vo.email}', '${vo.gender}', '${fn:substring(vo.birthday, 0, 10)}', '${vo.startDate}')" data-bs-toggle="modal" data-bs-target="#myModal">${vo.mid}</a></td>
-              <td>${vo.nickName}</td>
-              <td>${vo.name}</td>
-              <td>${fn:substring(vo.birthday,0,10)}</td>
-              <td>${vo.gender}</td>
-              <td>${vo.country}</td>
-              <td>${vo.nativeLanguage}</td>
-              <td>${vo.learningLanguage}</td>
-              <td>${fn:substring(vo.lastDate,0,10)}</td>
-              <td>
-                <c:if test="${vo.level == 99}"><font color="red"><b>${active}</b></font></c:if>
-                <c:if test="${vo.level != 99}">${active}</c:if>
-              </td>
-            </tr>  
+            <c:if test="${vo.userDel == 'OK'}">
+              <tr>
+                <td><input type="checkbox" name="midFlag" id="midFlag${vo.mid}" value="${vo.mid}"/>${vo.idx}</td>
+                <%-- <td><a href="#">${vo.mid}</a></td> --%>
+                <td><a href="#" class="info" onclick="modalCheck('${vo.mid}', '${vo.nickName}', '${vo.name}', '${vo.email}', '${vo.gender}', '${fn:substring(vo.birthday, 0, 10)}', '${vo.startDate}')" data-bs-toggle="modal" data-bs-target="#myModal">${vo.mid}</a></td>
+                <td>${vo.nickName}</td>
+                <td>${vo.name}</td>
+                <td>${fn:substring(vo.birthday,0,10)}</td>
+                <td>${vo.gender}</td>
+                <td>${vo.country}</td>
+                <td>${vo.nativeLanguage}</td>
+                <td>${vo.learningLanguage}</td>
+                <td>${vo.languageLevel}</td>
+                <td>${fn:substring(vo.lastDate,0,10)}</td>
+                <td>
+                  <c:if test="${vo.level == 99}"><font color="red"><b>${active}</b></font></c:if>
+                  <c:if test="${vo.level != 99}">${active}</c:if>
+                </td>
+              </tr>  
+            </c:if>
           </c:forEach>
-         <!--  <tr><td colspan="12" class="m-0 p-0"></td></tr> -->
+          <tr><td colspan="12" class="m-0 p-0"></td></tr>
           </form>
         </tbody>
       </table>
     </div>
      <!-- Modal Structure -->
   <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">회원 정보</h5>
@@ -402,7 +415,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
         </div>
-      </div><!--  -->
+      </div>
     </div>
   </div>
     <p><br/></p>

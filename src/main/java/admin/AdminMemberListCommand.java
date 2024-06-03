@@ -31,8 +31,11 @@ int level = request.getParameter("level")==null ? 999 : Integer.parseInt(request
 		
 		ArrayList<MemberVO> vos = dao.getMemberList(startIndexNo, pageSize);
 		
-		request.setAttribute("vos", vos);
+		// 숨김 처리한 멤버 꺼내오기
+		ArrayList<MemberVO> hideMemberList = dao.getHiddenMembers();
+		request.setAttribute("hideMemberList", hideMemberList);
 		
+		request.setAttribute("vos", vos);
 		request.setAttribute("pag", pag);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("totPage", totPage);
@@ -40,6 +43,8 @@ int level = request.getParameter("level")==null ? 999 : Integer.parseInt(request
 		request.setAttribute("blockSize", blockSize);
 		request.setAttribute("curBlock", curBlock);
 		request.setAttribute("lastBlock", lastBlock);
+		
+
 	}
 	
 

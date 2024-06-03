@@ -46,14 +46,14 @@
 		.admin-section h2 {
 	    font-size: 1.5em;
 		}
-		.info {
+		.info a {
 	    text-decoration: none;
 	    color: #534737;
 	    font-family: 'NEXON Lv1 Gothic OTF';
 	    background-color: #fdfad1;
       padding: 2px 4px;
 		}
-		.info:hover {
+		.info a:hover {
 	    color: #534737;
 	    background-color: #fdfad1;
       padding: 2px 4px;
@@ -125,118 +125,109 @@
     
     function memberDeleteOk() {
       let selectMemberArray = '';
-      const checkboxes = document.querySelectorAll('input[name="midFlag"]:checked');
-      
-      checkboxes.forEach(checkbox => {
-        selectMemberArray += checkbox.value + "/";
-      });
-
-      if(selectMemberArray === '') {
-        alert("삭제할 회원을 한 명 이상 선택하세요");
-        return false;
+  		
+      for(let i=0; i<myform.midFlag.length; i++) {
+        if(myform.midFlag[i].checked) selectMemberArray += myform.midFlag[i].value + "/";
       }
-
-      let ans = confirm("선택하신 회원을 영구삭제하시겠습니까?");
-      if(!ans) return false;
-
-      selectMemberArray = selectMemberArray.slice(0, -1);
+    	if(selectMemberArray == '') {
+    		alert("삭제할 회원을 한 명 이상 선택하세요");
+    		return false;
+    	}
+    	
+    	let ans = confirm("선택하신 회원을 영구삭제하시겠습니까?");
+    	if(!ans) return false;
+    	
+    	selectMemberArray = selectMemberArray.substring(0,selectMemberArray.lastIndexOf("/"));
       let query = {
-        selectMemberArray: selectMemberArray
-      };
-
+    		  selectMemberArray : selectMemberArray
+      }
+      
       $.ajax({
-        url: "MemberDeleteOk.ad",
-        type: "post",
-        data: query,
-        success: function(res) {
-          if(res !== "0") { 
-            alert("선택하신 회원이 영구삭제되었습니다");
-            location.reload();
-          } else {
-            alert("회원 삭제에 실패했습니다");
-          }
-        },
-        error: function() {
-          alert("전송 실패");
-        }
+    	  url  : "MemberDeleteOk.ad",
+    	  type : "post",
+    	  data : query,
+    	  success:function(res) {
+    		  if(res != "0") { 
+    			  alert("선택하신 회원이 영구삭제되었습니다");
+    			  location.reload();
+    		  }
+    		  else alert("회원 삭제에 실패했습니다");
+    	  },
+    	  error : function() {
+    		  alert("전송 실패");
+    	  }
       });
     }
     
     function memberHideOk() {
       let selectMemberArray = '';
-      const checkboxes = document.querySelectorAll('input[name="midFlag"]:checked');
-
-      checkboxes.forEach(checkbox => {
-        selectMemberArray += checkbox.value + "/";
-      });
-
-      if(selectMemberArray === '') {
-        alert("숨김 처리할 회원을 한 명 이상 선택하세요");
-        return false;
+  		
+      for(let i=0; i<myform.midFlag.length; i++) {
+        if(myform.midFlag[i].checked) selectMemberArray += myform.midFlag[i].value + "/";
       }
-
-      let ans = confirm("선택하신 회원을 회원 조회 리스트에서 감추시겠습니까?");
-      if(!ans) return false;
-
-      selectMemberArray = selectMemberArray.slice(0, -1);
+    	if(selectMemberArray == '') {
+    		alert("숨김 처리할 회원을 한 명 이상 선택하세요");
+    		return false;
+    	}
+    	
+    	let ans = confirm("선택하신 회원을 회원 조회 리스트에서 감추시겠습니까?");
+    	if(!ans) return false;
+    	
+    	selectMemberArray = selectMemberArray.substring(0,selectMemberArray.lastIndexOf("/"));
       let query = {
-        selectMemberArray: selectMemberArray
-      };
-
+    		  selectMemberArray : selectMemberArray
+      }
+      
       $.ajax({
-        url: "MemberHideOk.ad",
-        type: "post",
-        data: query,
-        success: function(res) {
-          if(res !== "0") { 
-            alert("선택하신 회원이 숨김 처리되었습니다");
-            location.reload();
-          } else {
-            alert("회원 감추기에 실패했습니다");
-          }
-        },
-        error: function() {
-          alert("전송 실패");
-        }
+    	  url  : "MemberHideOk.ad",
+    	  type : "post",
+    	  data : query,
+    	  success:function(res) {
+    		  if(res != "0") { 
+    			  alert("선택하신 회원이 숨김 처리되었습니다");
+    			  location.reload();
+    		  }
+    		  else alert("회원 감추기에 실패했습니다");
+    	  },
+    	  error : function() {
+    		  alert("전송 실패");
+    	  }
       });
     }
     
     function cancelReportOk() {
       let selectMemberArray = '';
-      const checkboxes = document.querySelectorAll('input[name="midFlag"]:checked');
-
-      checkboxes.forEach(checkbox => {
-        selectMemberArray += checkbox.value + "/";
-      });
-
-      if(selectMemberArray === '') {
-        alert("신고 취소 처리하실 회원을 이상 선택하세요");
-        return false;
+  		
+      for(let i=0; i<myform.midFlag.length; i++) {
+        if(myform.midFlag[i].checked) selectMemberArray += myform.midFlag[i].value + "/";
       }
-
-      let ans = confirm("선택하신 회원을 신고 취소 처리하시겠습니까?");
-      if(!ans) return false;
-
-      selectMemberArray = selectMemberArray.slice(0, -1);
+    	if(selectMemberArray == '') {
+    		alert("신고 취소 처리하실 회원을 이상 선택하세요");
+    		return false;
+    	}
+    	
+    	let ans = confirm("선택하신 회원을 신고 취소 처리하시겠습니까?");
+    	if(!ans) return false;
+    	
+    	selectMemberArray = selectMemberArray.substring(0,selectMemberArray.lastIndexOf("/"));
       let query = {
-        selectMemberArray: selectMemberArray
-      };
-
+    		  selectMemberArray : selectMemberArray
+      }
+      
       $.ajax({
-        url: "CancelReportOk.ad",
-        type: "post",
-        data: query,
-        success: function(res) {
-          if(res !== "0") { 
-            alert("선택하신 회원의 신고가 취소되었습니다");
-            location.reload();
-          } else {
-            alert("회원 신고 취소에 실패했습니다");
-          }
-        },
-        error: function() {
-          alert("전송 실패");
-        }
+    	  url  : "CancelReportOk.ad",
+    	  type : "post",
+    	  data : query,
+    	  success:function(res) {
+    		  if(res != "0") { 
+    			  alert("선택하신 회원의 신고가 취소되었습니다");
+    			  location.reload();
+    		  }
+    		  else alert("회원 신고 취소에 실패했습니다");
+    	  },
+    	  error : function() {
+    		  alert("전송 실패");
+    	  }
       });
     }
   </script>
@@ -286,7 +277,7 @@
 	            <td>${vo.reason}</td>
 	            <td>${fn:substring(vo.reportDate, 0, 10)}</td>
 	            <c:if test="${vo.show == 'NO'}"><td>공개</td></c:if>
-	            <c:if test="${vo.show == 'OK'}"><td><font color="red"><b>비공개</b></font></td></c:if>
+	            <c:if test="${vo.show == 'OK'}"><td>비공개</td></c:if>
 	            <c:set var="reportCnt" value="${reportCnt - 1}" />
 	          </tr>
 	        </c:forEach>
@@ -294,17 +285,17 @@
       </tbody>
     </table>
   </div>
-  <!-- 
-  모달에 회원정보 출력하기
+  
+  <!-- 모달에 회원정보 출력하기 -->
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        Modal Header
+        <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title"><b>회원 정보</b></h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        Modal body
+        <!-- Modal body -->
         <div class="modal-body">
           아이디: <span id="modalMid"></span> 
           이름: <span id="modalName"></span><br/>
@@ -314,39 +305,13 @@
           생년월일: <span id="modalBirthday"></span><br/>
           가입일: <span id="modalStartDate"></span><br/>
         </div>
-        Modal footer
+        <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="myModal">Close</button>
         </div>
       </div>
     </div>
   </div>
-   -->
-  
-  <!-- Modal Structure -->
-	<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">회원 정보</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        <p><strong>아이디:</strong> <span id="modalMid"></span></p>
-	        <p><strong>닉네임:</strong> <span id="modalNickName"></span></p>
-	        <p><strong>성명:</strong> <span id="modalName"></span></p>
-	        <p><strong>이메일:</strong> <span id="modalEmail"></span></p>
-	        <p><strong>성별:</strong> <span id="modalGender"></span></p>
-	        <p><strong>생일:</strong> <span id="modalBirthday"></span></p>
-	        <p><strong>가입일:</strong> <span id="modalStartDate"></span></p>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-  
   
   <p><br/></p>
   <jsp:include page="/include/footer.jsp" />

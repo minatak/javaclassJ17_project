@@ -25,8 +25,12 @@ public class AdminController extends HttpServlet {
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
 		
-		
-		if(com.equals("/AdminMain")) {
+		if(level > 1) {
+			request.setAttribute("message", "이곳은 관리자 전용 페이지입니다. 관리자 전용 아이디로 로그인해주세요.");
+			request.setAttribute("url", request.getContextPath()+"/Login.mem");
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/AdminMain")) {
 			command = new AdminContentCommand();
 			command.execute(request, response);
 			viewPage += "/adminMain.jsp";
