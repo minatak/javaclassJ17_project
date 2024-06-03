@@ -95,8 +95,7 @@
 	                    </ul>
 	                </li>    
                 </c:if> 
-                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="ChatList.chat">Message</a></li></c:if>
-                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="ChatDetail.chat">Message디테일</a></li></c:if>
+                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="ChatMain.chat">Message</a></li></c:if>
                 <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="VocaMain.st">Study</a></li></c:if>
                 <c:if test="${empty sMid}">
 	                <li class="nav-item dropdown">
@@ -112,7 +111,7 @@
 	                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Service</a>
 	                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
 	                        <li><a class="dropdown-item" href="MemberList.mem">회원 찾기</a></li>
-	                        <li><a class="dropdown-item" href="ChatList.chat">채팅하기</a></li>
+	                        <li><a class="dropdown-item" href="ChatMain.chat">채팅하기</a></li>
 	                        <li><a class="dropdown-item" href="VocaMain.st">학습하기</a></li>
 	                    </ul>
 	                </li>

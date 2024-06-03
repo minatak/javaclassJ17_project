@@ -322,24 +322,16 @@
         }
 
         function sendMessage() {
-            var content = document.getElementById("messageInput").value;
-            var sendId = "${sMid}"; // 현재 사용자 ID
-            var receiveId = "user2"; // 상대방 사용자 ID
+          var message = document.getElementById("message").value;
+          var senderMid = "${sMid}"; // 현재 사용자 ID
+          var receiverMid = " "; // 상대방 사용자 ID
 
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "send_message.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById("messageInput").value = ""; // 메시지 입력창 초기화
-                    getMessages(); // 새로운 메시지를 바로 가져오기
-                }
-            };
-            xhr.send("content=" + encodeURIComponent(content) + "&sendId=" + encodeURIComponent(sendId) + "&receiveId=" + encodeURIComponent(receiveId));
+					
+            
         }
 
         // 주기적으로 메시지 가져오기 (폴링)
-        setInterval(getMessages, 3000); // 3초마다 메시지 확인
+        //setInterval(getMessages, 3000); // 3초마다 메시지 확인
     </script>
 </head>
 <body>
@@ -356,16 +348,15 @@
             <span><i class="fa-solid fa-plus"></i></span>
         </div>
         
-        
         <c:forEach var="vo" items="${vos}" varStatus="st">
             <div class="friend">
                 <img src="${ctp}/images/member/${vo.photo}" alt="Friend Image">
                 <div>
-                  <div class="name">${vo.receiveId}</div>
+                  <div class="name"><a href="ChatDetail.chat?receiverMid=${vo.receiverMid}">${vo.receiverMid}</a></div>
                 </div>
             </div>
         </c:forEach>
-        
+        <%-- 
         <!-- 예시 화면 -->
         <div class="friend">
             <img src="${ctp}/images/member/noimage.png" alt="Friend Image">
@@ -391,86 +382,18 @@
                 <div class="name">Chris Marina</div>
             </div>
         </div>
-    </div>
+    </div> --%>
     
     <!-- 채팅 창 -->
-    <div class="chat-container">
-        <!-- 채팅창 해더 -->
-        <div class="chat-header">
-            <div class="user-info">
-                <img src="${ctp}/images/${receiveId.photo}" alt="Sender Image">
-                <div>
-                    <h3>${receiveId.name}</h3>
-                </div>
-            </div>
-            <div class="actions">
-                <i class="fas fa-phone"></i>
-                <i class="fas fa-video"></i>
-                <i class="fas fa-ellipsis-h"></i>
-            </div>
-        </div>
-        <div class="chat-body" id="chatBox">
-            <c:forEach var="chat" items="${chatting}" varStatus="st">
-                <!-- 상대방 채팅(내 기준으로 이부분이 receiveId -->
-                <c:if test="${chat.receiveId == receiveId}">
-                    <div class="message received">
-                        <img src="${ctp}/images/${receiveId.photo}" alt="Sender Image" class="profile-img">
-                        <div class="content">
-                            ${chat.content}
-                            <div class="timestamp">${chat.sendDate}</div>
-                            <span class="translate-btn" onclick="handleTranslate(this)">번역하기</span>
-                            <c:if test="${chat.receiveSw == 'n'}">
-                                <span>1</span>
-                            </c:if>
-                        </div>
-                    </div>
-                </c:if>
-                <!-- 내가 보낸 채팅 부분(sendId. 내가 보낸 거니까 !) -->
-                <c:if test="${chat.sendId == sMid}">
-                    <div class="message sent">
-                        <div class="content">
-                            ${chat.content}
-                            <span class="translate-btn" onclick="handleTranslate(this)">번역하기</span>
-                            <div class="timestamp">${chat.sendDate}</div>
-                        </div>
-                        <img src="${ctp}/images/profile.jpg" alt="My Image" class="profile-img">
-                    </div>
-                </c:if>
-            </c:forEach>
-            
-            <!-- 내용 예시. 이런식으로 시간 순으로 정렬되어야 함. -->
-            <%-- <div class="message received">
-                <img src="${ctp}/images/member/noimage.png" alt="Sender Image" class="profile-img">
-                <div class="content">
-                    Hey, I want show you some amazing photos.
-                </div>
-                    <span class="translate-btn" onclick="handleTranslate(this)">번역하기</span>
-                    <div class="timestamp">06-10 10:26 AM</div>
-            </div> --%>
-            
-            <div class="message received">
-    <img src="${ctp}/images/member/noimage.png" alt="Sender Image" class="profile-img">
-    <div class="content">
-        Hey, I want show you some amazing photos.
-        <span class="translate-btn" onclick="handleTranslate(this)">번역하기</span>
+    <div>
+      <iframe src="${ctp}/include/chatMessage.jsp" style="width:100%; height:600px;"></iframe>
     </div>
-    <div class="timestamp">06-10 10:26 AM</div>
-</div>
-                
-            <div class="message sent">
-                <div class="timestamp">10:27 AM</div>
-                <div class="content">
-                    Nice! Show me
-                </div>
-                <img src="${ctp}/images/member/noimage.png" alt="My Image" class="profile-img">
-            </div>
-                <span class="translate-btn" onclick="handleTranslate(this)">번역하기</span>
-        </div>
-        
-        <div class="chat-footer">
-            <input type="text" id="messageInput" placeholder="메시지를 입력하세요...">
-            <button onclick="sendMessage()">전송</button>
+    <div class="chat-footer">
+        <div class="input-group">
+	        <input type="text" id="message" name="message" placeholder="메시지를 입력하세요..." class="form-control">
+	        <div class="input-group-append"><button onclick="sendMessage()">전송</button></div>
         </div>
     </div>
+    
 </body>
 </html>

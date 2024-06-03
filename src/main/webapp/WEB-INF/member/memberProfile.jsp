@@ -210,13 +210,13 @@
               <c:if test="${report != 'OK'}"><input type="button" value="신고하기" data-toggle="modal" data-target="#myModal" /></c:if>
             </div>
           </c:if>
-          <button id="translateBtn">번역하기</button>
+          <!-- <button id="translateBtn">번역하기</button> -->
         </div>
       </div>
     </div>
     <div class="message-section mb-5">
-      <button onclick="location.href='${ctp}/ChatList.chat?receiveId=${vo.mid}'">메세지 보내기</button>
-      <button onclick="location.href='${ctp}/MemberList.mem'">돌아가기</button>
+      <button onclick="location.href='${ctp}/ChatMain.chat?receiverMid=${vo.mid}'">메세지 보내기</button>
+      <%-- <button onclick="location.href='${ctp}/MemberList.mem'">돌아가기</button> --%>
     </div>
   </div>
   

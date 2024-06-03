@@ -87,17 +87,24 @@ FROM report r JOIN member m ON r.reportedMid = m.idx ORDER BY r.idx DESC;
 /* 텍스트 채팅을 저장 */
 CREATE TABLE chat (
 	idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY, /* 채팅 고유번호 */
-	senderIdx INT,                               /* 발신자 회원 고유번호 (member 테이블과 연결) */
-	receiverIdx INT,                             /* 수신자 회원 고유번호 (member 테이블과 연결) */
-	message TEXT,                                /* 메시지 내용 */
-	timestamp DATETIME DEFAULT NOW(),            /* 메시지 전송 시간 */
-	FOREIGN KEY (senderIdx) REFERENCES member(idx) ON DELETE CASCADE,    
-	FOREIGN KEY (receiverIdx) REFERENCES member(idx) ON DELETE CASCADE   
+	senderMid varchar(20) not null,              /* 발신자 회원 아이디 (member 테이블과 연결) */
+	receiverMid varchar(20) not null,            /* 수신자 회원 아이디 (member 테이블과 연결) */
+	message varchar(200) not null,               /* 메시지 내용 */
+	chatDate datetime default now(),            /* 메시지 전송 시간 */
+	FOREIGN KEY (senderMid) REFERENCES member(mid), 
+	FOREIGN KEY (receiverMid) REFERENCES member(mid) 
 );
 desc chat;
 drop table chat;
 
-/* 텍스트 채팅 저장 - 다시 설계함 */
+select *,(select photo from member where mid=c.receiverMid) as photo from chat c where senderMid = 'admin' order by chatDate desc;
+
+insert into chat value (default,'admin', 'mina1234', '관리자님 안녕하세요', default);
+insert into chat value (default,'admin', 'mina1234', '관리자님 안녕하세요2', default);
+insert into chat value (default,'admin', 'Martin', '마틴님 안녕하세요', default);
+insert into chat value (default,'mina1234', 'admin', '안녕하세요 민아님 :)', default);
+
+/* 텍스트 채팅 저장 - 다시 설계함 -이거안씀 */
 CREATE TABLE chat (
 	idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY,    /* 채팅 고유번호 */
 	content text not null, 											    /* 메세지 내용 */

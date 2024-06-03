@@ -26,14 +26,23 @@ public class ChatController extends HttpServlet {
 		int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
 		
 		
-		if(com.equals("/ChatList")) {
-			viewPage += "/chatList.jsp";
+//		if(com.equals("/ChatList")) {
+//			viewPage += "/chatList.jsp";
+//		}
+		
+		if(com.equals("/ChatMain")) {
+			command = new ChatMainCommand();
+			command.execute(request, response);
+			viewPage += "/chatMain.jsp";
 		}
-		else if(com.equals("/ChatDetail")) {
-			viewPage += "/chatDetail.jsp";
+		else if(com.equals("/ChatInput")) {
+			command = new ChatInputCommand();
+			command.execute(request, response);
+			return;
 		}
 		
-
+		
+		
 //		else if(com.equals("/MemberNickCheck")) {
 //			command = new MemberNickCheckCommand();
 //			command.execute(request, response);
