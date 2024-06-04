@@ -31,6 +31,11 @@ public class StudyController extends HttpServlet {
 			command.execute(request, response);
 			viewPage += "/vocaMain.jsp";
 		}
+		if(level > 4) {
+			request.setAttribute("message", "로그인후 사용하세요");
+			request.setAttribute("url", request.getContextPath()+"/Login.mem");
+			viewPage = "/include/message.jsp";
+		}
 		else if(com.equals("/VocaInput")) {
 			viewPage += "/vocaInput.jsp";
 		}

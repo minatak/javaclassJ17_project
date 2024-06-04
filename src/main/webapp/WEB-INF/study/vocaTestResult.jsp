@@ -21,8 +21,11 @@
             background-color: #f9fafb;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
         }
+      /*   .con {
+        
+            min-height: 100vh;
+        } */
         .container {
             max-width: 800px;
             margin: 40px auto;
@@ -65,12 +68,16 @@
 </head>
     <jsp:include page="/include/nav.jsp" />
 <body>
+	<div class="con">
+		<p><br/></p>	<p><br/></p>
     <main class="container">
         <h1>단어 테스트 결과</h1>
         <p>맞힌 단어 수: ${score} / ${questionCnt}</p>
         <p>점수: ${score * (100 / questionCnt)}</p> <!-- 각 단어당 10점 -->
         <a href="VocaTest.st?category=${category}&wordMid=${wordMid}" class="btn">다시 테스트하기</a>
     </main>
+    	<p><br/></p>	<p><br/></p>
+    </div>
     <jsp:include page="/include/footer.jsp" />
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

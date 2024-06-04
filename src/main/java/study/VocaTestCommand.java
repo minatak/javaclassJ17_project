@@ -23,13 +23,13 @@ public class VocaTestCommand implements StudyInterface {
 //		System.out.println("wordMid : " + wordMid);
 //		System.out.println("category : " + category);
 		
-		ArrayList<VocaVO> vos = dao.getVocaDetail(wordMid, category);
+		ArrayList<VocaVO> vos = dao.getVocaDetail(wordMid, category); 
 		
-		System.out.println(vos);
+//		System.out.println(vos);
 		
 		Collections.shuffle(vos);
 		int questionCount = Math.min(10, vos.size()); // 최대 10문제
-		System.out.println("questionCount : " + questionCount);
+//		System.out.println("questionCount : " + questionCount);
 		
 		request.setAttribute("vos", vos);
 		request.setAttribute("questionCount", questionCount);
