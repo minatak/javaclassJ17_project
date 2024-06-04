@@ -6,20 +6,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>단어 암기 상세 페이지</title>
+  <title>단어장</title>
   <%@ include file="/include/bs4.jsp" %>
   <link href="${ctp}/css/styles.css" rel="stylesheet" />
   <style>
     @font-face {
 		  font-family: 'CWDangamAsac-Bold';
 		  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
-		  font-weight: normal;
-		  font-style: normal;
-		}
-		
-		@font-face {
-		  font-family: 'Cafe24SsurroundAir';
-		  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
 		  font-weight: normal;
 		  font-style: normal;
 		}
@@ -62,11 +55,19 @@
       margin-left: 5px;
     }
     .action-btns a.btn-edit {
-      background-color: #5bc0de;
+      background-color: #ece8b6;
+      color: #5e5c3f;
     }
     .action-btns a.btn-delete {
-      background-color: #d9534f;
+      background-color: #f8d7da;
+      color: #721c24; 
     }
+    .action-btns .btn-edit:hover {
+		  background-color: #e0ddb1;
+		}
+		.action-btns .btn-delete:hover {
+		  background-color: #f1b0b7;
+		}
     .card {
       padding: 20px;
       margin-bottom: 20px;
@@ -95,16 +96,30 @@
       font-size: 14px;
       margin-left: 5px;
     }
-    .btn {
-      padding: 10px 15px;
+    .btnTest {
+      padding: 13px 18px;
       background-color: #35ae5f;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
+      color: #fefef4;
+      border: 1px solid #35ae5f;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btnBack {
+      padding: 13px 18px;
+      background-color: #fefef4;
+      color: #379b5b;
+      border: 1px solid #35ae5f;
       text-decoration: none;
       cursor: pointer;
     }
-    .btn:hover {
+    .btnBack:hover {
+      color: #379b5b;
+      text-decoration: none;
+      background-color: #edede2;
+    }
+    .btnTest:hover {
+      text-decoration: none;
+      color: #fefef4;
       background-color: #379866;
     }
     .test-section {
@@ -114,7 +129,34 @@
     .test-section form {
       display: inline-block;
     }
+    
   </style>
+  <script>
+  	'use strict';
+  	
+  	function vocaDeleteOk(category) {
+		  let ans = confirm("선택하신 단어장을 삭제하시겠습니까?");
+		  if(!ans) return false;
+		
+		  $.ajax({
+		    url: "VocaDeleteOk.st",
+		    type: "post",
+		    data: {category : category},
+		    success: function(res) {
+		      if(res !== "0") { 
+		        alert("선택하신 단어장이 삭제되었습니다");
+		        location.href = "VocaMain.st";
+		      } else {
+		        alert("단어장 삭제에 실패했습니다");
+		      }
+		    },
+		    error: function() {
+		      alert("전송 실패");
+		    }
+		  });
+		}
+  
+  </script>
 </head>
 <jsp:include page="/include/nav.jsp" />
 <body>
@@ -123,13 +165,16 @@
     <div class="dashboard-header">
       <h1>${category}</h1>
       <br/>
-      <div class="action-btns">
-        <a class="btn btn-edit" href="${ctp}/VocaEdit.st?idx=${vo.idx}">수정</a>
-        <a class="btn btn-delete" href="${ctp}/VocaDelete.st?idx=${vo.idx}">삭제</a>
-      </div>
+      <c:if test="${empty memberMid}">
+	      <div class="action-btns">
+	        <a class="btn btn-edit" href="${ctp}/VocaEdit.st?category=${category}">수정</a>
+	      	<a class="btn btn-delete" onclick="vocaDeleteOk('${category}')">삭제</a>
+	       <%--  <a class="btn btn-delete" href="${ctp}/VocaDelete.st?idx=${category}">삭제</a> --%>
+	      </div>
+      </c:if>
     </div>
     
-    <div class="card">
+    <div class="card mb-5">
       <ul class="word-list">
         <c:forEach var="vo" items="${vos}" varStatus="st">
           <li>
@@ -144,10 +189,17 @@
     </div>
 
     <div class="test-section">
-      <h3>단어 테스트</h3>
       <form action="${ctp}/vocabTest.jsp" method="GET">
-        <button class="btn" type="submit">테스트 시작</button>
+        <!-- <button class="btnTest" type="submit">단어 테스트</button> -->
       </form>
+      <c:if test="${empty memberMid}">
+        <a href="VocaTest.st?wordMid=${sMid}&category=${category}" class="btnTest mr-1">단어 테스트</a>
+        <a href="VocaMain.st" class="btnBack">돌아가기</a>
+      </c:if>
+      <c:if test="${!empty memberMid}">
+        <a href="VocaTest.st?wordMid=${memberMid}&category=${category}" class="btnTest mr-1">단어 테스트</a>
+        <a href="VocaMain.st?memberMid=${memberMid}" class="btnBack">돌아가기</a>
+      </c:if>
     </div>
   </main>
   <p><br/></p>

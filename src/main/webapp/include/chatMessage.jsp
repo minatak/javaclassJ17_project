@@ -147,7 +147,9 @@
       <!-- 상대방이 보낸 메시지 -->
       <c:if test="${sMid != vo.senderMid}">
         <div class="message received">
-          <img src="${ctp}/images/member/${vo.photo}" alt="Sender Image" class="profile-img">
+	        <a href="MemberProfile.mem?mid=${sReceiverMid}" target="_blank"> 
+	          <img src="${ctp}/images/member/${sReceiverPhoto}" alt="Sender Image" class="profile-img">
+          </a>
           <div class="content">
             ${vo.message}
             <div class="timestamp">

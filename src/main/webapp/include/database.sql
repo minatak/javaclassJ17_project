@@ -97,7 +97,8 @@ CREATE TABLE chat (
 desc chat;
 drop table chat;
 
-select *,(select photo from member where mid=c.receiverMid) as photo from chat c where senderMid = 'admin' order by chatDate desc;
+select *,(select photo from member where mid=c.receiverMid) as photo from chat c where receiverMid = 'admin' order by chatDate desc;
+select *, (select photo from member where mid=c.receiverMid) as photo from chat c where (senderMid = 'admin' or receiverMid = 'admin') and receiverMid like '%admin%' group by receiverMid order by chatDate desc
 
 insert into chat value (default,'admin', 'mina1234', '관리자님 안녕하세요', default);
 insert into chat value (default,'admin', 'mina1234', '관리자님 안녕하세요2', default);
@@ -125,31 +126,32 @@ insert into chat value (default, '관리자님! 할 말이 있는데요..', 'min
 insert into chat value (default, '웹사이트 조아여~', 'mina', default,default,'admin','r');
 insert into chat value (default, '감사합니다 ㅎㅎ', 'admin', default,default,'mina','n');
 
+select *, (select photo from member where mid=c.receiverMid) as photo from chat c where (senderMid = 'admin' or receiverMid = 'admin') group by receiverMid order by chatDate desc;
 
 
 /* 단어장 기능을 위한 테이블 */
-CREATE TABLE vocabulary (
+CREATE TABLE voca(
 	idx INT AUTO_INCREMENT PRIMARY KEY,      /* 단어 고유 ID */
-	memberIdx INT,                           /* 사용자 고유번호 (member 테이블과 연결) */
-	category VARCHAR(50),                     /* 단어 카테고리(여행 영단어, 친구랑 말하면서 몰랐던 영단어 등 단어를 분류해서 쓰도록)*/
+	memberMid varchar(30),                   /* 사용자 고유번호 (member 테이블과 연결) */
+	category VARCHAR(50),                    /* 단어 카테고리(여행 영단어, 친구랑 말하면서 몰랐던 영단어 등 단어를 분류해서 쓰도록)*/
 	word VARCHAR(100),                       /* 단어 */
 	meaning VARCHAR(100),                    /* 번역 */
 	partOfSpeech VARCHAR(50),                /* 품사 */
 	example TEXT,                            /* 예문 */
-	FOREIGN KEY (memberIdx) REFERENCES member(idx) ON DELETE CASCADE  
+	FOREIGN KEY (memberMid) REFERENCES member(mid) ON DELETE CASCADE  
 );
-desc vocabulary;
+desc voca;
 
 
 /* 단어 테스트 테이블 */
 CREATE TABLE vocaTest (
 	idx INT AUTO_INCREMENT PRIMARY KEY,             /* 단어 테스트 고유 번호 */
-	userIdx INT,                                    /* 사용자 고유 번호 (member 테이블과 연결) */
+	memberMid varchar(30),                          /* 테스트 하는 사용자 아이디 (member 테이블과 연결) */
 	vocaIdx INT,                                    /* 단어 고유 번호 (vocabulary 테이블과 연결) */
 	category VARCHAR(50),                           /* 테스트할 단어의 카테고리 */
 	score INT,                                      /* 테스트 점수 */
 	testDate DATETIME DEFAULT NOW(),                /* 테스트 일자 */
-	FOREIGN KEY (userIdx) REFERENCES member(idx) ON DELETE CASCADE,  
+	FOREIGN KEY (memberMid) REFERENCES member(mid) ON DELETE CASCADE,  
 	FOREIGN KEY (vocaIdx) REFERENCES vocabulary(idx) ON DELETE CASCADE  
 );
 desc vocaTest;

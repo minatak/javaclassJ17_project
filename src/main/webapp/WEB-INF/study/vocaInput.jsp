@@ -46,6 +46,7 @@
       /* display: flex; */
       align-items: center;
       font-size: 20px; /* 제목 입력란 크기 키움 */
+      color: #5e503f;
     }
     .note {
       font-size: 0.9em;
@@ -56,9 +57,13 @@
       flex: 3; /* 75% */
       font-size: 1.3em; /* 제목 입력란 크기 키움 */
       padding: 25px; /* 내부 여백 추가 */
+      color: #5e503f;
     }
+    .name-input::placeholder {color:#a2988b;}
+    input::placeholder {color:#bbb4ad;}
     .dynamic-inputs .word-input input,
     .dynamic-inputs .word-input select {
+      color: #5e503f;
       width: 100%;
       padding: 10px;
       border: none;
@@ -71,6 +76,7 @@
     .dynamic-inputs .word-input input:focus,
     .dynamic-inputs .word-input select:focus {
       border-bottom: 2px solid #35ae5f;
+      color: #5e503f;
     }
     .dynamic-inputs .word-input {
       display: flex;
@@ -101,7 +107,7 @@
     .save-button {
       display: inline-block.
     }
-    .buttons-container {
+    /* .buttons-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -109,7 +115,7 @@
     }
     .button {
       display: flex;
-      justify-content: left; /* 버튼을 왼쪽으로 정렬 */
+      justify-content: left; /* 버튼을 왼쪽으로 정렬 
       font-family: 'NEXON Lv1 Gothic OTF';
       border: 1.2px solid #6d5a46;
       border-radius: 30px;
@@ -123,13 +129,82 @@
     .button:hover {
       transform: scale(1.02);
       color: #6d5a46;
-      background-color: #f0edca; /* 테두리 안의 배경색 */
-    }
+      background-color: #f0edca; /* 테두리 안의 배경색  
+    } */
     a {
       text-decoration: none;
     }
     a:hover {
       text-decoration: none;
+    }
+    
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      font-family: 'NEXON Lv1 Gothic OTF';
+      border: 1.2px solid #6d5a46;
+      border-radius: 30px;
+      background-color: #fdfad1;
+      color: #6d5a46;
+      padding: 5px 15px;
+      display: inline-block;
+      font-size: 1.3em;
+      cursor: pointer;
+    }
+    .button:hover {
+      transform: scale(1.02);
+      color: #6d5a46;
+      background-color: #f0edca; /* 테두리 안의 배경색 */
+    }
+    .btnTest {
+      padding: 13px 18px;
+      background-color: #35ae5f;
+      color: #fefef4;
+      border: 1px solid #35ae5f;
+      cursor: pointer;
+      padding: 10px 20px;
+      text-decoration: none;
+    }
+    .btnBack {
+      padding: 13px 18px;
+      background-color: #fefef4;
+      color: #379b5b;
+      border: 1px solid #35ae5f;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btnBack:hover {
+      color: #379b5b;
+      text-decoration: none;
+      background-color: #edede2;
+    }
+    .btnTest:hover {
+      text-decoration: none;
+      color: #fefef4;
+      background-color: #379866;
+    }
+    .test-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .add-remove-buttons {
+    	 justify-content: left;
+    }
+    .add-remove-buttons a {
+      font-family: 'NEXON Lv1 Gothic OTF';
+      color: #35ae5f;
+      cursor: pointer;
+      font-size: 2em;
+      margin-right: 10px;
+    }
+    .add-remove-buttons a:hover {
+      color: #379866;
     }
   </style>
   <script>
@@ -182,6 +257,11 @@
 	
 		  if (category.trim().length > 50) {
 		    alert('단어장 이름은 50자 이하로 입력해주세요.');
+		    form['category'].focus();
+		    return false;
+		  }
+		  else if (category.trim() == "") {
+		    alert('단어장 이름을 입력해주세요.');
 		    form['category'].focus();
 		    return false;
 		  }
@@ -242,7 +322,7 @@
           <input type="hidden" name="wordsStr" />
           <input type="hidden" name="meaningsStr" />
         </div>
-        <div class="note mb-3 mt-1"> * 단어의 품사를 입력할 때는 뜻 앞에 품사를 입력 후 ')'를 써주시면 됩니다.</div>
+        <div class="note mb-4"> * 단어의 품사를 입력할 때는 뜻 앞에 품사를 입력 후 ')'를 써주시면 됩니다.</div>
         <div class="dynamic-inputs">
           <div class="word-input">
             <table>
@@ -274,16 +354,26 @@
             </table>
           </div>
         </div>
-        <div class="buttons-container mt-5">
+       <!--  <div class="buttons-container mt-5">
           <div class="add-remove-buttons">
-            <button type="button" class="btn btn-success" onclick="addWordInput()">+</button>
-            <button type="button" class="btn btn-success" onclick="removeWordInput()">-</button>
+            <button type="button" class="btn btn-success" onclick="addWordInput()"><i class="fa-solid fa-plus"></i></button>
+            <button type="button" class="btn btn-success" onclick="removeWordInput()"><i class="fa-solid fa-minus"></i></button>
           </div>
           <div class="save-button">
 					<button class="btn btn-success" type="button" onclick="fCheck()">저장하기</button>  
-          <!--   <button class="btn btn-success" type="submit" >저장하기</button> -->
+            <button class="btn btn-success" type="submit" >저장하기</button>
           </div>
+        </div> -->
+        <div class="add-remove-buttons">
+          <a onclick="addWordInput()">+</a>
+          <a onclick="removeWordInput()">-</a>
         </div>
+      	<div class="buttons-container mt-5">
+          <div class="test-section" style="text-align: center;">
+            <a onclick="fCheck()" class="btnTest mr-1 ">저장하기</a>
+            <!-- <a href="VocaMain.st" class="btnBack">돌아가기</a> -->
+          </div>
+      	</div>
       </form>
     </div>
     <p><br/></p>

@@ -34,9 +34,15 @@ public class ChatMainCommand implements ChatInterface {
 		}
 		else vos = dao.getChatMemberList(mid, searchStr);
 		
+		
+		
+		// receiverMid의 사진 경로 받아오기 
+		String receiverPhoto = dao.getPhoto(receiverMid);
+		
 		request.setAttribute("vos", vos);
 		request.setAttribute("midVos", midVos);
 		session.setAttribute("sReceiverMid", receiverMid);
+		session.setAttribute("sReceiverPhoto", receiverPhoto);
 		
 	}
 

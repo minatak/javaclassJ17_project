@@ -120,8 +120,8 @@
     }
 
     .profile-img {
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       object-fit: cover;
       margin-right: 15px;
@@ -214,6 +214,7 @@
     			data : {message : message, senderMid : senderMid, receiverMid : receiverMid},
     			success:function() {
       			location.reload();
+    				/* footer.message.focus(); */
       		},
     			error: function() {
     				alert("전송오류!!");
@@ -234,6 +235,9 @@
         chatBox.contentWindow.scrollTo(0, chatBox.contentDocument.body.scrollHeight);
     }; */
       
+    $(document).ready(function () {
+			$('#message').focus();
+    });
     
   </script>
 </head>
@@ -272,43 +276,50 @@
 		    </c:forEach>
 	    </c:if>
 	     --%>
-	     
 	    <c:if test="${! empty midVos}">
 		    <c:forEach var="v" items="${midVos}" varStatus="st">
 	        <c:set var="vo" value="${fn:split(v, '/')}"/>
-	        <c:if test="${vo[0] != sMid}">
-            <div class="friend">
-              <img src="${ctp}/images/member/${vo[1]}" alt="Friend Image">
-              <div>
-                <div class="name"><a href="ChatMain.chat?receiverMid=${vo[0]}">${vo[0]}</a></div>
-              </div>
-            </div>
+	        <c:if test="${vo[0] != imsi}">
+		        <c:if test="${vo[0] != sMid}">
+	            <div class="friend">
+	              <img src="${ctp}/images/member/${vo[1]}" alt="Friend Image"><%-- ==${vo[1]}== --%>
+	              <div>
+	                <div class="name"><a href="ChatMain.chat?receiverMid=${vo[0]}">${vo[0]}</a></div>
+	              </div>
+	            </div>
+		        </c:if>
 	        </c:if>
+	        <c:set var="imsi" value="${vo[0]}"/>
 		    </c:forEach>
 			</c:if>
 			<c:if test="${empty midVos}">
 		    <c:forEach var="v" items="${vos}" varStatus="st">
-	        <div class="friend">
+	      	<div class="friend">
             <img src="${ctp}/images/member/${v.photo}" alt="Friend Image">
             <div>
               <div class="name"><a href="ChatMain.chat?receiverMid=${v.receiverMid}">${v.receiverMid}</a></div>
             </div>
-	        </div>
+	        </div> 
 		    </c:forEach>
 			</c:if>
 	     
 	    
 	  </div>
 	  
-	  <div class="chat-container">
-	    <div class="chat-header">
-	      <div class="user-info">
-	        <a href="MemberProfile.mem?mid=${sReceiverMid}">
-	        <h3>${sReceiverMid}</h3></a>
-	      </div>
-	      <hr/>
-	    </div>
-	  
+		<div class="chat-container">
+	  	<c:if test="${! empty sReceiverMid}">
+		    <div class="chat-header">
+		      <div class="user-info">
+		      	<a href="MemberProfile.mem?mid=${sReceiverMid}">
+		      		<img src="${ctp}/images/member/${sReceiverPhoto}" alt="Profile Image" class="profile-img">
+		      	</a>
+		        <a href="MemberProfile.mem?mid=${sReceiverMid}">
+		        	<h3>${sReceiverMid}</h3>
+		        </a>
+		      </div>
+		      <hr/>
+		    </div>
+	  	</c:if>
 		  <div class="chat-container">
 		    <div class="chat-body" id="chatBox">
 		      <iframe src="${ctp}/include/chatMessage.jsp" style="width:100%; height:100%; border:none;"></iframe>

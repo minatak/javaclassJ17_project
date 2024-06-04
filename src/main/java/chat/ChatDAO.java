@@ -183,5 +183,25 @@ public ArrayList<ChatVO> getChatMemberList(String mid, String searchStr) {
 		}
 	}
 
+	// receiverMid의 사진 경로 받아오기
+	public String getPhoto(String receiverMid) {
+		String receiverPhoto = null;
+		try {
+			String sql = "select photo from member where mid = ?";
+	    pstmt = conn.prepareStatement(sql);
+	    pstmt.setString(1, receiverMid);
+	    rs = pstmt.executeQuery();
+	
+	    if (rs.next()) {
+	      receiverPhoto = rs.getString("photo");
+	    }
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return receiverPhoto;
+	}
+
 	
 }

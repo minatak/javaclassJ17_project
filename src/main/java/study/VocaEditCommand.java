@@ -8,26 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-public class VocaMainCommand implements StudyInterface {
+public class VocaEditCommand implements StudyInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String mid = (String) session.getAttribute("sMid");
-		String memberMid = request.getParameter("memberMid")== null ? "" : request.getParameter("memberMid");
+		String category = request.getParameter("category")== null ? "" : request.getParameter("category");
+		
 		VocaDAO dao = new VocaDAO();
 		
-		if(!memberMid.equals("")) {
-			ArrayList<VocaVO> vos = dao.getMemberVocaList(memberMid);
-			request.setAttribute("vos", vos);
-			request.setAttribute("memberMid", memberMid);
-		}
-		else {
-			ArrayList<VocaVO> vos = dao.getVocaList(mid);
-			request.setAttribute("vos", vos);
-		}
-		
+	  ArrayList<VocaVO> vos = dao.getVocaDetail(mid, category);
+	  
+	  
+	  request.setAttribute("vos", vos);
+	  request.setAttribute("category", category);
 	}
-
 }

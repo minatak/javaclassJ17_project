@@ -1,32 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page import="java.util.List" %>
-
-<%
-    class WordResult { // 이부분을 command로 빼면 됨 !!
-        String word;
-        String correctMeaning;
-        String userAnswer;
-        boolean isCorrect;
-    }
-
-    List<WordResult> results = new ArrayList<>();
-    int score = 0;
-
-    for (int i = 0; i < request.getParameterValues("words.length"); i++) {
-        WordResult result = new WordResult();
-        result.word = request.getParameterValues("words[" + i + "].word")[0];
-        result.correctMeaning = request.getParameterValues("words[" + i + "].correctMeaning")[0];
-        result.userAnswer = request.getParameterValues("words[" + i + "].userAnswer")[0];
-        result.isCorrect = result.correctMeaning.equalsIgnoreCase(result.userAnswer);
-        if (result.isCorrect) {
-            score++;
-        }
-        results.add(result);
-    }
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,65 +10,69 @@
     <%@ include file="/include/bs4.jsp" %>
     <link href="${ctp}/css/styles.css" rel="stylesheet" />
     <style>
+        @font-face {
+            font-family: 'CWDangamAsac-Bold';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
         body {
             font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
-            background-color: #f3f4f6;
-            font-size: 16px;
+            background-color: #f9fafb;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            min-height: 100vh;
         }
         .container {
             max-width: 800px;
-            margin: auto;
+            margin: 40px auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            /* background-color: #ffffff; */
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+            /* border-radius: 10px; */
         }
-        .result {
-            margin-bottom: 20px;
-        }
-        .result h3 {
-            font-family: 'CWDangamAsac-Bold', sans-serif;
+        h1 {
+            font-family: 'CWDangamAsac-Bold';
             color: #36b574;
+            text-align: center;
+            margin-bottom: 40px;
         }
-        .correct {
-            color: #28a745;
-        }
-        .incorrect {
-            color: #dc3545;
+        p {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            color: #333333;
+            font-size: 18px;
+            text-align: center;
         }
         .btn {
-            padding: 10px 15px;
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px 20px;
             background-color: #35ae5f;
-            color: #fff;
+            color: #ffffff;
             border: none;
             border-radius: 5px;
             text-decoration: none;
             cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s ease;
         }
         .btn:hover {
-            background-color: #379866;
+            background-color: #2d8e51;
         }
     </style>
 </head>
+    <jsp:include page="/include/nav.jsp" />
 <body>
     <main class="container">
-        <h1>테스트 결과</h1>
-        <h2>점수: <c:out value="${score}"/> / <c:out value="${results.size()}"/></h2>
-        <c:forEach var="result" items="${results}">
-            <div class="result">
-                <h3>${result.word}</h3>
-                <p>
-                    당신의 답: <span class="${result.isCorrect ? 'correct' : 'incorrect'}">
-                    ${result.userAnswer}</span>
-                </p>
-                <c:if test="${!result.isCorrect}">
-                    <p>정답: <span class="correct">${result.correctMeaning}</span></p>
-                </c:if>
-            </div>
-        </c:forEach>
-        <a href="${ctp}/" class="btn">다시 테스트 하기</a>
+        <h1>단어 테스트 결과</h1>
+        <p>맞힌 단어 수: ${score} / ${questionCnt}</p>
+        <p>점수: ${score * (100 / questionCnt)}</p> <!-- 각 단어당 10점 -->
+        <a href="VocaTest.st?category=${category}&wordMid=${wordMid}" class="btn">다시 테스트하기</a>
     </main>
+    <jsp:include page="/include/footer.jsp" />
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

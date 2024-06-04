@@ -45,9 +45,29 @@ public class StudyController extends HttpServlet {
 			viewPage += "/vocaDetail.jsp";
 		}
 		else if(com.equals("/VocaEdit")) {
-			//command = new VocaEditCommand();
+			command = new VocaEditCommand();
 			command.execute(request, response);
 			viewPage += "/vocaEdit.jsp";
+		}
+		else if(com.equals("/VocaEditOk")) {
+			command = new VocaEditOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/VocaDeleteOk")) {
+			command = new VocaDeleteOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/VocaTest")) {
+			command = new VocaTestCommand();
+			command.execute(request, response);
+			viewPage += "/vocaTest.jsp";
+		}
+		else if(com.equals("/VocaTestResult")) {
+			command = new VocaTestResultCommand();
+			command.execute(request, response);
+			viewPage += "/vocaTestResult.jsp";
 		}
 		
 

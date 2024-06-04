@@ -1,12 +1,12 @@
 package study;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import member.MemberVO;
+import javax.servlet.http.HttpSession;
 
 public class VocaInputOkCommand implements StudyInterface {
 
@@ -17,10 +17,10 @@ public class VocaInputOkCommand implements StudyInterface {
      String meaningsStr = request.getParameter("meaningsStr") == null ? "" : request.getParameter("meaningsStr");
      String memberMid = request.getParameter("mid") == null ? "" : request.getParameter("mid");
 
-     System.out.println("category : " + category);
-     System.out.println("wordsStr : " + wordsStr);
-     System.out.println("meaningsStr : " + meaningsStr);
-     System.out.println("memberMid : " + memberMid);
+//     System.out.println("category : " + category);
+//     System.out.println("wordsStr : " + wordsStr);
+//     System.out.println("meaningsStr : " + meaningsStr);
+//     System.out.println("memberMid : " + memberMid);
 
      if (wordsStr.isEmpty() || meaningsStr.isEmpty()) {
        request.setAttribute("message", "단어와 뜻을 입력해주세요.");
@@ -35,6 +35,21 @@ public class VocaInputOkCommand implements StudyInterface {
        request.setAttribute("message", "단어와 뜻의 수가 일치하지 않습니다.");
        request.setAttribute("url", "VocaInput.st");
        return;
+     }
+     
+     // 이미 존재하는 카테고리와 동일한 카테고리 이름이면 등록시키지 못하게 리턴해야 한다 !
+     HttpSession session = request.getSession();
+     String mid = (String) session.getAttribute("sMid");
+
+     VocaDAO dao = new VocaDAO();
+     ArrayList<VocaVO> vos = dao.getVocaList(mid);
+
+     for (VocaVO vo : vos) {
+       if (vo.getCategory().equals(category)) {
+         request.setAttribute("message", "이미 존재하는 이름입니다. 중복되지 않는 이름을 사용해주세요.");
+         request.setAttribute("url", "VocaInput.st");
+         return;
+       }
      }
 
      String[] meanings = new String[posNmeanings.length];
@@ -52,11 +67,11 @@ public class VocaInputOkCommand implements StudyInterface {
      }
 
     // 값 확인
-    for (int i = 0; i < words.length; i++) {
-      System.out.println((i+1) + ". 단어: " + words[i] + ", 뜻: " + meanings[i] + ", 품사: " + partOfSpeech[i]);
-    }
+//    for (int i = 0; i < words.length; i++) {
+//      System.out.println((i+1) + ". 단어: " + words[i] + ", 뜻: " + meanings[i] + ", 품사: " + partOfSpeech[i]);
+//    }
 
-    VocaDAO dao = new VocaDAO();
+   // VocaDAO dao = new VocaDAO();
     int res = 0;
 
     for (int i = 0; i < words.length; i++) {
@@ -72,10 +87,10 @@ public class VocaInputOkCommand implements StudyInterface {
 
     if (res == words.length) {
       request.setAttribute("message", "단어장이 등록되었습니다 :)");
-      request.setAttribute("url", "MemberMain.mem");
+      request.setAttribute("url", "VocaMain.st");
     } else {
       request.setAttribute("message", "단어장 등록에 실패했습니다.");
-      request.setAttribute("url", "MemberUpdate.mem");
+      request.setAttribute("url", "VocaInput.st");
     }
 	}
 	

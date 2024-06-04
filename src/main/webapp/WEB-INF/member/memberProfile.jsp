@@ -216,6 +216,7 @@
     </div>
     <div class="message-section mb-5">
       <button onclick="location.href='${ctp}/ChatMain.chat?receiverMid=${vo.mid}'">메세지 보내기</button>
+      <button onclick="location.href='${ctp}/VocaMain.st?memberMid=${vo.mid}'">만든 단어장 보기</button>
       <%-- <button onclick="location.href='${ctp}/MemberList.mem'">돌아가기</button> --%>
     </div>
   </div>
