@@ -96,7 +96,7 @@
 	                </li>    
                 </c:if> 
                 <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="ChatMain.chat">Message</a></li></c:if>
-                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="VocaMain.st">Study</a></li></c:if>
+                <c:if test="${!empty sMid}"><li class="nav-item"><a class="nav-link" href="VocaMain.st">Voca</a></li></c:if>
                 <c:if test="${empty sMid}">
 	                <li class="nav-item dropdown">
 	                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Language</a>
