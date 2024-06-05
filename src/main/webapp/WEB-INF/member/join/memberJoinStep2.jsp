@@ -22,13 +22,20 @@
 	    } */
 	
 		function fCheck() {
-	    	
 	    	// 전송전에 파일에 관련된 사항들을 체크해준다.
 			let fName = document.getElementById("file").value;
 			if(fName.trim() != "") {
 				let ext = fName.substring(fName.lastIndexOf(".")+1).toLowerCase();
 				let maxSize = 1024 * 1024 * 5;
 				let fileSize = document.getElementById("file").files[0].size;
+				let invalidChars = ['#', '&'];
+
+				for (let char of invalidChars) {
+					if (fName.includes(char)) {
+						alert("파일 이름에 #이나 & 문자를 포함할 수 없습니다.");
+						return false;
+					}
+				}
 				
 				if(ext != 'jpg' && ext != 'gif' && ext != 'png' && ext != 'jfif') {
 					alert("그림파일만 업로드 가능합니다.");
@@ -39,7 +46,7 @@
 					return false;
 				}
 			}
-			else return false;	
+			// else return false;	
 	
 	    let nativeLanguage = document.getElementById("nativeLanguage").value;
 	    let learningLanguage = document.getElementById("learningLanguage").value;

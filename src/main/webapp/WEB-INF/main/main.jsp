@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
-            <img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." />
+            <img class="img-fluid rounded-3 my-5" src="${ctp}/images/about-lingualink.jpg" />  
           </div>
         </div>
       </div>
@@ -115,7 +115,7 @@
               <img class="card-img-top" src="${ctp}/images/logo/searchGreen.png" alt="..." />
               <div class="card-body p-4 text-center" >
                 <h4><a class="card-title mb-3" href="MemberList.mem">회원 조회하기</a></h4>
-                <p class="card-text mb-0">전 세계 사용자들과 언어를 교환하며 학습할 수 있습니다. 나와 학습 목표, 관심사가 일치하는 사용자를 찾아보세요!</p>
+                <p class="card-text mb-0 mt-3">전 세계 사용자들과 언어를 교환하며 학습할 수 있습니다. 나와 학습 목표, 관심사가 일치하는 사용자를 찾아보세요</p>
               </div>
               <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                 <div class="d-flex justify-content-center">
@@ -131,7 +131,7 @@
               <img class="card-img-top padded-img" src="${ctp}/images/logo/chatGreen.png" alt="Chat Logo" />
               <div class="card-body p-4 text-center" >
                 <h4><a class="card-title mb-3" href="ChatMain.chat">채팅하기</a></h4>
-                <p class="card-text mb-0">원어민과 실시간으로 채팅하며 자연스러운 대화 연습을 해보세요. 텍스트, 음성, 영상 채팅을 통해 다양한 언어 스킬을 향상시킬 수 있습니다!</p>
+                <p class="card-text mb-0 mt-3">원어민과 실시간으로 채팅하며 자연스러운 대화 연습을 해보세요. 채팅을 통해 다양한 언어 스킬을 향상시킬 수 있습니다!</p>
               </div>
               <div class="card-footer p-3 pt-0 bg-transparent border-top-0">
                 <div class="d-flex justify-content-center">
@@ -147,7 +147,7 @@
               <img class="card-img-top" src="${ctp}/images/logo/studyGreen.png" alt="..." />
               <div class="card-body p-3 text-center" >
                 <h4><a class="card-title mb-3" href="VocaMain.st">학습하기</a></h4>
-                <p class="card-text mb-0">나만의 단어장을 생성하고 암기 테스트 기능을 활용하여 효과적으로 단어를 학습하세요. 맞춤형 퀴즈와 플래시카드를 통해 기억을 강화하고 즐겁게 학습할 수 있습니다.</p>
+                <p class="card-text mb-3 mt-3">나만의 단어장을 생성하고 암기 테스트 기능을 활용하여 효과적으로 단어를 학습하세요</p>
               </div>
               <div class="card-footer p-4 pt-0 bg-transparent border-top-0" >
                 <div class="d-flex justify-content-center">

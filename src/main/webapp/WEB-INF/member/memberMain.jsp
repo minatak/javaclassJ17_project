@@ -104,7 +104,7 @@
           <!-- <h3>프로필 정보</h3> -->
           <img src="${ctp}/images/member/${vo.photo}">
           <div class="profile-info">
-            <p>이름 : ${vo.name}</p>
+            <p>이름 : ${vo.name}</p> 
             <p>이메일 : ${vo.email}</p>
             <p>성별 : ${vo.gender}</p>
             <p>생년월일 : ${fn:substring(vo.birthday,0,10)}</p>

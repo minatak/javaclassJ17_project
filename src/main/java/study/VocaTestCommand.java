@@ -14,7 +14,6 @@ public class VocaTestCommand implements StudyInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String memberMid = (String) session.getAttribute("sMid");
 		String category = request.getParameter("category") == null ? "" : request.getParameter("category");
 		String wordMid = request.getParameter("wordMid") == null ? "" : request.getParameter("wordMid");
 		

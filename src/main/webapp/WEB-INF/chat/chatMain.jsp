@@ -276,13 +276,17 @@
 		    </c:forEach>
 	    </c:if>
 	     --%>
-	    <c:if test="${! empty midVos}">
+	    <c:if test="${! empty midVos}"> 
 		    <c:forEach var="v" items="${midVos}" varStatus="st">
 	        <c:set var="vo" value="${fn:split(v, '/')}"/>
-	        <c:if test="${vo[0] != imsi}">
+	        <c:if test="${vo[0] != imsi}"> 
 		        <c:if test="${vo[0] != sMid}">
 	            <div class="friend">
-	              <img src="${ctp}/images/member/${vo[1]}" alt="Friend Image"><%-- ==${vo[1]}== --%>
+	              <c:forEach var="info" items="${photoVos}" varStatus="st">
+	                <c:if test="${info.menuMid == vo[0]}">
+			              <img src="${ctp}/images/member/${info.menuPhoto}" alt="Friend Image"> 
+	                </c:if>
+	              </c:forEach>
 	              <div>
 	                <div class="name"><a href="ChatMain.chat?receiverMid=${vo[0]}">${vo[0]}</a></div>
 	              </div>

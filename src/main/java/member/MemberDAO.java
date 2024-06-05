@@ -40,7 +40,7 @@ public class MemberDAO {
 	public MemberVO getMemberIdCheck(String mid) {
 		MemberVO vo = new MemberVO();
 		try {
-			sql = "select * from member where mid = ?";
+			sql = "select * from member where BINARY mid = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import member.MemberVO;
+
 public class ChatMainCommand implements ChatInterface {
 
 	@Override
@@ -34,7 +36,9 @@ public class ChatMainCommand implements ChatInterface {
 		}
 		else vos = dao.getChatMemberList(mid, searchStr);
 		
-		
+		// 회원정보에서 모든회원의 아이디와 사진만 가져가기
+		ArrayList<MemberVO> photoVos = dao.getMenuPhoto();
+		request.setAttribute("photoVos", photoVos);		
 		
 		// receiverMid의 사진 경로 받아오기 
 		String receiverPhoto = dao.getPhoto(receiverMid);

@@ -26,7 +26,7 @@ public class MemberJoinOk2Command implements MemberInterface {
 		String email = multipartRequest.getParameter("email")==null? "" : multipartRequest.getParameter("email");
 		String gender = multipartRequest.getParameter("gender")==null? "" : multipartRequest.getParameter("gender");
 		String birthday = multipartRequest.getParameter("birthday")==null? "" : multipartRequest.getParameter("birthday");
-		String photo = multipartRequest.getFilesystemName("fName")== "" ? "noimage.png" : multipartRequest.getFilesystemName("fName");
+		String photo = multipartRequest.getFilesystemName("fName")== null ? "noimage.png" : multipartRequest.getFilesystemName("fName");
 		String country = multipartRequest.getParameter("country")==null? "" : multipartRequest.getParameter("country");
 		String city = multipartRequest.getParameter("city")==null? "" : multipartRequest.getParameter("city");
 		String nativeLanguage = multipartRequest.getParameter("nativeLanguage")==null? "" : multipartRequest.getParameter("nativeLanguage");

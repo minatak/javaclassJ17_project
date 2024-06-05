@@ -203,5 +203,26 @@ public ArrayList<ChatVO> getChatMemberList(String mid, String searchStr) {
 		return receiverPhoto;
 	}
 
+	// 회원아이디와 사진만 모두 검색
+	public ArrayList<MemberVO> getMenuPhoto() {
+		ArrayList<MemberVO> vos = new ArrayList<MemberVO>();
+		try {
+			sql = "select mid, photo from member";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MemberVO vo = new MemberVO();
+				vo.setMenuMid(rs.getString("mid"));
+				vo.setMenuPhoto(rs.getString("photo"));
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vos;
+	}
+
 	
 }

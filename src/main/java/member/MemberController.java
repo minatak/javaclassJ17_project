@@ -70,7 +70,7 @@ public class MemberController extends HttpServlet {
 			viewPage += "/memberList.jsp";
 		}
 		else if(level > 4) {
-			request.setAttribute("message", "로그인후 사용하세요");
+			request.setAttribute("message", "로그인 후 사용하세요");
 			request.setAttribute("url", request.getContextPath()+"/Login.mem");
 			viewPage = "/include/message.jsp";
 		}

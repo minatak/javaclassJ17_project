@@ -98,7 +98,7 @@
               <option value="독일">독일</option>
               <option value="중국">중국</option>
               <option value="러시아">러시아</option>
-              <option value="기타">기타</option>
+              <!-- <option value="기타">기타</option> -->
               <!-- 추가 나라 옵션 -->
             </select>
           </div>
@@ -118,7 +118,7 @@
               <option value="독일어">독일어</option>
               <option value="중국어">중국어</option>
               <option value="러시아어">러시아어</option>
-              <option value="기타">기타</option>
+              <!-- <option value="기타">기타</option> -->
             </select>
           </div>
           <div class="form-group">
@@ -133,7 +133,7 @@
               <option value="독일어">독일어</option>
               <option value="중국어">중국어</option>
               <option value="러시아어">러시아어</option>
-              <option value="기타">기타</option>
+              <!-- <option value="기타">기타</option> -->
             </select>
           </div>
           <div class="form-group">

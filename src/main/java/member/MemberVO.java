@@ -25,6 +25,9 @@ public class MemberVO {
 	private String myLangFlag; // 모국어 국기
 	private String wantLangFlag; // 배우고 싶은 언어의 나라 국기
 	
+	private String menuMid;		// 메뉴에서 보여주는 아이디
+	private String menuPhoto;	// 메뉴에서 보여주는 회원 사진
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -157,6 +160,19 @@ public class MemberVO {
 	public void setWantLangFlag(String wantLangFlag) {
 		this.wantLangFlag = wantLangFlag;
 	}
+	public String getMenuMid() {
+		return menuMid;
+	}
+	public void setMenuMid(String menuMid) {
+		this.menuMid = menuMid;
+	}
+	public String getMenuPhoto() {
+		return menuPhoto;
+	}
+	public void setMenuPhoto(String menuPhoto) {
+		this.menuPhoto = menuPhoto;
+	}
+	
 	@Override
 	public String toString() {
 		return "MemberVO [idx=" + idx + ", mid=" + mid + ", pwd=" + pwd + ", nickName=" + nickName + ", name=" + name
@@ -164,6 +180,6 @@ public class MemberVO {
 				+ country + ", city=" + city + ", nativeLanguage=" + nativeLanguage + ", learningLanguage=" + learningLanguage
 				+ ", languageLevel=" + languageLevel + ", content=" + content + ", userDel=" + userDel + ", level=" + level
 				+ ", startDate=" + startDate + ", lastDate=" + lastDate + ", myFlag=" + myFlag + ", myLangFlag=" + myLangFlag
-				+ ", wantLangFlag=" + wantLangFlag + "]";
+				+ ", wantLangFlag=" + wantLangFlag + ", menuMid=" + menuMid + ", menuPhoto=" + menuPhoto + "]";
 	}
 }

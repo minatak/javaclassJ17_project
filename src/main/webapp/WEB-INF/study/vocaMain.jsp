@@ -24,6 +24,11 @@
         display: flex;
         flex-direction: column;
       }
+      .container {
+	      max-width: 800px;
+	      margin: auto;
+	      padding: 20px;
+	    }
       .dashboard-header {
         text-align: center;
         margin-bottom: 30px;
@@ -78,6 +83,7 @@
         border-bottom: none;
       }
       .vocab-category {
+        font-size: 16px;
         font-weight: bold;
         color: #35ae5f;
       }
@@ -270,7 +276,7 @@
                 </c:if>
                 <c:if test="${!empty memberMid}">
                   <div class="vocab-category">
-                    <a href="VocaDetail.st?category=${vo.category}&memberMid=${memberMid}" class="highlight"> ${vo.category}</a>
+                    <a href="VocaDetail.st?category=${vo.category}&memberMid=${memberMid}"  class="highlight"> ${vo.category}</a>
                   </div>
                 </c:if>
                 <div class="vocab-details">

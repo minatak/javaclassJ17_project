@@ -9,16 +9,14 @@
     <%@ include file="/include/bs4.jsp" %>
     <link href="${ctp}/css/styles.css" rel="stylesheet" />
     <style>
-		    @font-face {
-				  font-family: 'CWDangamAsac-Bold';
-				  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
-				  font-weight: normal;
-				  font-style: normal;
-				}
+        @font-face {
+            font-family: 'CWDangamAsac-Bold';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
         body {
             font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
-           /*  background-color: #f3f4f6; */
-           /*  font-size: 16px; */
             margin: 0;
             padding: 20px;
         }
@@ -36,7 +34,7 @@
             color: #36b574;
             text-align: center;
         }
-        .question h3 {
+        .question h5 {
             font-family: 'NEXON Lv1 Gothic OTF';
             color: #6f5340;
         }
@@ -51,34 +49,49 @@
             cursor: pointer;
         }
         .btn:hover {
+            color: #fff;
             background-color: #379866;
         }
     </style>
+    <script>
+        function validateForm() {
+            var inputs = document.querySelectorAll('input[name="userAnswer"]');
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].value.trim() === "") {
+                    alert("모든 단어에 대한 답변을 입력해주세요.");
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
 </head>
-<jsp:include page="/include/nav.jsp" />
 <body>
-	<p><br/></p>
-  <main class="container">
-    <h1>단어 테스트</h1>
-    <form action="VocaTestResult.st" method="POST">
-      <c:forEach var="vo" items="${vos}" varStatus="st" begin="0" end="${questionCount-1}">
-        <div class="question">
-          <h3>${st.index + 1}. ${vo.word}</h3>
-          <input type="hidden" name="words" value="${vo.word}" />
-          <input type="hidden" name="correctMeaning" value="${vo.meaning}" />
-          <input type="hidden" name="category" value="${vo.category}" />
-          <input type="hidden" name="wordMid" value="${vo.memberMid}" />
-          <input type="text" name="userAnswer" class="form-control" />
-        </div>
-      </c:forEach>
-    <%--   <input type="hidden" name="category" value="${category}" /> --%>
-      <button type="submit" class="btn">제출</button>
-    </form>
-  </main>
-	<p><br/></p>
-  <!-- Footer-->
-  <jsp:include page="/include/footer.jsp" />
-  <!-- Bootstrap core JS-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <jsp:include page="/include/nav.jsp" />
+    <div class="con">
+        <p><br/></p>
+        <main class="container">
+            <h1 class="mb-5">단어 테스트</h1>
+            <form action="VocaTestResult.st" method="POST" onsubmit="return validateForm();">
+                <c:forEach var="vo" items="${vos}" varStatus="st" begin="0" end="${questionCount-1}">
+                    <div class="question">
+                        <h5>${st.index + 1}. ${vo.word}</h5>
+                        <input type="hidden" name="words" value="${vo.word}" />
+                        <input type="hidden" name="correctMeaning" value="${vo.meaning}" />
+                        <input type="hidden" name="category" value="${vo.category}" />
+                        <input type="hidden" name="wordMid" value="${vo.memberMid}" />
+                        <input type="text" name="userAnswer" class="form-control" />
+                    </div>
+                </c:forEach>
+                <div class="text-right">
+                    <button type="submit" class="btn">제출</button>
+                </div>
+            </form>
+        </main>
+        <p><br/></p>
+    </div>
+    <jsp:include page="/include/footer.jsp" />
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

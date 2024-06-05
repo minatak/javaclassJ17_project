@@ -42,11 +42,6 @@
 	    registerForm1.pwd.focus();
     	return false;
     }
-    else if(!regNickName.test(nickName)) {
-	    alert("닉네임은 한글과 숫자만 사용가능합니다.");
-	    registerForm1.nickName.focus();
-	    return false;
-    }
     else if(!regName.test(name)) {
       alert("성명은 한글과 영문 대/소문자만 사용가능합니다.");
       registerForm1.name.focus();
