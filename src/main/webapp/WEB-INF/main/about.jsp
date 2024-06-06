@@ -72,7 +72,7 @@
                     <div class="col-lg-8 col-xxl-6">
                         <div class="text-center my-5">
                             <h1 class="fw-bolder mb-3">About LinguaLink</h1>
-                            <p class="lead fw-normal text-muted mb-4">LinguaLink는 전 세계의 사람들이 서로의 문화를 이해하고, 다리 역할을 하는 플랫폼입니다. 새로운 언어를 배우고 다양한 문화적 배경을 가진 친구들을 만날 수 있습니다.</p>
+                            <p class="lead fw-normal text-muted mb-4">LinguaLink는 전 세계의 사람들이 서로의 문화를 이해할 수 있도록 다리 역할을 하는 플랫폼입니다. 새로운 언어를 배우고 다양한 문화적 배경을 가진 친구들을 만날 수 있습니다.</p>
                         </div>
                     </div>
                 </div>

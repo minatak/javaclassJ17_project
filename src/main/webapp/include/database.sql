@@ -1,27 +1,30 @@
 show tables;
 
 /* 사용자 계정 및 프로필 정보를 저장 */
-CREATE TABLE member (
-	idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY,  /* 회원 고유번호 */
-	mid VARCHAR(30) UNIQUE NOT NULL,             /* 사용자 아이디 (중복 확인 필요) */
-	pwd VARCHAR(100) NOT NULL,                   /* 비밀번호 (SHA256 암호화 처리) */
-	nickName VARCHAR(20) NOT NULL,               /* 회원 별명 (중복 불가능/수정 가능) */
-	name VARCHAR(20) NOT NULL,                   /* 이름 */
-	email VARCHAR(60) NOT NULL,                  /* 이메일 */
-	gender CHAR(2) NOT NULL DEFAULT '남자',       /* 성별 */
-	birthday DATETIME DEFAULT NOW(),            /* 생일 */
-	photo VARCHAR(100) DEFAULT 'noimage.jpg',    /* 프로필 사진 */
-	country VARCHAR(50) NOT NULL,                /* 거주하는 나라 */
-	city VARCHAR(50),                            /* 도시 */
-	nativeLanguage VARCHAR(50) NOT NULL,         /* 모국어 */
-	learningLanguage VARCHAR(50) NOT NULL,       /* 학습할 언어 */
-	languageLevel CHAR(2) NOT NULL DEFAULT '초급', /* 학습할 언어의 수준 ('초급', '중급', '고급') */
-	content TEXT,                                	/* 자기소개 */
-	userDel CHAR(2) DEFAULT 'NO',                /* 회원 탈퇴신청여부(NO:현재 활동중, OK: 탈퇴신청중/숨김처리된 회원) */
-	level INT DEFAULT 1,                         /* 회원등급(0:관리자, 1:준회원, 2:정회원, 3:우수회원, (4:운영자)) , 99:탈퇴신청회원 */
-	startDate DATETIME DEFAULT NOW(),            /* 최초 가입일 */
-	lastDate DATETIME DEFAULT NOW()              /* 마지막 접속일 */
+create table member (
+	idx int not null auto_increment primary key,  /* 회원 고유번호 */
+	mid varchar(30) unique not null,             /* 사용자 아이디 (중복 확인 필요) */
+	pwd varchar(100) not null,                   /* 비밀번호 (SHA256 암호화 처리) */
+	nickName varchar(20) not null,               /* 회원 별명 (중복 불가능/수정 가능) */
+	name varchar(20) not null,                   /* 이름 */
+	email varchar(60) not null,                  /* 이메일 */
+	gender char(2) not null default '남자',       /* 성별 */
+	birthday datetime default now(),            /* 생일 */
+	photo varchar(100) default 'noimage.jpg',    /* 프로필 사진 */
+	country varchar(50) not null,                /* 거주하는 나라 */
+	city varchar(50),                            /* 도시 */
+	nativeLanguage varchar(50) not null,         /* 모국어 */
+	learningLanguage varchar(50) not null,       /* 학습할 언어 */
+	languageLevel char(2) not null default '초급', /* 학습할 언어의 수준 ('초급', '중급', '고급') */
+	content text,                                /* 자기소개 */
+	userDel char(2) default 'no',                /* 회원 탈퇴신청여부(no:현재 활동중, ok: 탈퇴신청중/숨김처리된 회원) */
+	level int default 1,                         /* 회원등급(0:관리자, 1:준회원, 2:정회원, 3:우수회원, (4:운영자)) , 99:탈퇴신청회원 */
+	startDate datetime default now(),            /* 최초 가입일 */
+	lastDate datetime default now()              /* 마지막 접속일 */
 );
+
+
+
 desc member;
 
 insert into member values (default,'atom','07de18b42f5f7548aaa36fd6b07e3910aecf7a6feb0bb18cc1b00701f455c9b32d71a6c4',
@@ -68,6 +71,16 @@ CREATE TABLE report (
 	reportDate DATETIME DEFAULT NOW()            /* 신고 날짜 */
 );
 
+/* 사용자 신고 테이블 */
+create table report (
+	idx int not null auto_increment primary key, /* 신고테이블 고유번호 */
+	reportedMid varchar(30) not null,            /* 신고된 사용자 mid (member 테이블과 연결) */
+	reportingMid varchar(30) not null,           /* 신고한 사용자 mid (member 테이블과 연결) */
+	reason text not null,                        /* 신고 사유 */
+	reportDate datetime default now()            /* 신고 날짜 */
+);
+
+
 desc report;
 drop table report;
 
@@ -94,6 +107,19 @@ CREATE TABLE chat (
 	FOREIGN KEY (senderMid) REFERENCES member(mid), 
 	FOREIGN KEY (receiverMid) REFERENCES member(mid) 
 );
+
+/* 텍스트 채팅을 저장 */
+create table chat (
+	idx int not null auto_increment primary key, /* 채팅 고유번호 */
+	senderMid varchar(20) not null,              /* 발신자 회원 아이디 (member 테이블과 연결) */
+	receiverMid varchar(20) not null,            /* 수신자 회원 아이디 (member 테이블과 연결) */
+	message varchar(200) not null,               /* 메시지 내용 */
+	chatDate datetime default now(),            /* 메시지 전송 시간 */
+	foreign key (senderMid) references member(mid), 
+	foreign key (receiverMid) references member(mid) 
+);
+
+
 desc chat;
 drop table chat;
 
@@ -143,6 +169,19 @@ CREATE TABLE voca(
 desc voca;
 
 
+/* 단어장 테이블 */
+create table voca(
+	idx int auto_increment primary key,      /* 단어 고유 id */
+	memberMid varchar(30),                   /* 사용자 고유번호 (member 테이블과 연결) */
+	category varchar(50),                    /* 단어 카테고리 */
+	word varchar(100),                       /* 단어 */
+	meaning varchar(100),                    /* 번역 */
+	partOfSpeech varchar(50),                /* 품사 */
+	example text,                            /* 예문 */
+	foreign key (memberMid) references member(mid) on delete cascade  
+);
+
+
 /* 단어 테스트 테이블 */
 CREATE TABLE vocaTest (
 	idx INT AUTO_INCREMENT PRIMARY KEY,             /* 단어 테스트 고유 번호 */
@@ -155,3 +194,17 @@ CREATE TABLE vocaTest (
 	FOREIGN KEY (vocaIdx) REFERENCES vocabulary(idx) ON DELETE CASCADE  
 );
 desc vocaTest;
+
+
+
+/* 단어 테스트 테이블 */
+create table vocaTest (
+	idx int auto_increment primary key,             /* 단어 테스트 고유 번호 */
+	memberMid varchar(30),                          /* 테스트 하는 사용자 아이디 (member 테이블과 연결) */
+	vocaIdx int,                                    /* 단어 고유 번호 (voca 테이블과 연결) */
+	category varchar(50),                           /* 테스트할 단어의 카테고리 */
+	score int,                                      /* 테스트 점수 */
+	testDate datetime default now(),                /* 테스트 일자 */
+	foreign key (membermid) references member(mid) on delete cascade,  
+	foreign key (vocaidx) references vocabulary(idx) on delete cascade  
+);
